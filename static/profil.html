@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs -->
+ <meta charset="utf-8">
+ <meta name="author" content="digifiend">
+ <meta name="description" content="Inspiring Worldwide Tasty Recipes">
+ <title>Kaledo | Inspiring Worldwide Tasty Recipes </title>
+
+ <!-- Mobile Specific Metas -->
+ <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+ <!-- Fonts -->
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:600|Righteous|Roboto:500" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	
+ <!-- CSS -->
+ <link rel="stylesheet" href="../styles/main.css">
+
+ <!-- JS  -->
+ <script defer src="../scripts/core.js"></script>
+ <script defer src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+ <script defer src="../scripts/profil.js"></script>
+ 
+ <!-- Favicon  -->
+ <link rel="shortcut icon" href="../assets/kaledo.ico" type="image/x-icon">
+
+</head>
+<body>
+
+ <!-- Navigation Menu After Burger Icon Clicked -->
+ <div class="navbar-expanded">
+ 	<ul class="menu-expanded">
+		<li><a href="recipes.html">All Recipes</a></li>
+		<li><a href="how-to.html">How To</a></li>
+	</ul>			
+ </div>
+
+ <!-- Page Header -->
+ <header>
+ 	<a class="logo" href="../index.html"><h1>Kaledo</h1></a>
+	<nav class="navbar">
+		<ul class="menu">
+			<li><a href="recipes.html">All Recipes</a></li>
+			<li><a href="how-to.html">How To</a></li>
+		</ul>			
+	</nav>
+	<a class="profil-link" href="profil.html"><img src="../assets/circle-icons-profile.png"></a>
+	<a class="burger"><img src="../assets/menu.svg"></a>
+ </header>
+
+ <main>
+	<section class="login-container"> 
+		<h3 class="login-title">Join Kaledo</h3>
+		<p class="login-title">You can share your original recipes and cooking tips. It's free!</p>	
+	 	<div class="login-wrapper">
+	 		<button class="login-fb-button"><img src="../assets/fb-icon.png"></button><p class="login-button-title">FB</p>
+	 	</div>
+
+	 	<div class="login-wrapper">
+	 		<button class="login-google-button"><img src="../assets/google-icon.png"></button><p class="login-button-title">Google</p>
+	 	</div>
+	</section>
+
+	<section>
+		<input id="file" type="file" class="file" placeholder="Upload Photo">
+	 	<label class="label-file" for="file">Upload Photo</label>
+		
+		<button id="upload-button">submit</button>
+	
+	</section>
+	 	
+ </main>
+
+</body>
+</html>

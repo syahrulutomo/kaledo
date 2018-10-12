@@ -1,0 +1,963 @@
+
+/* General Styling */
+ body, html {
+	margin: 0;
+	padding: 0;
+}
+
+div, section, article, header, footer{
+	box-sizing: border-box;
+} 
+
+h1, h2, h3, h4, h5, h6, p{
+	margin: 0;
+}
+
+a{
+	text-decoration: none;
+}
+
+li{
+	list-style: none;
+}
+
+/* HEADER */
+header{
+	background-color: #E47A2E;
+	padding: 0.7em 1em;
+	display: flex;
+	flex-wrap: wrap;
+	border-bottom: 3px inset #FCBA12;
+	width: 100%;
+}
+
+.logo{
+	font-family: 'Righteous', cursive;
+	font-size: 1em;
+	color: white
+}
+
+.menu{
+	display: none;
+}
+
+.menu li{
+	display: inline;
+	margin-right: 1.7em;
+}
+
+.menu li a{
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
+}
+
+.profil-link img{
+	width: 30px;
+	position: absolute;
+    right: 50px;
+    top: 17px;
+}
+
+/* BURGER ICON */
+.burger img{
+	position: absolute;
+    right: 10px;
+    top: 17px;
+	width: 50px;
+}
+
+/* IF BURGER ICON CLICKED */
+.burger.active{
+	position: fixed;
+	right: 0;
+	width: 50px;
+}
+
+.burger img{
+	width: 30px;
+}
+
+/* MENU COLLAPSE */
+.menu-expanded li{
+	margin-top: 1em;
+}
+
+.menu-expanded li a{
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.2em;
+}
+
+
+/*
+ * Off-canvas layout styles.
+*/
+
+/* Since we're mobile-first, by default, the navbar-expanded is hidden. */
+.navbar-expanded {
+	background-color: #E47A2E;
+	padding: .5em .25em;
+	width: 100%;
+    position: fixed;
+    /* This transform moves the navbar-expanded off canvas. */
+    -webkit-transform: translate(0px, -168.78px);
+    transform: translate(0px, -168.78px);
+    /* Optionally, we animate the navbar-expanded. */
+    /*transition: transform .15s ease;*/
+}
+
+/**
+ *	If Burger Icon clicked 
+ *	Then Navbar Expanded is showing
+*/
+
+.navbar-expanded.open {
+	position: absolute;
+    -webkit-transform: translate(0, 68.59px);
+    transform: translate(0, 68.59px);
+}
+
+/* Maximum Width of Screen For Navbar Expanded */
+@media screen and (min-width: 600px){
+	.logo{
+		font-size: 1.2em;
+	}
+
+	nav{
+		padding: .7em 1em;
+    	vertical-align: baseline;	
+    }
+	
+	.menu{
+		display: inline;
+	}	 
+
+	.burger{
+		display: none;
+	}
+}
+
+
+/* HOME PAGE */
+
+/* Default Layout for Main Page */
+main{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* SEARCH */
+.search-form{
+	width: 80%;
+	max-width: 500px;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1.5em 1em;
+	margin-right: auto;
+	margin-left: auto;	
+}
+
+.search-box{
+	display: block;
+    width: 75%;
+    max-width: 318px;
+    height: 1.5em;
+    padding: .25rem .75rem;
+   	font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .	5s ease-in-out,box-shadow .5s ease-in-out;
+}
+
+.search-btn img{
+	max-width: 30px;
+	max-height: 30px;
+}
+
+/* SLIDER */
+.slider-container{
+	overflow: hidden;	
+}
+
+.slider{
+	display: flex;
+    overflow: auto;
+    padding: 1em 1em; 
+    /*border-bottom: 1px solid #e6e6e6; */
+}
+
+.round-thumbnail{
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: 0.6em;
+}
+
+.round-thumbnail img{
+	height: 15vh;
+	width: 4.725em;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	box-shadow: 3px 2px 5px 0 #c2c2c2;
+}
+
+.round-title{
+	width: 100%;
+	color: #1a1a1a;
+	font-family: 'Open Sans', sans-serif;
+	font-size: .9em;
+	text-align: center;
+	margin-top: 0.7em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* RECENT */
+.recent-recipes{
+	display: flex;
+	flex-wrap: wrap;	 
+}
+
+.recent-appetizer, .recent-maincourse, .recent-dessert, .recent-drinks{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	margin-bottom: .8em;
+	padding: 1em;
+}
+
+.recent-heading{
+	width: 100%;
+	color: #404040;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+	padding: .55em 0;
+	border-top: 2px solid #e6e6e6; 
+}
+
+.recent-thumb{
+	max-height: 30vh;
+	width: 100%;
+	border-radius: 5%;
+}
+
+.recent-data{
+	width: calc((100% - .8em)/2);
+	margin-right: .8em;
+	margin-bottom: 1em;
+	
+}
+
+.recent-desc{
+	color: #1a1a1a;
+	font-family: 'Open Sans', sans-serif;
+	font-size: .85em;
+	margin-bottom: .1em;
+}
+
+.data-extension{
+	display: none;
+}
+
+/**  
+ *	Eliminate margin-right on last recent data in every row 
+ *	Applied if every row contain 2 divs
+*/
+@media screen and (max-width: 525px){
+	.recent-data:nth-of-type(2n+1){
+		margin-right: 0;
+	}
+}	
+
+
+/* FOOTER */
+footer{
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #231706;
+	padding: 1em 0.75em;
+	color: white;
+	border-top: 3px solid #FDB74E;
+}
+
+.logo-footer{
+	font-family: 'Righteous', cursive;
+	font-size: 2em;
+}
+
+.list-footer{
+	width: 78px;
+	margin-top: 0.4em;
+	margin-bottom: 0.5em; 
+	margin-left: auto;
+	margin-right: 0;
+	font-size: 0.9em;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.list-footer li{
+	margin-bottom: 0.325em;
+}
+
+.list-footer-item{
+	color: white;
+}
+
+.copyright{
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.7em;
+	text-align: center;
+	margin-top: .7em;
+}
+
+/*  CSS Rules is Applied IF Screen Size > 410px */
+ @media  screen and (min-width: 410px){
+ 	.recent-heading h3{
+ 		font-size: 1.2em;
+ 	}
+
+ 	.recent-desc{
+ 		font-size: 1em;
+ 	}
+ }
+
+/*  CSS Rules is Applied IF Screen Size > 525px */
+ @media screen and (min-width: 525px){
+ 	.search-form{
+ 		width: 57%;
+ 	}
+
+ 	.data-extension{
+ 		display: block;
+ 	}
+
+ 	.recent-data{
+ 		width: calc((100% - 2em)/3);
+ 	}
+
+ 	.recent-data:nth-of-type(3n+1){
+		margin-right: 0;
+	}
+
+	.list-footer li{
+ 		display: inline;
+ 		margin-right: 1em;
+ 	}
+
+ 	.list-footer{
+ 		width: 150px;
+ 	}
+
+ 	.logo-footer{
+ 		font-size: 2.5em;
+ 		margin-left: .2em;
+ 	}
+
+ }
+
+/*  CSS Rules is Applied IF Screen Size > 640px */
+ @media screen and (min-width: 640px){
+ 	nav{
+		margin-left: 10%;	
+	}
+
+ 	.menu li a{
+ 		font-size: 1.15em; 
+ 	}
+
+ 	.round-thumbnail img{
+ 		width: 5em;
+ 	}	
+ }
+
+/*  CSS Rules is Applied IF Screen Size > 900px */
+@media screen and (min-width: 900px){
+	nav{
+		margin-left: 17%;	
+	}
+
+	.menu li a{
+ 		font-size: 1.2em; 
+ 	}
+
+	.round-thumbnail img{
+ 		max-height: 13vh;
+ 	}
+
+	.round-title{
+		font-size: 0.875em;
+	}
+
+	.recent-data{
+		width: calc((100% - 3.6em)/ 3);
+		margin-right: 1.8em;
+	}
+
+	.recent-heading{
+		font-size: 1.8em;
+	}
+
+	.recent-thumb{
+		border-radius: 7%;
+		max-height: 40vh;
+	}
+
+	.recent-desc{
+		font-size: 1.15em;
+		padding: 0.3em 0.5em;
+	}
+
+	main{
+		width: 95%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* RECIPE PAGE */
+.recipes-filter-wrapper{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.recipes-container{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+}
+
+.recipe-data{
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1em;
+}
+
+.recipe-thumb{
+	width: 100%;
+	max-height: 32vh;
+	border-radius: 5%;
+}
+
+.recipe-desc{
+	color: #1a1a1a;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    margin-top: .3em;
+}
+
+.filter-toggle-container{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: .5em;
+}
+
+.filter-toggle{
+	padding: .7em .7em;
+    background-color: #FCBA12;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 2px solid #F5F5DC; 	  
+    margin-right: auto;
+    margin-left: auto;
+    letter-spacing: .1em;
+}
+
+.filter-toggle:hover{
+	cursor: pointer;
+}
+
+.filter{	
+	width: 85%;
+	display: none;
+	flex-wrap: wrap;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.5em;
+	background-color: #FEF6E0;
+	padding: 1em 1em;
+	font-family: 'Poppins', sans-serif;
+	color: #404040;
+}
+
+.filter.open{
+	display: flex;
+}
+
+.filter h3{
+	width: 100%;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.filter-list{
+	width: 100%;
+	padding: 0;
+	font-size: 1.1em;
+}
+
+.filter-item{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.7em 0.2em;
+	border-top: 1.5px inset #fbe1d0;
+}
+
+.filter-item:last-of-type{
+	border-bottom: 1.5px outset #fbe1d0;	
+}
+
+.filter-item p{
+	width: 90%;	
+}
+
+.dropdown-icon{
+	width: 10%;
+}
+
+.dropdown-icon img{
+	width: 1.3em;
+}
+
+.appetizer-list.open, .main-course-list.open, .dessert-list.open, .drinks-list.open{
+	display: block;
+}
+
+.appetizer-list, .main-course-list, .dessert-list, .drinks-list{
+	display: none;
+	padding-left: 0;
+}	
+
+.sub-filter-list{
+	width: 100%;
+}
+
+.sub-filter-item{
+	width: 95%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: .5em;
+	font-size: 1em;
+}
+
+label {
+   display: block;
+   border: solid 1px gray;
+   height: 20px;
+   width: 20px;
+   border-radius: 5px;
+   margin-left: auto;
+   font-family: Arial,Helvetica,sans-serif;
+   text-align: center;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input:checked + label {
+   background-color: gray;
+   color: white;
+}
+
+input:checked + label:before {
+    content: "\2713 ";
+}
+
+
+/* new stuff */
+.check {
+    visibility: hidden;
+}
+
+input:checked + label .check {
+    visibility: visible;
+}
+
+input.checkbox:checked + label:before {
+    content: "";
+}
+
+@media screen and (min-width: 375px){
+	.recipe-thumb{
+		max-height: 40vh;
+	}
+}
+
+@media screen and (min-width: 425px){
+	.recipe-data{
+		width: calc((100% - 1em)/2);
+		margin-right: 1em;
+		margin-left: 0;
+	}
+
+	.recipe-data:nth-of-type(2n){
+		margin-right: 0;
+	}
+
+	.recipe-thumb{
+		max-height: 30vh;
+	}
+}
+
+@media screen and (min-width: 565px){
+	.recipe-data{
+		width: calc((100% - 1.6em)/3);
+		margin-right: .8em;
+	}
+
+	.recipe-data:nth-of-type(2n){
+		margin-right: .8em;
+	}
+
+	.recipe-data:nth-of-type(3n){
+		margin-right: 0;
+	}
+}
+
+@media screen and (min-width: 845px){
+	.recipe-data{
+		width: calc((100% - 3em)/3);
+		margin-right: 1.5em;
+	}
+
+	.recipe-data:nth-of-type(2n){
+		margin-right: 1.5em;
+	}
+
+	.recipe-data:nth-of-type(3n){
+		margin-right: 0;
+	}
+
+	.recipe-thumb{
+		max-height: 35vh;
+	}
+}
+
+@media screen and (min-width: 900px){
+	.recipe-desc{
+		font-size: 1.15em;
+	}
+}
+
+/* How To*/
+.how-to-container{
+	width: 100%;
+}
+
+.how-to-data{
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: .5em;
+	border-bottom: 1px solid #dbdbdb;
+}
+
+.how-to-data:last-of-type{
+	border-style: none;
+}
+
+.how-to-left{
+	width: 30%;	
+}
+
+.how-to-thumb{
+	width: 100%;
+	height: 18vh;
+}
+
+.how-to-right{
+	width: 70%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 1em; 
+}
+
+.how-to-title{
+	width: 100%;
+	color: #1a1a1a;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.1em;
+}
+
+.how-to-desc{
+	width: 100%;
+	color: #1a1a1a;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1em;
+}
+
+.author-container{
+	width: 100%;
+	font-size: 14px;
+	margin: 0;
+}
+
+.author{
+	width: 100%;
+	font-family: 'Poppins', sans-serif;
+	color: #1a1a1a;
+}
+
+@media screen and (min-width: 500px){
+	.how-to-thumb{
+		height: 22vh;
+	}
+}
+
+@media screen and (min-width: 700px){
+	.how-to-thumb{
+		height: 26vh;
+	}
+
+	.how-to-right{
+		padding-left: 1.3em;
+	}
+}
+
+@media screen and (min-width: 900px){
+	.how-to-thumb{
+		height: 30vh;
+	}
+}
+
+.faq-container{
+	width: 90%;
+	padding: 1em; 
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.faq{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+}
+
+.faq-title{
+	width: 100%;
+	font-size: 1.2em;
+	font-family: 'Roboto',sans-serif;
+	color: #1a1a1a;
+	margin: .3em 0;
+}
+
+.faq-content{
+	width: 100%;
+	font-size: 1em;
+	font-family: 'Poppins',sans-serif;
+	color: #1a1a1a;
+	text-align: justify;
+}
+
+.faq:nth-of-type(n+1){
+	padding-top: 0;
+}
+
+@media screen and (min-width: 700px){
+	.faq-title{
+		margin: 0;
+	}
+}
+.contact-us-headline{
+	font-family: 'Roboto',sans-serif;
+	font-size: 1.3em;
+	margin-bottom: 1em;
+	color: #1a1a1a;	
+}
+
+.contact-us-container{
+	width: 90%;
+	padding: 1em; 
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 30vh;
+}
+
+.contact-us{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+}
+
+.contact-us-title{
+	width: 100%;
+	font-size: 1.2em;
+	font-family: 'Roboto',sans-serif;
+	color: #1a1a1a;
+	margin: .3em 0;
+}
+
+.contact-us-content{
+	width: 100%;
+	font-size: 1em;
+	font-family: 'Poppins',sans-serif;
+	color: #1a1a1a;
+	text-align: justify;
+}
+
+.contact-us:nth-of-type(n+1){
+	padding-top: 0;
+}
+
+.contact-us-content:nth-of-type(n+1){
+	margin-bottom: .5em;
+}
+
+@media screen and (min-width: 700px){
+	.contact-us-title{
+		margin: 0;
+	}
+}
+
+.socmed-logo{
+	width: 30px;
+	margin-right: .5em;
+}
+
+.login-container{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+	width: 100%;
+	font-family: sans-serif;
+}
+
+.login-container .login-title{
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0.2em;
+}
+
+.login-wrapper{
+	width: calc((100% - 1em)/2);
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.3em;
+	margin-right: 1em;
+	background-color: #f2f2f2;
+	vertical-align: baseline;
+	margin-top: 0.5em;
+}
+
+.login-wrapper:last-of-type{
+	margin-right: 0;
+}
+
+.login-wrapper:hover{
+	cursor: pointer;
+}
+
+.login-fb-button img {
+	width: 30px;
+}
+
+.login-google-button img{
+	width: 25px;
+}
+
+.login-button-title{
+	margin-top: 6px;
+    margin-left: .5em;
+    font-family: sans-serif;
+}
+
+@media screen and (min-width: 460px){
+	.login-container{
+		padding: 1.5em;
+	}
+
+	.login-wrapper{
+		width: calc((100% - 1.2em)/2);
+		margin-right: 1.2em;
+		margin-top: 1em;
+	}
+}
+
+@media screen and (min-width: 600px){
+	.login-container{
+		width: 600px;
+		margin-right: auto;
+		margin-left: auto;
+		padding-top: 1.5em; 
+	}
+}
+
+label.label-file{
+	margin: 0;
+	height: auto;
+  	display: inline-block;
+  	width: 3em;
+  	padding: 0 .5em;
+  	text-align: right;
+
+}
+/* Hide the file input using
+opacity */
+[type=file] {
+    position: absolute;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    display: none;
+}
+input,
+[type=file] + label {
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  text-align: left;
+  padding: .8em 0.2em;
+  width: 7em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+[type=file] + label {
+  text-align: center;
+  left: 7.35em;
+  top: 0.5em;
+  /* Decorative */
+  background: #BD3D3A;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+[type=file] + label:hover {
+  background: white;
+  color: #1a1a1a;
+  border: 1px solid #BD3D3A;
+}
+
+
+#upload-button{
+	box-sizing: border-box;
+	font-size: 1em;
+	padding: 0.5em;
+	background: white;
+  	color: #1a1a1a;
+   	border: none;
+  	cursor: pointer;
+  	margin-left: 1em;
+  	border-radius: 3px;
+  	border: 1px solid #1a1a1a;
+}
+
