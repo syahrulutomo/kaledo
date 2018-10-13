@@ -22,13 +22,36 @@
  <!-- JS  -->
  <script defer src="../scripts/core.js"></script>
  <script defer src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
- <script defer src="../scripts/profil.js"></script>
+ <script defer>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '257158954991797',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.1'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+ </script>
+ <script defer src="../scripts/signin.js"></script>
+
  
  <!-- Favicon  -->
  <link rel="shortcut icon" href="../assets/kaledo.ico" type="image/x-icon">
 
 </head>
 <body>
+
 
  <!-- Navigation Menu After Burger Icon Clicked -->
  <div class="navbar-expanded">
@@ -57,6 +80,7 @@
 		<p class="login-title">You can share your original recipes and cooking tips. It's free!</p>	
 	 	<div class="login-wrapper">
 	 		<a class="login-fb-button"><img src="../assets/fb-icon.png"><span class="login-button-title">FB</span></a>
+	 		
 	 	</div>
 
 	 	<div class="login-wrapper">
@@ -64,18 +88,7 @@
 	 	</div>
 	</section>
 
-	<section>
-		<input id="file" type="file" class="file" placeholder="Upload Photo">
-	 	<label class="label-file" for="file">Upload Photo</label>
-		
-		<button id="upload-button">submit</button>
-	
-	</section>
-	 	
  </main>
 
 </body>
-
-
-
 </html>
