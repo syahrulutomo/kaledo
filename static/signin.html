@@ -30,7 +30,27 @@
 
 </head>
 <body>
+ <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '257158954991797',
+      cookie     : true,
+      xfbml      : true,
+      version    : '3.1'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
  <!-- Navigation Menu After Burger Icon Clicked -->
  <div class="navbar-expanded">
@@ -58,7 +78,12 @@
 		<h3 class="login-title">Join Kaledo</h3>
 		<p class="login-title">You can share your original recipes and cooking tips. It's free!</p>	
 	 	<div class="login-wrapper">
-	 		<a class="login-fb-button"><img src="../assets/fb-icon.png"><span class="login-button-title">FB</span></a>
+	 		<!-- <a class="login-fb-button"><img src="../assets/fb-icon.png"><span class="login-button-title">FB</span></a> -->
+	 		<fb:login-button 
+			  scope="public_profile,email"
+			  onlogin="checkLoginState();" class="login-fb-button">
+			  <img src="../assets/fb-icon.png"><span class="login-button-title">FB</span>
+			</fb:login-button>
 	 		
 	 	</div>
 
