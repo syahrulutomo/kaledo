@@ -24,6 +24,10 @@ var loginFbButton = document.querySelector('.fb-login-button');
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       console.log("You are logged in");
+    }else if (response.status === 'not_authorized') {
+      // Logged into your app and Facebook.
+      console.log("You are not logged in");
+      FB.login();
     } else {
       // The person is not logged into your app or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
