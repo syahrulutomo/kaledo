@@ -31,11 +31,11 @@ var loginFbButton = document.querySelector('.fb-login-button');
     }
   }
 
-  // function checkLoginState() {
-	 //  FB.getLoginStatus(function(response) {
-	 //    statusChangeCallback(response);
-	 //  });
-  // }
+  function checkLoginState() {
+	  FB.getLoginStatus(function(response) {
+	    statusChangeCallback(response);
+	  });
+  }
 
   window.fbAsyncInit = function() {
 
@@ -46,9 +46,9 @@ var loginFbButton = document.querySelector('.fb-login-button');
       version    : 'v3.1'
     });
     
-    // FB.getLoginStatus(function(response) {
-    //   statusChangeCallback(response);
-    // });      
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });      
   };
 
   (function(d, s, id){
@@ -59,20 +59,20 @@ var loginFbButton = document.querySelector('.fb-login-button');
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-  // function testAPI() {
-  //   console.log('Welcome!  Fetching your information.... ');
-  //   FB.api('/me', function(response) {
-  //     console.log('Successful login for: ' + response.name);
-  //     document.getElementById('status').innerHTML =
-  //       'Thanks for logging in, ' + response.name + '!';
-  //   });
-  // }
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
-var providerFb = new firebase.auth.FacebookAuthProvider();
+// var providerFb = new firebase.auth.FacebookAuthProvider();
 
 loginGoogleButton.addEventListener('click',signInGoogle);
-loginFbButton.addEventListener('click',signInFacebook);
+// loginFbButton.addEventListener('click',signInFacebook);
 
 
 function signInGoogle(){
