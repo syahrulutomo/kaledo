@@ -12,10 +12,27 @@ var loginFbButton = document.querySelector('.fb-login-button');
     messagingSenderId: "27410977713"
   };
   firebase.initializeApp(config);
-
+ 
+ // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      console.log("You are logged in");
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
 
   window.fbAsyncInit = function() {
-  	
+
     FB.init({
       appId      : '257158954991797',
       cookie     : true,
