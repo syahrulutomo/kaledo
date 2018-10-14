@@ -23,16 +23,18 @@ var loginFbButton = document.querySelector('.fb-login-button');
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      console.log("You are logged in");
-    }else if (response.status === 'not_authorized') {
-      // Logged into your app and Facebook.
-      console.log("You are not logged in");
-      FB.login();
+       testAPI();
     } else {
       // The person is not logged into your app or we are unable to tell.
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
     }
+  }
+
+  function checkLoginState() {
+	  FB.getLoginStatus(function(response) {
+	    statusChangeCallback(response);
+	  });
   }
 
   window.fbAsyncInit = function() {
@@ -44,14 +46,9 @@ var loginFbButton = document.querySelector('.fb-login-button');
       version    : 'v3.1'
     });
     
-   function checkLoginState() {
-	  FB.getLoginStatus(function(response) {
-	    statusChangeCallback(response);
-	  });
-	} 
-
-    FB.AppEvents.logPageView();   
-      
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });      
   };
 
   (function(d, s, id){
@@ -62,6 +59,14 @@ var loginFbButton = document.querySelector('.fb-login-button');
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
 // var providerFb = new firebase.auth.FacebookAuthProvider();
