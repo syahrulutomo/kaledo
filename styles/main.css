@@ -63,12 +63,11 @@ header{
  	position: absolute;
     right: 20px;
     top: 17px;
-    margin-right: 0.5em;
 }
 
 /* BURGER ICON */
 .burger img{
-	width: 30px;
+	width: 1.8em;
 }
 
 /* IF BURGER ICON CLICKED */
