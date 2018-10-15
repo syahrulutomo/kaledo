@@ -13,29 +13,22 @@ var loginFbButton = document.querySelector('.fb-login-button');
   };
   firebase.initializeApp(config);
  
- // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-       testAPI();
-    } else {
-      // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    }
-  }
+ // function statusChangeCallback(response) {
+ //    console.log('statusChangeCallback');
+ //    console.log(response);
+ //    if (response.status === 'connected') {
+ //       testAPI();
+ //    } else {
+ //      document.getElementById('status').innerHTML = 'Please log ' +
+ //        'into this app.';
+ //    }
+ //  }
 
-  function checkLoginState() {
-	  FB.getLoginStatus(function(response) {
-	    statusChangeCallback(response);
-	  });
-  }
+  // function checkLoginState() {
+	 //  FB.getLoginStatus(function(response) {
+	 //    statusChangeCallback(response);
+	 //  });
+  // }
 
   window.fbAsyncInit = function() {
 
@@ -46,9 +39,9 @@ var loginFbButton = document.querySelector('.fb-login-button');
       version    : 'v3.1'
     });
     
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });      
+    // FB.getLoginStatus(function(response) {
+    //   statusChangeCallback(response);
+    // });      
   };
 
   (function(d, s, id){
@@ -59,20 +52,32 @@ var loginFbButton = document.querySelector('.fb-login-button');
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me?fields=cover', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
+  // function testAPI() {
+  //   console.log('Welcome!  Fetching your information.... ');
+  //   FB.api('/me?fields=cover', function(response) {
+  //     console.log('Successful login for: ' + response.name);
+  //     document.getElementById('status').innerHTML =
+  //       'Thanks for logging in, ' + response.name + '!';
+  //   });
+  // }
+
+
+
+loginFbButton.onclick = function(){
+  FB.login(function(response) {
+    if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       console.log('Good to see you, ' + response.name + '.');
+     });
+    } else {
+     console.log('User cancelled login or did not fully authorize.');
+    }
+});
+}
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
-// var providerFb = new firebase.auth.FacebookAuthProvider();
-
 loginGoogleButton.addEventListener('click',signInGoogle);
-// loginFbButton.addEventListener('click',signInFacebook);
 
 
 function signInGoogle(){
@@ -93,26 +98,4 @@ function signInGoogle(){
 	  var credential = error.credential;
 	  // ...
 	});
-}
-
-
-function signInFacebook(){
- 
-  firebase.auth().signInWithPopup(providerFb).then(function(result) {
-  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-  var token = result.credential.accessToken;
-  // The signed-in user info.
-  var user = result.user;
-   console.log(user);
-  // ...
-}).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // The email of the user's account used.
-  var email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
-  var credential = error.credential;
-  // ...
-});
 }
