@@ -39,7 +39,7 @@ loginFbButton.onclick = function(){
     if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
      console.log(response);
-     FB.api('/me',   
+     FB.api('/me', { locale: 'en_US', fields: 'name, email, profile_pic' },   
       function(response) {
         console.log('Your id, ' + response.id + '.');
         console.log('Good to see you, ' + response.name + '.');
@@ -54,7 +54,7 @@ loginFbButton.onclick = function(){
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
-},{scope: 'email','profile_pic'});
+});
 
 }
 
