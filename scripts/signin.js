@@ -67,6 +67,7 @@ loginFbButton.onclick = function(){
        //        console.log(response.data.url);
        //    }
        //  );
+       console.log(user);
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
