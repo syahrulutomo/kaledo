@@ -39,7 +39,7 @@ loginFbButton.onclick = function(){
     if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
      console.log(response);
-     FB.api('/me', {fields: 'name, email, profile_pic' },   
+     FB.api('/me?fields=id,name,email,profile_pic' },   
       function(response) {
         console.log('Good to see you, ' + response.name + '.');
         console.log('Your email is, ' + response.email + '.');
