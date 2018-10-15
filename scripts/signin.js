@@ -48,35 +48,33 @@ loginFbButton.onclick = function(){
 
      });
 
-       /* make the API call */
-        FB.api(
-            "/"+user['id']+"/",
-            function (response) {
-              if (response && !response.error) {
-                user['email'] = response.email;
-                console.log(user['email']);
-              }
-            }
-        );
+       // /* make the API call */
+       //  FB.api(
+       //      "/"+user['id']+"/",
+       //      function (response) {
 
-        FB.api(
-          '/'+user['id']+'/picture',
-          'GET',
-          {},
-          function(response) {
-              user['profile_pic'] = response.data.url;
-              console.log(user['profile_pic']);
-          }
-        );
+       //          console.log(response.email);
+       //        }
+       //      }
+       //  );
+
+       //  FB.api(
+       //    '/'+user['id']+'/picture',
+       //    'GET',
+       //    {},
+       //    function(response) {
+
+       //        console.log(response.data.url);
+       //    }
+       //  );
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
 });
 
-
-
 }
 
+console.log(user);
 
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
