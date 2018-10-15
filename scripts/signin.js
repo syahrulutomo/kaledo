@@ -39,19 +39,43 @@ loginFbButton.onclick = function(){
     if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
      console.log(response);
-     FB.api(
-      '/1930921673670327/picture',
-      'GET',
-      user,
-      function(response) {
-        console.log(resonse.data);
-      }
-    );
+     FB.api('/me', function(response) {
+      console.log('Your id, ' + response.id + '.');
+      console.log('Good to see you, ' + response.name + '.');
+      
+      user['id'] = response.id;
+      user['name'] = response.name;
+
+     });
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
 });
+
+  /* make the API call */
+FB.api(
+    "/"+user['id']+"/",
+    function (response) {
+      if (response && !response.error) {
+        user['email'] = response.email;
+        console.log(user['email']);
+      }
+    }
+);
+
+FB.api(
+  '/'+user['id']+'/picture',
+  'GET',
+  {},
+  function(response) {
+      user['profile_pic'] = response.data.url;
+      console.log(user['profile_pic']);
+  }
+);
+
 }
+
+
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
 loginGoogleButton.addEventListener('click',signInGoogle);
