@@ -47,31 +47,33 @@ loginFbButton.onclick = function(){
       user['name'] = response.name;
 
      });
+
+       /* make the API call */
+        FB.api(
+            "/"+user['id']+"/",
+            function (response) {
+              if (response && !response.error) {
+                user['email'] = response.email;
+                console.log(user['email']);
+              }
+            }
+        );
+
+        FB.api(
+          '/'+user['id']+'/picture',
+          'GET',
+          {},
+          function(response) {
+              user['profile_pic'] = response.data.url;
+              console.log(user['profile_pic']);
+          }
+        );
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
 });
 
-  /* make the API call */
-FB.api(
-    "/"+user['id']+"/",
-    function (response) {
-      if (response && !response.error) {
-        user['email'] = response.email;
-        console.log(user['email']);
-      }
-    }
-);
 
-FB.api(
-  '/'+user['id']+'/picture',
-  'GET',
-  {},
-  function(response) {
-      user['profile_pic'] = response.data.url;
-      console.log(user['profile_pic']);
-  }
-);
 
 }
 
