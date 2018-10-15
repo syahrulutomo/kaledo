@@ -48,25 +48,22 @@ loginFbButton.onclick = function(){
 
      });
 
-       // /* make the API call */
-       //  FB.api(
-       //      "/"+user['id']+"/",
-       //      function (response) {
+       /* make the API call */
+        FB.api(
+            "/"+user['id']+"/",
+            function (response) {
+                console.log(response);
+              }
+        );
 
-       //          console.log(response.email);
-       //        }
-       //      }
-       //  );
-
-       //  FB.api(
-       //    '/'+user['id']+'/picture',
-       //    'GET',
-       //    {},
-       //    function(response) {
-
-       //        console.log(response.data.url);
-       //    }
-       //  );
+        FB.api(
+          '/'+user['id']+'/picture',
+          'GET',
+          {},
+          function(response) {
+              console.log(response);
+          }
+        );
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
@@ -75,15 +72,6 @@ loginFbButton.onclick = function(){
 }
 
 console.log(user);
-
-FB.api(
-  '/1930921673670327/picture',
-  'GET',
-  {"type":"normal"},
-  function(response) {
-      console.log(response);
-  }
-);
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
 loginGoogleButton.addEventListener('click',signInGoogle);
