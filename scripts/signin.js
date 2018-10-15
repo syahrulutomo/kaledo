@@ -13,22 +13,6 @@ var loginFbButton = document.querySelector('.fb-login-button');
   };
   firebase.initializeApp(config);
  
- // function statusChangeCallback(response) {
- //    console.log('statusChangeCallback');
- //    console.log(response);
- //    if (response.status === 'connected') {
- //       testAPI();
- //    } else {
- //      document.getElementById('status').innerHTML = 'Please log ' +
- //        'into this app.';
- //    }
- //  }
-
-  // function checkLoginState() {
-	 //  FB.getLoginStatus(function(response) {
-	 //    statusChangeCallback(response);
-	 //  });
-  // }
 
   window.fbAsyncInit = function() {
 
@@ -38,10 +22,7 @@ var loginFbButton = document.querySelector('.fb-login-button');
       xfbml      : true,
       version    : 'v3.1'
     });
-    
-    // FB.getLoginStatus(function(response) {
-    //   statusChangeCallback(response);
-    // });      
+     
   };
 
   (function(d, s, id){
@@ -52,21 +33,11 @@ var loginFbButton = document.querySelector('.fb-login-button');
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-  // function testAPI() {
-  //   console.log('Welcome!  Fetching your information.... ');
-  //   FB.api('/me?fields=cover', function(response) {
-  //     console.log('Successful login for: ' + response.name);
-  //     document.getElementById('status').innerHTML =
-  //       'Thanks for logging in, ' + response.name + '!';
-  //   });
-  // }
-
-
-
 loginFbButton.onclick = function(){
   FB.login(function(response) {
     if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
+     console.log(response);
      FB.api('/me', function(response) {
        console.log('Good to see you, ' + response.name + '.');
      });
