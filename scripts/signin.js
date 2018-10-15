@@ -61,10 +61,11 @@ var loginFbButton = document.querySelector('.fb-login-button');
 
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+    FB.api('/me?fields=cover', function(response) {
+      // console.log('Successful login for: ' + response.name);
+      // document.getElementById('status').innerHTML =
+        // 'Thanks for logging in, ' + response.name + '!';
+        document.querySelector('#cover').src = response.cover.source;
     });
   }
 
