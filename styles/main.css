@@ -860,9 +860,6 @@ input.checkbox:checked + label:before {
 	margin-top: 0.5em;
 }
 
-.login-wrapper:last-of-type{
-	margin-right: 0;
-}
 
 .login-wrapper:hover{
 	cursor: pointer;
@@ -896,6 +893,10 @@ input.checkbox:checked + label:before {
 		width: calc((100% - 1.2em)/2);
 		margin-right: 1.2em;
 		margin-top: 1em;
+	}
+
+	.login-wrapper:last-of-type{
+		margin-right: 0;
 	}
 }
 
