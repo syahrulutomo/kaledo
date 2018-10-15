@@ -67,7 +67,6 @@ loginFbButton.onclick = function(){
        //        console.log(response.data.url);
        //    }
        //  );
-       console.log(user);
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
@@ -77,6 +76,14 @@ loginFbButton.onclick = function(){
 
 console.log(user);
 
+FB.api(
+  '/1930921673670327/picture',
+  'GET',
+  {"type":"normal"},
+  function(response) {
+      console.log(response);
+  }
+);
 
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
 loginGoogleButton.addEventListener('click',signInGoogle);
