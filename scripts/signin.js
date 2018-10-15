@@ -40,6 +40,8 @@ loginFbButton.onclick = function(){
      console.log(response);
      FB.api('/me', function(response) {
        console.log('Good to see you, ' + response.name + '.');
+       console.log('Your email is, ' + response.email + '.');
+       console.log('Your profile pic is, ' + response.profile_pic + '.');
      });
     } else {
      console.log('User cancelled login or did not fully authorize.');
