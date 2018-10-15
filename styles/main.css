@@ -52,11 +52,12 @@ header{
 	font-size: 1em;
 }
 
-.profil-link img{
+.profil-img{
 	width: 30px;
 	position: absolute;
     right: 65px;
     top: 17px;
+    border-radius: 50%;
 }
 
 .burger{

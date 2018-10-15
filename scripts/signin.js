@@ -1,5 +1,5 @@
 var loginGoogleButton = document.querySelector('.login-google-button');
-var loginFbButton = document.querySelector('.login-fb-button');
+var loginFbButton = document.querySelector('.fb-login-button');
 
  // Initialize Firebase
   // TODO: Replace with your project's customized code snippet
