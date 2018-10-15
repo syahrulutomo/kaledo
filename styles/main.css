@@ -855,9 +855,7 @@ input.checkbox:checked + label:before {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 0.3em;
 	margin-right: 1em;
-	background-color: #f2f2f2;
 	margin-top: 0.5em;
 }
 
@@ -866,8 +864,22 @@ input.checkbox:checked + label:before {
 	cursor: pointer;
 }
 
-.login-fb-button, .login-google-button{
-	width: 100%;
+.fb-login-button{ 
+	width: 50%;
+	min-height: 2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-google-button{
+	width: 50%;
+	min-height: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #DD4B39;
+    border-radius: 5px;
+    vertical-align: middle;
 }
 
 .login-fb-button img {
@@ -875,12 +887,16 @@ input.checkbox:checked + label:before {
 }
 
 .login-google-button img{
-	width: 30px;
+	    width: 30px;
+    position: relative;
+    margin-top: 0.4em;
+    margin-left: .5em;
 }
 
 .login-button-title{
-	position: relative;
-	top: -10px;
+	display: inline-block;
+    position: absolute;
+    margin-top: 0.5em;
     margin-left: .7em;
     font-family: sans-serif;
 }
