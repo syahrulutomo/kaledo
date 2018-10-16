@@ -52,7 +52,7 @@ loginFbButton.onclick = function(){
       });
 
      FB.api(
-      '/'+user['id']+'/picture?height=100',
+      '/'+user['id']+'/picture',
       'GET',
       {},
       function(response) {
