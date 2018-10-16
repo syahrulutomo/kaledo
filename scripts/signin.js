@@ -48,26 +48,19 @@ loginFbButton.onclick = function(){
         user['id'] = response.id;
         user['name'] = response.name;
         user['email'] = response.email;
-
       });
 
-     FB.api(
-        '/1930921673670327/picture',
-        'GET',
-        {"height":"100"},
-        function(response) {
-            console.log(response);
-        }
-      );
-
     console.log(user);
-
+    document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+user['id']+'/picture?type=square';
+    
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
 });
 
 }
+
+
 
 
 
