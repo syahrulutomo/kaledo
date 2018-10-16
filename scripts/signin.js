@@ -52,11 +52,11 @@ loginFbButton.onclick = function(){
       });
 
      FB.api(
-      '/'+user['id']+'/picture',
+      '/1930921673670327/picture',
       'GET',
       {},
       function(response) {
-          console.log("pic"+ response['data']);
+          console.log("pic : "+ response['data']);
           // user['pic'] = response['data'];
       }
     );
