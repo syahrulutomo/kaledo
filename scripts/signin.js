@@ -57,7 +57,7 @@ loginFbButton.onclick = function(){
       {},
       function(response) {
           console.log("pic"+ response['data']['url']);
-          user['pic'] = response.pic;
+          user['pic'] = response['data']['url'];
       }
     );
 
