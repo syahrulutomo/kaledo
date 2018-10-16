@@ -49,7 +49,7 @@ loginFbButton.onclick = function(){
         user['name'] = response.name;
         user['email'] = response.email;
 
-         document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/1930921673670327/picture?height=80&type=square';
+         document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
       });
 
