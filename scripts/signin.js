@@ -47,19 +47,18 @@ loginFbButton.onclick = function(){
 
         user['id'] = response.id;
         user['name'] = response.name;
-        user['name'] = response.email;
+        user['email'] = response.email;
 
       });
 
      FB.api(
-      '/1930921673670327/picture',
-      'GET',
-      {},
-      function(response) {
-          console.log("pic : "+ response['data']);
-          // user['pic'] = response['data'];
-      }
-    );
+        '/1930921673670327/picture',
+        'GET',
+        {"height":"100"},
+        function(response) {
+            console.log(response);
+        }
+      );
 
     console.log(user);
 
