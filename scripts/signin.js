@@ -48,11 +48,13 @@ loginFbButton.onclick = function(){
         user['id'] = response.id;
         user['name'] = response.name;
         user['email'] = response.email;
+
       });
 
     console.log(user);
-    document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+user['id']+'/picture?type=square';
-    
+    document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+user['id']+'/picture?height=80&type=square';
+
+
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
