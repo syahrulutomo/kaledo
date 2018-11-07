@@ -65,10 +65,11 @@ loginFbButton.onclick = function(){
         localStorage.setItem('email',userFb['email']);
         localStorage.setItem('name',userFb['name']);
         localStorage.setItem('photo',userFb['url_photo']);
-      
+        
+        window.location = 'profil.html';
       });
 
-    console.log(userFb);
+    // console.log(userFb);
 
     } else {
      console.log('User cancelled login or did not fully authorize.');
@@ -89,7 +90,7 @@ function signInGoogle(){
 	  var token = result.credential.accessToken;
 	  // The signed-in user info.
 	  var user = result.user;
-	  console.log(user);
+	  // console.log(user);
 
     userGoogle['email']  = user.email;
     userGoogle['name'] = user.displayName;
@@ -98,6 +99,8 @@ function signInGoogle(){
     localStorage.setItem('email',userGoogle['email']);
     localStorage.setItem('name',userGoogle['name']);
     localStorage.setItem('photo',userGoogle['url_photo']);
+
+    window.location = 'profil.html';
 
 	  // ...
 	}).catch(function(error) {
