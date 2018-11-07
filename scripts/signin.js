@@ -62,16 +62,14 @@ loginFbButton.onclick = function(){
 
         document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
+        localStorage.setItem('email',userFb['email']);
+        localStorage.setItem('name',userFb['name']);
+        localStorage.setItem('photo',userFb['url_photo']);
+      
       });
 
     console.log(userFb);
-
-    localStorage.setItem('email',userFb['email']);
-    localStorage.setItem('name',userFb['name']);
-    localStorage.setItem('photo',userFb['url_photo']);
-
-
-
+    
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
