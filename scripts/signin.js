@@ -4,7 +4,7 @@ if(email === null || email === ''){
     console.log('signin');
 }else{
     console.log('profil');
-    window.location = 'profil.html';
+    window.location.href = 'profil.html';
 }
 
 
@@ -100,7 +100,7 @@ function signInGoogle(){
     localStorage.setItem('name',userGoogle['name']);
     localStorage.setItem('photo',userGoogle['url_photo']);
 
-    window.location = 'profil.html';
+    window.location.href = 'profil.html';
 
 	  // ...
 	}).catch(function(error) {
