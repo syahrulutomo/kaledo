@@ -1,6 +1,6 @@
 var email = localStorage.getItem('email');
 
-if(email === null){
+if(email === null && email === ''){
     console.log('signin');
 }else{
     console.log('profil');
@@ -69,7 +69,7 @@ loginFbButton.onclick = function(){
       });
 
     console.log(userFb);
-    
+
     } else {
      console.log('User cancelled login or did not fully authorize.');
     }
