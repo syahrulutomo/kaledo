@@ -1,11 +1,12 @@
 var email = localStorage.getItem('email');
 
-if(email !== null || email !== ''){
+if(window.location.href == 'https://kaledocooking.github.io/static/signin.html' ) {
+ 
+  if(email !== null || email !== ''){
+    window.location = 'profil.html';
+    document.querySelector('profil-link').href = 'profil.html';
+    document.querySelector('profil-link-index').href = 'profil.html';
   
-  window.location = 'profil.html';
-  document.querySelector('profil-link').href = 'profil.html';
-  document.querySelector('profil-link-index').href = 'profil.html';
-
 }
 
 
