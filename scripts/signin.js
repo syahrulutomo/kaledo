@@ -64,7 +64,7 @@ loginFbButton.onclick = function(){
 
       });
 
-    console.log(user);
+    console.log(userFb);
 
     localStorage.setItem('email',userFb['email']);
     localStorage.setItem('name',userFb['name']);
