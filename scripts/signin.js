@@ -1,3 +1,13 @@
+var email = localStorage.getItem('email');
+
+if(email === null){
+    console.log('signin');
+}else{
+    console.log('profil');
+    window.location = 'profil.html';
+}
+
+
 var loginGoogleButton = document.querySelector('.login-google-button');
 var loginFbButton = document.querySelector('.fb-login-button');
 
@@ -33,7 +43,7 @@ var loginFbButton = document.querySelector('.fb-login-button');
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-var user = new Object();
+var userFb = new Object();
 loginFbButton.onclick = function(){
   FB.login(function(response) {
     if (response.authResponse) {
@@ -45,15 +55,20 @@ loginFbButton.onclick = function(){
         console.log('Your email is ' + response.email + '.');
         console.log('id, ' + response.id + '.');
 
-        user['id'] = response.id;
-        user['name'] = response.name;
-        user['email'] = response.email;
+        userFb['id'] = response.id;
+        userFb['name'] = response.name;
+        userFb['email'] = response.email;
+        userFb['url_photo'] = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
-         document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
+        document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
       });
 
     console.log(user);
+
+    localStorage.setItem('email',userFb['email']);
+    localStorage.setItem('name',userFb['name']);
+    localStorage.setItem('photo',userFb['url_photo']);
 
 
 
@@ -65,13 +80,11 @@ loginFbButton.onclick = function(){
 }
 
 
-
-
-
 var providerGoogle = new firebase.auth.GoogleAuthProvider();
 loginGoogleButton.addEventListener('click',signInGoogle);
 
 
+var userGoogle = new Object();
 function signInGoogle(){
 	firebase.auth().signInWithPopup(providerGoogle).then(function(result) {
 	  // This gives you a Google Access Token. You can use it to access the Google API.
@@ -79,6 +92,11 @@ function signInGoogle(){
 	  // The signed-in user info.
 	  var user = result.user;
 	  console.log(user);
+
+    userGoogle['email']  = user.email;
+    userGoogle['name'] = user.displayName;
+    userGoogle['photo'] = user.photoURL; 
+
 	  // ...
 	}).catch(function(error) {
 	  // Handle Errors here.
@@ -90,4 +108,6 @@ function signInGoogle(){
 	  var credential = error.credential;
 	  // ...
 	});
+
+
 }

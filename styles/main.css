@@ -162,7 +162,7 @@ main{
 
 .search-box{
 	display: block;
-    width: 75%;
+    width: 70%;
     max-width: 318px;
     height: 1.5em;
     padding: .25rem .75rem;
@@ -371,6 +371,10 @@ footer{
 		margin-left: 10%;	
 	}
 
+	.menu li{
+		margin-right: 2em;
+	}
+
  	.menu li a{
  		font-size: 1.15em; 
  	}
@@ -384,6 +388,9 @@ footer{
 @media screen and (min-width: 900px){
 	nav{
 		margin-left: 17%;	
+	}
+	.menu li{
+		margin-right: 3em;
 	}
 
 	.menu li a{
@@ -880,7 +887,6 @@ input.checkbox:checked + label:before {
 	font-family: sans-serif;
 }
 
-
 .login-wrapper:hover{
 	cursor: pointer;
 }
@@ -975,6 +981,94 @@ input.checkbox:checked + label:before {
 	width: 100%;
 }
 
+#profil-container{
+	width: 100%;
+}
+
+.profil-aboutme{
+    width: 100%;
+    margin: 0;
+    background-image: url('../assets/cooking-background-vectors-01.jpg');
+    background-position: center;
+    background-size: cover;
+} 
+
+@media screen and (min-width: 550px){
+	.profil-aboutme{
+		background-size: contain;
+	}
+}
+
+.profil-pic-wrapper{
+	width: 100%;
+}
+
+.profil-pic{
+	display: block;
+	width: 4.5em;
+	margin-top: 0.7em;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.profil-name{
+	width: 100%;
+    text-align: center;
+    margin: 0.7em 0;
+    color: white;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.profil-menu-list{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: #ffffcc;
+	text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.profil-menu-list-link{
+	display: inline-block;
+	height: 3.5em;
+	width: calc(100% / 3);
+	padding: 0 0em;
+    line-height: 3.5em;
+    text-align: center;	
+}
+
+.profil-menu-list-link:hover{
+	background-color: #ff9933;
+}
+
+.profil-menu-list li{
+	color: #666666;
+    font-family: 'Open Sans',sans-serif;
+    font-size: .9em;
+    display: inline;
+    margin-right: 0.5em;
+    
+}
+
+#profil-account{
+	width: 80%;
+	padding: 2em;
+}
+
+#profil-picture{
+	width: 100px;
+}
+
+.account-form{
+	margin-bottom: 1em;
+}
+
+.account-form input{
+	width: 17em;
+	height: 1.5em;
+}
+
 label.label-file{
 	margin: 0;
 	height: auto;
@@ -984,6 +1078,7 @@ label.label-file{
   	text-align: right;
 
 }
+
 /* Hide the file input using
 opacity */
 [type=file] {
@@ -997,7 +1092,7 @@ input,
   border: 1px solid #CCC;
   border-radius: 3px;
   text-align: left;
-  padding: .8em 0.2em;
+  padding: .35em 0.2em;
   width: 7em;
   line-height: 1.2;
   margin: 0;
@@ -1006,7 +1101,7 @@ input,
 [type=file] + label {
   text-align: center;
   left: 7.35em;
-  top: 0.5em;
+  top: 0em;
   /* Decorative */
   background: #BD3D3A;
   color: #fff;
@@ -1021,15 +1116,202 @@ input,
 
 
 #upload-button{
-	box-sizing: border-box;
-	font-size: 1em;
-	padding: 0.5em;
-	background: white;
-  	color: #1a1a1a;
-   	border: none;
-  	cursor: pointer;
-  	margin-left: 1em;
-  	border-radius: 3px;
-  	border: 1px solid #1a1a1a;
+  box-sizing: border-box;
+  font-size: 1em;
+  padding: 0.2em;
+  background: white;
+  color: #1a1a1a;
+  border: none;
+  cursor: pointer;
+  margin-left: 1em;
+  border-radius: 3px;
+  border: 1px solid #1a1a1a;
 }
 
+#submit-account{
+  box-sizing: border-box;
+  font-size: 1em;
+  padding: .7em 1.2em;
+  background-color: MediumSeaGreen;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: 1em;
+  border-radius: 3px;
+  border: none;
+}
+
+@media screen and (min-width: 550px){
+	.account-form input{
+		height: 2em;
+		width: 22em;
+	}
+}
+
+@media screen and (min-width: 700px){
+	.account-form{
+		padding-left: 3em; 
+	}
+
+	#submit-account{
+		margin-left: 3em;	
+	}
+}
+
+#personal-recipe-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 1em 0;
+}
+
+
+.personal-recipe, #add-personal-recipe{
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 1px #e6e6e6;
+	padding: .5em;
+	margin-bottom: 1.5em;
+}
+
+#add-personal-recipe{
+	background-color: #e6f2ff;
+	border: none;
+}
+
+#add-personal-recipe img{
+	width: 3em;
+    margin: 70% 42%;	
+}
+
+.personal-recipe-left{
+	width: 100%;
+    padding: .5em;
+}
+
+.personal-recipe-thumbnail{
+	width: 100%;
+}
+
+.personal-recipe-right{
+	width: 100%;
+	padding: .5em;
+	padding-top: 0;
+	line-height: 1.2;
+	margin-top: 0;	
+}
+
+.personal-recipe-title{
+	color: #282828;
+	font-size: 1.05em;
+	margin-bottom: .7em;
+	font-family: 'Lato',sans-serif;
+}
+
+.personal-recipe-summary{
+	font-family: 'PT Sans',sans-serif;
+	font-size: 1em;
+	margin-bottom: .5em;
+	text-align: justify;
+}
+
+
+@media screen and (min-width: 550px){
+	#personal-recipe-wrapper{
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.personal-recipe, #add-personal-recipe{
+    	width: calc((100% - 2em)/2);
+	}
+
+	.personal-recipe:last-of-type{
+		margin-right: 0;
+	}
+}
+
+@media screen and (min-width: 850px){
+	.personal-recipe, #add-personal-recipe{
+    	width: calc((100% - 2em)/3);
+	}
+}
+
+#personal-howto-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 1em 0;
+}
+
+.personal-howto, #add-personal-howto{
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	border: solid 1px #e6e6e6;
+	padding: .5em;
+	margin-bottom: 1.5em;
+}
+
+#add-personal-howto{
+	background-color: #e6f2ff;
+	border: none;
+}
+
+#add-personal-howto img{
+	width: 3em;
+    margin: 70% 42%;	
+}
+
+.personal-howto-left{
+	width: 100%;
+    padding: .5em;
+}
+
+.personal-howto-thumbnail{
+	width: 100%;
+}
+
+.personal-howto-right{
+	width: 100%;
+	padding: .5em;
+	padding-top: 0;
+	line-height: 1.2;
+	margin-top: 0;	
+}
+
+.personal-howto-title{
+	color: #282828;
+	font-size: 1.05em;
+	margin: .7em 0;
+	font-family: 'Lato',sans-serif;
+}
+
+.personal-howto-summary{
+	font-family: 'PT Sans',sans-serif;
+	font-size: 1em;
+	margin-bottom: .5em;
+	text-align: justify;
+}
+
+@media screen and (min-width: 550px){
+	#personal-howto-wrapper{
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	.personal-howto, #add-personal-howto{
+    	width: calc((100% - 2em)/2);
+	}
+
+	.personal-howto:last-of-type{
+		margin-right: 0;
+	}
+}
+
+@media screen and (min-width: 850px){
+	.personal-howto, #add-personal-howto{
+    	width: calc((100% - 2em)/3);
+	}
+}

@@ -1,52 +1,230 @@
+
+Vue.component('tab-account',{
+	data: function(){
+		return {
+			email: '',
+			firstName: '',
+			lastName: '',
+			password: '',
+			profilPicture: '',
+			errors: []
+		}},
+		template: `
+			<section id="profil-account">
+		<div class="account-form">
+			<p>Email</p>
+			<input v-model="email" id="email" type="text" name="">
+		</div>
+		<div class="account-form">
+			<p>First Name</p>
+			<input v-model="firstName" id="first-name" type="text" name="">
+		</div>
+		<div class="account-form">
+			<p>Last Name</p>
+			<input v-model="lastName" id="last-name" type="text" name="">
+		</div>
+		<div class="account-form">
+			<p>Password</p>
+			<input v-model="password" id="password" type="text" name="">
+		</div>
+		<div class="account-form">
+			<img id="profil-picture" src="../assets/grey.jpg" alt="">
+			<input  id="file" type="file" class="file" placeholder="Upload Photo">
+		 	<label class="label-file" for="file">Upload Photo</label>
+			<button id="upload-button">submit</button>
+		</div>
+		<button v-on:click="postData()" id="submit-account">Save</button>
+		<p>{{ email }}</p>
+	</section>
+
+		`,
+		methods: {
+			postData: function(){
+				axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
+					email: this.email,
+					firstName: this.firstName,
+					lastName: this.lastName,
+					password: this.password		
+			})
+			.then(response => {})
+			.catch(e => {
+		      this.errors.push(e)
+		    })
+		}
+	}
+	
+})
+
+Vue.component('tab-recipes', { 
+  data: function () {
+  	return {
+      title: "",
+      description: "",
+      subCategory: "",
+      directions: [],
+      ingredients: [],
+      photos: "",
+      time: ""
+    }
+  },
+	template: `
+	<section id="personal-recipe-wrapper">
+		<div id="add-personal-recipe">
+			<img src="../assets/add-icons.png" alt="add recipe button">
+		</div>
+		<article class="personal-recipe">
+			<div class="personal-recipe-left">
+				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-recipe-right">
+				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa</h3></a>
+				<p class="personal-recipe-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-recipe">
+			<div class="personal-recipe-left">
+				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-recipe-right">
+				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-recipe-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-recipe">
+			<div class="personal-recipe-left">
+				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-recipe-right">
+				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-recipe-summary">adasafasf</p>
+		    </div> 
+		</article>
+		<article class="personal-recipe">
+			<div class="personal-recipe-left">
+				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>		
+			<div class="personal-recipe-right">
+				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-recipe-summary">adasafasf</p>
+		    </div> 
+		</article>
+		<article class="personal-recipe">
+			<div class="personal-recipe-left">
+				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>			
+			<div class="personal-recipe-right">
+				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-recipe-summary">adasafasf</p>
+		    </div> 
+		</article>
+		<article class="personal-recipe">
+			<div class="personal-recipe-left">
+				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>			
+			<div class="personal-recipe-right">
+				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-recipe-summary">adasafasf</p>
+		    </div> 
+		</article>
+	</section>
+  	
+  `
+})
+
+Vue.component('tab-howto', { 
+  data: function () {
+  	return {
+      title: "",
+      thumbnail: "",
+      articles: []
+    }
+  },
+	template: `
+	<section id="personal-howto-wrapper">
+		<div id="add-personal-howto">
+			<img src="../assets/add-icons.png" alt="add howto button">
+		</div>
+		<article class="personal-howto">
+			<div class="personal-howto-left">
+				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-howto-right">
+				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa</h3></a>
+				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-howto">
+			<div class="personal-howto-left">
+				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-howto-right">
+				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-howto">
+			<div class="personal-howto-left">
+				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-howto-right">
+				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa</h3></a>
+				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-howto">
+			<div class="personal-howto-left">
+				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-howto-right">
+				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-howto">
+			<div class="personal-howto-left">
+				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-howto-right">
+				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa</h3></a>
+				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+		<article class="personal-howto">
+			<div class="personal-howto-left">
+				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+			</div>
+			<div class="personal-howto-right">
+				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa farm-to-table</h3></a>
+				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		    </div> 
+		</article>
+	</section>
+  	
+  `
+})
+
+
+new Vue({
+	el: '#profil-container',
+	data:{
+		currentTab: 'Account',
+		tabs: ['Account','Recipes','Howto'],
+		email:'syahrul'
+	},
+	computed: {
+		currentTabComponent: function() {
+			return 'tab-' + this.currentTab.toLowerCase()
+		}
+	}
+	
+})
+
+
 var file =  document.querySelector("#file");
 var uploadButton = document.querySelector('#upload-button');
 var selectedFile = '';
 
-var loginGoogleButton = document.querySelector('.login-google-button');
-
- // Initialize Firebase
-  // TODO: Replace with your project's customized code snippet
-  var config = {
-    apiKey: "AIzaSyB4tu8OwisUwHb-AOZSOG1_sJXGTVIyZKo",
-    authDomain: "kaledostorage.firebaseapp.com",
-    databaseURL: "https://kaledostorage.firebaseio.com",
-    projectId: "kaledostorage",
-    storageBucket: "kaledostorage.appspot.com",
-    messagingSenderId: "27410977713"
-  };
-  firebase.initializeApp(config);
-
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
-
-loginGoogleButton.addEventListener('click',signIn);
-
-
-function signIn(){
-	firebase.auth().signInWithPopup(provider).then(function(result) {
-	  // This gives you a Google Access Token. You can use it to access the Google API.
-	  var token = result.credential.accessToken;
-	  // The signed-in user info.
-	  var user = result.user;
-	  console.log(user);
-	  // ...
-	}).catch(function(error) {
-	  // Handle Errors here.
-	  var errorCode = error.code;
-	  var errorMessage = error.message;
-	  // The email of the user's account used.
-	  var email = error.email;
-	  // The firebase.auth.AuthCredential type that was used.
-	  var credential = error.credential;
-	  // ...
-	});
-}
-
 uploadButton.style.display = "none";
-
-
-
 
 document.addEventListener('DOMContentLoaded',function() {
     document.querySelector('#file').onchange=changeEventHandler;
@@ -102,3 +280,5 @@ function uploadFile(){
 	});
 
 }
+
+
