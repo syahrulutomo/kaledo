@@ -1,10 +1,11 @@
 var email = localStorage.getItem('email');
 
-if(email === null || email === ''){
-    console.log('signin');
-}else{
-    console.log('profil');
-    window.location = 'profil.html';
+if(email !== null || email !== ''){
+  
+  window.location = 'profil.html';
+  document.querySelector('profil-link').href = 'profil.html';
+  document.querySelector('profil-link-index').href = 'profil.html';
+
 }
 
 
