@@ -1,6 +1,6 @@
 var email = localStorage.getItem('email');
 
-if(email === null && email === ''){
+if(email === null || email === ''){
     console.log('signin');
 }else{
     console.log('profil');
