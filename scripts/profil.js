@@ -207,9 +207,8 @@ Vue.component('tab-howto', {
 new Vue({
 	el: '#profil-container',
 	data:{
-		currentTab: 'Account',
+		currentTab: 'Recipes',
 		tabs: ['Account','Recipes','Howto'],
-		email:'syahrul'
 	},
 	computed: {
 		currentTabComponent: function() {

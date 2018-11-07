@@ -7,8 +7,8 @@ if(window.location.href == 'https://kaledocooking.github.io/static/signin.html' 
     document.querySelector('profil-link').href = 'profil.html';
     document.querySelector('profil-link-index').href = 'profil.html';
   
+  }
 }
-
 
 var loginGoogleButton = document.querySelector('.login-google-button');
 var loginFbButton = document.querySelector('.fb-login-button');
