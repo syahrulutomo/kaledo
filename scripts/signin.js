@@ -4,7 +4,7 @@ if(email === null || email === ''){
     console.log('signin');
 }else{
     console.log('profil');
-    window.location.href = 'profil.html';
+    window.location = 'profil.html';
 }
 
 
