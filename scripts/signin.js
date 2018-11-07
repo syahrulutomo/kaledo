@@ -95,7 +95,11 @@ function signInGoogle(){
 
     userGoogle['email']  = user.email;
     userGoogle['name'] = user.displayName;
-    userGoogle['photo'] = user.photoURL; 
+    userGoogle['url_photo'] = user.photoURL; 
+
+    localStorage.setItem('email',userGoogle['email']);
+    localStorage.setItem('name',userGoogle['name']);
+    localStorage.setItem('photo',userGoogle['url_photo']);
 
 	  // ...
 	}).catch(function(error) {
