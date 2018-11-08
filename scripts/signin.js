@@ -1,12 +1,16 @@
+
 var email = localStorage.getItem('email');
+
 
 if(window.location.href == 'https://kaledocooking.github.io/static/signin.html' && (email !== null || email !== '')) {
     window.location = 'profil.html';
   
-}else{
+}else if(window.location.href != 'https://kaledocooking.github.io/static/signin.html' && (email !== null || email !== '')){
+    document.querySelector('profil-link').href = 'profil.html';
+    document.querySelector('profil-link-index').href = 'profil.html';
+}else if(window.location.href != 'https://kaledocooking.github.io/static/signin.html' && (email === null || email === '')){
     document.querySelector('profil-link').href = 'signin.html';
     document.querySelector('profil-link-index').href = 'signin.html';
-
 }
 
 var loginGoogleButton = document.querySelector('.login-google-button');
