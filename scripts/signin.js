@@ -6,7 +6,7 @@ if(email !== null || email !== ''){
     window.location = 'profil.html';
     document.querySelector('profil-link').href = 'profil.html';
     document.querySelector('profil-link-index').href = 'profil.html';  
-}else(email === null || email === '') {
+}else if(email === null || email === '') {
     window.location = 'signin.html';
     document.querySelector('profil-link').href = 'signin.html';
     document.querySelector('profil-link-index').href = 'signin.html';
