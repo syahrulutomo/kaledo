@@ -212,11 +212,14 @@ new Vue({
 	},
 	computed: {
 		currentTabComponent: function() {
-			return 'tab-' + this.currentTab.toLowerCase()
+
+			return 'tab-' + this.currentTab.toLowerCase();
 		}
 	}
 	
 })
+
+
 
 
 var file =  document.querySelector("#file");

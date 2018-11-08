@@ -1036,9 +1036,11 @@ input.checkbox:checked + label:before {
 	padding: 0 0em;
     line-height: 3.5em;
     text-align: center;	
+    cursor: pointer;
 }
 
-.profil-menu-list-link:hover{
+
+.active{
 	background-color: #ff9933;
 }
 

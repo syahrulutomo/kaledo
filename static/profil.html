@@ -64,14 +64,13 @@
 	</section>
 
 	<ul class="profil-menu-list">
-		<a v-for="tab in tabs" 
+		<a 	v-for="tab in tabs" 
 		 	v-bind:key="tab"
+		 	v-bind:class="{ active: currentTab == tab}"
 			class="profil-menu-list-link"
-			 v-on:click="currentTab = tab"
+			v-on:click="currentTab = tab"
 		><li>{{ tab }}</li></a>
 
-		<!-- <a class="profil-menu-list-link"><li>Recipes</li></a>
-		<a class="profil-menu-list-link"><li>How-To</li></a> -->
 	</ul>
 
 	 <keep-alive>
