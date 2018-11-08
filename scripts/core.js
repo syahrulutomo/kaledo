@@ -15,3 +15,15 @@ menu.addEventListener('click', function(e) {
 main.addEventListener('click', function() {
    drawer.classList.remove('open');
 });
+
+
+var email = localStorage.getItem('email');
+
+
+if(email !== null && email !== ''){
+    document.querySelector('.profil-link').href = 'profil.html';
+    document.querySelector('.profil-link-index').href = 'profil.html';
+}else{
+	document.querySelector('.profil-link').href = 'signin.html';
+	document.querySelector('.profil-link-index').href = 'signin.html';
+}

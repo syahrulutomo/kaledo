@@ -1,12 +1,4 @@
 
-var email = localStorage.getItem('email');
-
-
-if(email !== null){
-    window.location = 'profil.html';
-}
-
-
 var loginGoogleButton = document.querySelector('.login-google-button');
 var loginFbButton = document.querySelector('.fb-login-button');
 
