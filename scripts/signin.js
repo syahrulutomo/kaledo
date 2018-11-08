@@ -6,10 +6,6 @@ if(email !== null){
     window.location = 'profil.html';
     document.querySelector('profil-link').href = 'profil.html';
     document.querySelector('profil-link-index').href = 'profil.html';  
-}else{
-    window.location = 'signin.html';
-    document.querySelector('profil-link').href = 'signin.html';
-    document.querySelector('profil-link-index').href = 'signin.html';
 }
 
 
