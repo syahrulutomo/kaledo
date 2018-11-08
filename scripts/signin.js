@@ -65,6 +65,8 @@ loginFbButton.onclick = function(){
         localStorage.setItem('name',userFb['name']);
         localStorage.setItem('photo',userFb['url_photo']);
 
+        location.reload();
+
       });
 
     // console.log(userFb);
@@ -97,6 +99,8 @@ function signInGoogle(){
     localStorage.setItem('email',userGoogle['email']);
     localStorage.setItem('name',userGoogle['name']);
     localStorage.setItem('photo',userGoogle['url_photo']);
+
+    location.reload();
 
 
 	  // ...
