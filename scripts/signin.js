@@ -70,8 +70,7 @@ loginFbButton.onclick = function(){
         localStorage.setItem('email',userFb['email']);
         localStorage.setItem('name',userFb['name']);
         localStorage.setItem('photo',userFb['url_photo']);
-        
-        window.location = 'profil.html';
+
       });
 
     // console.log(userFb);
@@ -105,7 +104,6 @@ function signInGoogle(){
     localStorage.setItem('name',userGoogle['name']);
     localStorage.setItem('photo',userGoogle['url_photo']);
 
-    window.location.href = 'profil.html';
 
 	  // ...
 	}).catch(function(error) {
