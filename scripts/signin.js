@@ -2,7 +2,7 @@
 var email = localStorage.getItem('email');
 
 
-if(email !== null || email !== ''){
+if(email !== null && email !== ''){
     window.location = 'profil.html';
     document.querySelector('profil-link').href = 'profil.html';
     document.querySelector('profil-link-index').href = 'profil.html';  
