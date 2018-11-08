@@ -1,6 +1,6 @@
 var email = localStorage.getItem('email');
 
-if(window.location.href == 'https://kaledocooking.github.io/static/signin.html' && (email !== null || email !== '')) {
+if(email !== null || email !== '') {
     window.location = 'profil.html';
     document.querySelector('profil-link').href = 'profil.html';
     document.querySelector('profil-link-index').href = 'profil.html';
