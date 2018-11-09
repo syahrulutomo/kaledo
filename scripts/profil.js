@@ -1,14 +1,14 @@
 document.querySelector('.profil-img').src = localStorage.getItem('photo');
 document.querySelector('.profil-pic').src = localStorage.getItem('photo');
-document.querySelector('.profil-name').innerHTML = localStorage.getItem('firstName')+""+localStorage.getItem('lastName');
+document.querySelector('.profil-name').innerHTML = localStorage.getItem('firstName')+" "+localStorage.getItem('lastName');
 
 Vue.component('tab-account',{
 	data: function(){
 		return {
 			email: localStorage.getItem('email'),
-			firstName: localStorage.getItem('name').split(' ')[0],
-			lastName: localStorage.getItem('name').split(' ')[1],
-			profilPicture: ''
+			firstName: localStorage.getItem('firstName'),
+			lastName: localStorage.getItem('lastName'),
+			profilPicture: localStorage.getItem('profilPicture')
 		}},
 		template: `
 		<section id="profil-account">

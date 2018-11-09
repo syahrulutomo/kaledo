@@ -61,6 +61,7 @@ loginFbButton.onclick = function(){
 
         var objUser = new Object();
         objUser =  checkUser(userFb['email']);
+        console.log(objUser);
 
         // if(objUser == null){
         //     postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
@@ -108,14 +109,15 @@ function signInGoogle(){
 
     document.querySelector('.profil-img').src = userGoogle['profilPicture'];
 
-    localStorage.setItem('email',userFb['email']);
-    localStorage.setItem('profilPicture',userFb['profilPicture']);
+    localStorage.setItem('email',userGoogle['email']);
+    localStorage.setItem('profilPicture',userGoogle['profilPicture']);
 
-    localStorage.setItem('firstName',userFb['firstName']);
-    localStorage.setItem('lastName',userFb['lastName']);
+    localStorage.setItem('firstName',userGoogle['firstName']);
+    localStorage.setItem('lastName',userGoogle['lastName']);
 
     var objUser = new Object();
     objUser =  checkUser(localStorage.getItem('email'));
+    console.log(objUser);
 
     // if(objUser == null){
     //     var name = userGoogle['name'];
