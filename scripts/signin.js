@@ -70,7 +70,7 @@ loginFbButton.onclick = function(){
             localStorage.setItem('profilPicture',objUser['profilPicture']);
         }
 
-        location.reload();
+        // location.reload();
 
       });
 
@@ -122,7 +122,7 @@ function signInGoogle(){
     }
 
 
-    location.reload();
+    // location.reload();
 
 
 	  // ...
