@@ -22,8 +22,8 @@ var email = localStorage.getItem('email');
 
 if(email !== null && email !== ''){
     document.querySelector('.profil-link').href = 'profil.html';
-    document.querySelector('.profil-link-index').href = 'static/profil.html';
+    document.querySelector('#profil-link-index').href = 'static/profil.html';
 }else{
 	document.querySelector('.profil-link').href = 'signin.html';
-	document.querySelector('.profil-link-index').href = 'static/signin.html';
+	document.querySelector('#profil-link-index').href = 'static/signin.html';
 }

@@ -34,7 +34,6 @@ Vue.component('tab-account',{
 			<button id="upload-button">submit</button>
 		</div>
 		<button v-on:click="postData()" id="submit-account">Save</button>
-		<p>{{ email }}</p>
 	</section>
 
 		`,
