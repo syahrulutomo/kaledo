@@ -1,3 +1,6 @@
+document.querySelector('.profil-img').src = localStorage.getItem('photo');
+document.querySelector('.profil-pic').src = localStorage.getItem('photo');
+document.querySelector('.profil-name').innerHTML = localStorage.getItem('name');
 
 Vue.component('tab-account',{
 	data: function(){
@@ -211,9 +214,7 @@ new Vue({
 	
 })
 
-document.querySelector('.profil-img').src = localStorage.getItem('photo');
-document.querySelector('.profil-pic').src = localStorage.getItem('photo');
-document.querySelector('.profil-name').innerHTML = localStorage.getItem('name');
+
 
 
 var file =  document.querySelector("#file");

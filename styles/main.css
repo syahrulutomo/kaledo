@@ -1009,6 +1009,7 @@ input.checkbox:checked + label:before {
 	margin-top: 0.7em;
 	margin-right: auto;
 	margin-left: auto;
+	border-radius: 50%;
 }
 
 .profil-name{
