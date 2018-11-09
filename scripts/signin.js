@@ -60,11 +60,20 @@ loginFbButton.onclick = function(){
         
 
         var objUser = new Object();
-        objUser =  checkUser(userFb.email);
+        checkUser(userFb['email'],objUser);
         console.log(objUser);
 
         if(objUser === null){
-            postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
+            axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
+              email: userFb['email'],
+              firstName: userFb['firstName'],
+              lastName: userFb['lastName'],
+              profilPicture: userFb['profilPicture']   
+            })
+            .then(response => {})
+            .catch(e => {
+              console.log(e)
+            })
         }else if(objUser !== null){
             localStorage.setItem('firstName',objUser.firstName);
             localStorage.setItem('lastName',objUser.lastName);
@@ -114,11 +123,20 @@ function signInGoogle(){
     localStorage.setItem('lastName',userGoogle['lastName']);
 
     var objUser = new Object();
-    objUser =  checkUser(userGoogle.email);
+    checkUser(userGoogle['email'],objUser);
     console.log(objUser);
 
     if(objUser === null){
-        postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
+        axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
+          email: userGoogle['email'],
+          firstName: userGoogle['firstName'],
+          lastName: userGoogle['lastName'],
+          profilPicture: userGoogle['profilPicture']   
+        })
+        .then(response => {})
+          .catch(e => {
+            console.log(e)
+         })
     }else if(objUser !== null){
         localStorage.setItem('firstName',objUser.firstName);
         localStorage.setItem('lastName',objUser.lastName);
@@ -143,27 +161,14 @@ function signInGoogle(){
 }
 
 
-function checkUser(email){
+function checkUser(email,obj){
     
   fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        return data;
-    })
+  .then(res => res.json())
+  .then(data => obj = data)
+  .then(() => console.log(obj))
 }
 
 
-function postData(url,data){
-    axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
-      email: this.email,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      profilPicture: this.profilPicture   
-    })
-    .then(response => {})
-    .catch(e => {
-      this.errors.push(e)
-    })
-}
+
+    
