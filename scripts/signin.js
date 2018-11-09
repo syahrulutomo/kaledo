@@ -54,27 +54,24 @@ loginFbButton.onclick = function(){
         localStorage.setItem('name',userFb['name']);
         localStorage.setItem('profilPicture',userFb['profilPicture']);
 
-        userFb['firstName'] = localStorage.getItem['name'].split(' ')[0];
-        userFb['lastName'] = localStorage.getItem['name'].split(' ')[1];
+        localStorage.setItem('firstName',localStorage.getItem['name'].split(' ')[0]);
+        localStorage.setItem('lastName',localStorage.getItem['name'].split(' ')[1]);
+        
+        localStorage.removeItem('name');
 
-        localStorage.setItem('firstName',userFb['firstName']);
-        localStorage.setItem('lastName',userFb['lastName']);
+        var objUser = new Object();
+        objUser =  checkUser(localStorage.getItem('email'));
 
-        // localStorage.removeItem('name');
+        if(objUser == null){
+            var name = userFb['name'];
+            postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
+        }else if(objUser !== null){
+            localStorage.setItem('firstName',objUser['firstName']);
+            localStorage.setItem('lastName',objUser['lastName']);
+            localStorage.setItem('profilPicture',objUser['profilPicture']);
+        }
 
-        // var objUser = new Object();
-        // objUser =  checkUser(localStorage.getItem('email'));
-
-        // if(objUser == null){
-        //     var name = userFb['name'];
-        //     postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
-        // }else if(objUser !== null){
-        //     localStorage.setItem('firstName',objUser['firstName']);
-        //     localStorage.setItem('lastName',objUser['lastName']);
-        //     localStorage.setItem('profilPicture',objUser['profilPicture']);
-        // }
-
-        // location.reload();
+        location.reload();
 
       });
 
@@ -111,28 +108,25 @@ function signInGoogle(){
     localStorage.setItem('name',userGoogle['name']);
     localStorage.setItem('profilPicture',userGoogle['profilPicture']);
 
-    userGoogle['firstName'] = localStorage.getItem['name'].split(' ')[0];
-    userGoogle['lastName'] = localStorage.getItem['name'].split(' ')[1];
+    localStorage.setItem('firstName',localStorage.getItem['name'].split(' ')[0]);
+    localStorage.setItem('lastName',localStorage.getItem['name'].split(' ')[1]);
 
-    localStorage.setItem('firstName', userGoogle['firstName']);
-    localStorage.setItem('lastName', userGoogle['lastName']);
+    localStorage.removeItem('name');
 
-    // localStorage.removeItem('name');
+    var objUser = new Object();
+    objUser =  checkUser(localStorage.getItem('email'));
 
-    // var objUser = new Object();
-    // objUser =  checkUser(localStorage.getItem('email'));
-
-    // if(objUser == null){
-    //     var name = userGoogle['name'];
-    //     postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
-    // }else if(objUser !== null){
-    //     localStorage.setItem('firstName',objUser['firstName']);
-    //     localStorage.setItem('lastName',objUser['lastName']);
-    //     localStorage.setItem('profilPicture',objUser['profilPicture']);
-    // }
+    if(objUser == null){
+        var name = userGoogle['name'];
+        postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
+    }else if(objUser !== null){
+        localStorage.setItem('firstName',objUser['firstName']);
+        localStorage.setItem('lastName',objUser['lastName']);
+        localStorage.setItem('profilPicture',objUser['profilPicture']);
+    }
 
 
-    // location.reload();
+    location.reload();
 
 
 	  // ...
