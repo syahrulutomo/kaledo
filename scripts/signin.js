@@ -44,8 +44,8 @@ loginFbButton.onclick = function(){
       function(response) {
 
         userFb['id'] = response.id;
-        userFb['firstName']= localStorage.getItem('name').split(' ')[0];
-        userFb['lastName']= localStorage.getItem('name').split(' ')[1];
+        userFb['firstName']= response.name.split(' ')[0];
+        userFb['lastName']= response.name.split(' ')[1];
         userFb['email'] = response.email;
         userFb['profilPicture'] = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
@@ -96,8 +96,8 @@ function signInGoogle(){
 	  // console.log(user);
 
     userGoogle['email']  = user.email;
-    userGoogle['firstName']= localStorage.getItem('name').split(' ')[0];
-    userGoogle['lastName']= localStorage.getItem('name').split(' ')[1];
+    userGoogle['firstName']= user.displayName.split(' ')[0];
+    userGoogle['lastName']= user.displayName.split(' ')[1];
     userGoogle['profilPicture'] = user.photoURL; 
 
     document.querySelector('.profil-img').src = userGoogle['url_photo'];
