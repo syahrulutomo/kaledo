@@ -62,19 +62,19 @@ loginFbButton.onclick = function(){
 
         localStorage.removeItem('name');
 
-        var objUser = new Object();
-        objUser =  checkUser(localStorage.getItem('email'));
+        // var objUser = new Object();
+        // objUser =  checkUser(localStorage.getItem('email'));
 
-        if(objUser == null){
-            var name = userFb['name'];
-            postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
-        }else if(objUser !== null){
-            localStorage.setItem('firstName',objUser['firstName']);
-            localStorage.setItem('lastName',objUser['lastName']);
-            localStorage.setItem('profilPicture',objUser['profilPicture']);
-        }
+        // if(objUser == null){
+        //     var name = userFb['name'];
+        //     postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
+        // }else if(objUser !== null){
+        //     localStorage.setItem('firstName',objUser['firstName']);
+        //     localStorage.setItem('lastName',objUser['lastName']);
+        //     localStorage.setItem('profilPicture',objUser['profilPicture']);
+        // }
 
-        // location.reload();
+        location.reload();
 
       });
 
@@ -119,20 +119,20 @@ function signInGoogle(){
 
     localStorage.removeItem('name');
 
-    var objUser = new Object();
-    objUser =  checkUser(localStorage.getItem('email'));
+    // var objUser = new Object();
+    // objUser =  checkUser(localStorage.getItem('email'));
 
-    if(objUser == null){
-        var name = userGoogle['name'];
-        postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
-    }else if(objUser !== null){
-        localStorage.setItem('firstName',objUser['firstName']);
-        localStorage.setItem('lastName',objUser['lastName']);
-        localStorage.setItem('profilPicture',objUser['profilPicture']);
-    }
+    // if(objUser == null){
+    //     var name = userGoogle['name'];
+    //     postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
+    // }else if(objUser !== null){
+    //     localStorage.setItem('firstName',objUser['firstName']);
+    //     localStorage.setItem('lastName',objUser['lastName']);
+    //     localStorage.setItem('profilPicture',objUser['profilPicture']);
+    // }
 
 
-    // location.reload();
+    location.reload();
 
 
 	  // ...
