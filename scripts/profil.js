@@ -1,6 +1,6 @@
 document.querySelector('.profil-img').src = localStorage.getItem('photo');
 document.querySelector('.profil-pic').src = localStorage.getItem('photo');
-document.querySelector('.profil-name').innerHTML = localStorage.getItem('name');
+document.querySelector('.profil-name').innerHTML = localStorage.getItem('firstName')+""+localStorage.getItem('lastName');
 
 Vue.component('tab-account',{
 	data: function(){

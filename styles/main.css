@@ -1058,7 +1058,7 @@ input.checkbox:checked + label:before {
 	width: 80%;
 	margin-right: auto;
 	margin-left: auto;
-	padding: 2em;
+	padding: 2em 0;
 }
 
 #profil-picture{
