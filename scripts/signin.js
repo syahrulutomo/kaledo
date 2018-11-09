@@ -163,9 +163,9 @@ function signInGoogle(){
 
 function checkUser(email,obj){
     
-  fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
+  fetch('https://kaledo-backend.herokuapp.com/api/users/'+this.email)
   .then(res => res.json())
-  .then(data => obj = data)
+  .then(data => this.obj = data)
   .then(() => console.log(obj))
 }
 
