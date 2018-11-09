@@ -11,7 +11,7 @@ Vue.component('tab-account',{
 			profilPicture: ''
 		}},
 		template: `
-			<section id="profil-account">
+		<section id="profil-account">
 		<div class="account-form">
 			<p>Email</p>
 			<input v-model="email" id="email" type="text" name="">
@@ -28,7 +28,6 @@ Vue.component('tab-account',{
 			<img id="profil-picture" src="../assets/grey.jpg" alt="">
 			<input  id="file" type="file" class="file" placeholder="Upload Photo">
 		 	<label class="label-file" for="file">Upload Photo</label>
-			<button id="upload-button">submit</button>
 		</div>
 		<button v-on:click="postData()" id="submit-account">Save</button>
 	</section>
