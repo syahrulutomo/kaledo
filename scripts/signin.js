@@ -43,9 +43,11 @@ loginFbButton.onclick = function(){
      FB.api('/me', { locale: 'en_US', fields: 'id, name, email' },  
       function(response) {
 
+        console.log(response);
+
         userFb['id'] = response.id;
-        userFb['firstName']= response.name.split(' ')[0];
-        userFb['lastName']= response.name.split(' ')[1];
+        userFb['firstName']= JSON.stringify(response.name).split(' ')[0];
+        userFb['lastName']= JSON.stringify(response.name).split(' ')[1];
         userFb['email'] = response.email;
         userFb['profilPicture'] = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
@@ -93,11 +95,11 @@ function signInGoogle(){
 	  var token = result.credential.accessToken;
 	  // The signed-in user info.
 	  var user = result.user;
-	  // console.log(user);
+	  console.log(user);
 
     userGoogle['email']  = user.email;
-    userGoogle['firstName']= user.displayName.split(' ')[0];
-    userGoogle['lastName']= user.displayName.split(' ')[1];
+    userGoogle['firstName']= JSON.stringify(user.displayName).split(' ')[0];
+    userGoogle['lastName']= JSON.stringify(user.displayName).split(' ')[1];
     userGoogle['profilPicture'] = user.photoURL; 
 
     document.querySelector('.profil-img').src = userGoogle['url_photo'];
