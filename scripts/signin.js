@@ -43,20 +43,24 @@ loginFbButton.onclick = function(){
      FB.api('/me', { locale: 'en_US', fields: 'id, name, email' },  
       function(response) {
 
-        console.log(response);
-
         userFb['id'] = response.id;
-        userFb['firstName']= JSON.stringify(response.name).split(' ')[0];
-        userFb['lastName']= JSON.stringify(response.name).split(' ')[1];
+        userFb['name']= response.name;
         userFb['email'] = response.email;
         userFb['profilPicture'] = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
         document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
         localStorage.setItem('email',userFb['email']);
-        localStorage.setItem('firstName',userFb['firstName']);
-        localStorage.setItem('lastName',userFb['lastName']);
+        localStorage.setItem('name',userFb['name']);
         localStorage.setItem('profilPicture',userFb['profilPicture']);
+
+        userFb['firstName'] = localStorage.getItem['name'].split(' ')[0];
+        userFb['lastName'] = localStorage.getItem['name'].split(' ')[1];
+
+        localStorage['firstName'] = userFb['firstName'];
+        localStorage['lastName'] = userFb['lastName'];
+
+        localStorage.removeItem('name');
 
         var objUser = new Object();
         objUser =  checkUser(localStorage.getItem('email'));
@@ -70,7 +74,7 @@ loginFbButton.onclick = function(){
             localStorage.setItem('profilPicture',objUser['profilPicture']);
         }
 
-        // location.reload();
+        location.reload();
 
       });
 
@@ -95,19 +99,25 @@ function signInGoogle(){
 	  var token = result.credential.accessToken;
 	  // The signed-in user info.
 	  var user = result.user;
-	  console.log(user);
+	  // console.log(user);
 
     userGoogle['email']  = user.email;
-    userGoogle['firstName']= JSON.stringify(user.displayName).split(' ')[0];
-    userGoogle['lastName']= JSON.stringify(user.displayName).split(' ')[1];
+    userGoogle['name']= user.displayName;
     userGoogle['profilPicture'] = user.photoURL; 
 
     document.querySelector('.profil-img').src = userGoogle['url_photo'];
 
     localStorage.setItem('email',userGoogle['email']);
-    localStorage.setItem('firstName',userGoogle['firstName']);
-    localStorage.setItem('lastName',userGoogle['lastName']);
+    localStorage.setItem('name',userGoogle['name']);
     localStorage.setItem('profilPicture',userGoogle['profilPicture']);
+
+    userGoogle['firstName'] = localStorage.getItem['name'].split(' ')[0];
+    userGoogle['lastName'] = localStorage.getItem['name'].split(' ')[1];
+
+    localStorage['firstName'] = userGoogle['firstName'];
+    localStorage['lastName'] = userGoogle['lastName'];
+
+    localStorage.removeItem('name');
 
     var objUser = new Object();
     objUser =  checkUser(localStorage.getItem('email'));
@@ -122,7 +132,7 @@ function signInGoogle(){
     }
 
 
-    // location.reload();
+    location.reload();
 
 
 	  // ...
@@ -157,7 +167,7 @@ function checkUser(email){
 function postData(url,data){
     fetch(url,{
       method:'POST',
-      body: data
+      body: data;
     }).then(function(response){
       return response.json();
     }).then(function(data){
