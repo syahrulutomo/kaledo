@@ -116,7 +116,7 @@ function signInGoogle(){
     localStorage.setItem('lastName',userGoogle['lastName']);
 
     var objUser = new Object();
-    objUser =  checkUser(localStorage.getItem('email'));
+    objUser =  checkUser(localStorage.getItem('email')).json();
     console.log(objUser);
 
     // if(objUser == null){

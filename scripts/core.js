@@ -19,8 +19,8 @@ else{
 
 
 
-if(localStorage.getItem('photo') !== null){
-	document.querySelector('.profil-img').src = localStorage.getItem('photo');
+if(localStorage.getItem('profilPicture') !== null){
+	document.querySelector('.profil-img').src = localStorage.getItem('profilPicture');
 }
 
 /*
