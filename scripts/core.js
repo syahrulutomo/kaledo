@@ -17,13 +17,17 @@ main.addEventListener('click', function() {
 });
 
 
-var email = localStorage.getItem('email');
 
+new Vue({
+  el: '#header-index',
+  data: {
+  	email: localStorage.getItem('email')
+  }
+});
 
-if(email !== null && email !== ''){
-    document.querySelector('.profil-link').href = 'profil.html';
-    document.querySelector('#profil-link-index').href = 'static/profil.html';
-}else{
-	document.querySelector('.profil-link').href = 'signin.html';
-	document.querySelector('#profil-link-index').href = 'static/signin.html';
-}
+new Vue({
+  el: '.header',
+  data: {
+  	email: localStorage.getItem('email')
+  }
+});

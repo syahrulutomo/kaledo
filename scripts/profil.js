@@ -2,12 +2,10 @@
 Vue.component('tab-account',{
 	data: function(){
 		return {
-			email: '',
-			firstName: '',
-			lastName: '',
-			password: '',
-			profilPicture: '',
-			errors: []
+			email: localStorage.getItem('email'),
+			firstName: localStorage.getItem('name').split(' ')[0],
+			lastName: localStorage.getItem('name').split(' ')[1],
+			profilPicture: ''
 		}},
 		template: `
 			<section id="profil-account">
@@ -22,10 +20,6 @@ Vue.component('tab-account',{
 		<div class="account-form">
 			<p>Last Name</p>
 			<input v-model="lastName" id="last-name" type="text" name="">
-		</div>
-		<div class="account-form">
-			<p>Password</p>
-			<input v-model="password" id="password" type="text" name="">
 		</div>
 		<div class="account-form">
 			<img id="profil-picture" src="../assets/grey.jpg" alt="">
@@ -211,14 +205,15 @@ new Vue({
 	},
 	computed: {
 		currentTabComponent: function() {
-
 			return 'tab-' + this.currentTab.toLowerCase();
 		}
 	}
 	
 })
 
-
+document.querySelector('.profil-img').src = localStorage.getItem('photo');
+document.querySelector('.profil-pic').src = localStorage.getItem('photo');
+document.querySelector('.profil-name').innerHTML = localStorage.getItem('name');
 
 
 var file =  document.querySelector("#file");

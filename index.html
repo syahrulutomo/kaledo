@@ -38,7 +38,7 @@
 </div>
 
  <!-- Page Header -->
- <header>
+ <header id="header-index">
  	<a class="logo" href="index.html"><h1>Kaledo</h1></a>
 	<nav class="navbar">
 		<ul class="menu">
@@ -47,7 +47,11 @@
 			
 		</ul>			
 	</nav>
-		<a id="profil-link-index" href="static/signin.html"><img class="profil-img" src="assets/circle-icons-profile.png"></a>
+		
+		<a v-if="email !== null && email !== ''" id="profil-link-index" href="static/profil.html"><img class="profil-img" src="assets/circle-icons-profile.png"></a>
+		
+		<a v-else-if="email === null || email === ''" id="profil-link-index" href="static/signin.html"><img class="profil-img" src="assets/circle-icons-profile.png"></a>
+
 	<a class="burger"><img src="assets/menu.svg"></a>
  </header>
 

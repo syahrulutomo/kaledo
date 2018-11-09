@@ -38,13 +38,10 @@ var userFb = new Object();
 loginFbButton.onclick = function(){
   FB.login(function(response) {
     if (response.authResponse) {
-     console.log('Welcome!  Fetching your information.... ');
-     console.log(response);
+     // console.log('Welcome!  Fetching your information.... ');
+     // console.log(response);
      FB.api('/me', { locale: 'en_US', fields: 'id, name, email' },  
       function(response) {
-        console.log('Good to see you, ' + response.name + '.');
-        console.log('Your email is ' + response.email + '.');
-        console.log('id, ' + response.id + '.');
 
         userFb['id'] = response.id;
         userFb['name'] = response.name;
@@ -87,6 +84,8 @@ function signInGoogle(){
     userGoogle['email']  = user.email;
     userGoogle['name'] = user.displayName;
     userGoogle['url_photo'] = user.photoURL; 
+
+    document.querySelector('.profil-img').src = userGoogle[url_photo];
 
     localStorage.setItem('email',userGoogle['email']);
     localStorage.setItem('name',userGoogle['name']);

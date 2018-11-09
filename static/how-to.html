@@ -19,6 +19,7 @@
  <link rel="stylesheet" href="../styles/main.css">
 
  <!-- JS  -->
+ <script defer src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
  <script defer src="../scripts/core.js"></script>
  <script defer src="../scripts/how-to.js"></script>
 
@@ -36,7 +37,7 @@
 </div>
 
  <!-- Page Header -->
- <header>
+ <header class="header">
  	<a class="logo" href="../index.html"><h1>Kaledo</h1></a>
 	<nav class="navbar">
 		<ul class="menu">
@@ -44,7 +45,10 @@
 			<li><a href="how-to.html">How To</a></li>
 		</ul>			
 	</nav>
-	<a class="profil-link" href="profil.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
+		<a v-if="email !== null && email !== ''" id="profil-link-index" href="profil.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
+		
+		<a v-else-if="email === null || email === ''" id="profil-link-index" href="signin.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
+
 	<a class="burger"><img src="../assets/menu.svg"></a>
  </header>
 
