@@ -60,7 +60,7 @@ loginFbButton.onclick = function(){
         localStorage.setItem('firstName',userFb['firstName']);
         localStorage.setItem('lastName',userFb['lastName']);
 
-        localStorage.removeItem('name');
+        // localStorage.removeItem('name');
 
         // var objUser = new Object();
         // objUser =  checkUser(localStorage.getItem('email'));
@@ -74,7 +74,7 @@ loginFbButton.onclick = function(){
         //     localStorage.setItem('profilPicture',objUser['profilPicture']);
         // }
 
-        location.reload();
+        // location.reload();
 
       });
 
@@ -117,7 +117,7 @@ function signInGoogle(){
     localStorage.setItem('firstName', userGoogle['firstName']);
     localStorage.setItem('lastName', userGoogle['lastName']);
 
-    localStorage.removeItem('name');
+    // localStorage.removeItem('name');
 
     // var objUser = new Object();
     // objUser =  checkUser(localStorage.getItem('email'));
@@ -132,7 +132,7 @@ function signInGoogle(){
     // }
 
 
-    location.reload();
+    // location.reload();
 
 
 	  // ...
