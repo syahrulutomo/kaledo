@@ -1056,6 +1056,8 @@ input.checkbox:checked + label:before {
 
 #profil-account{
 	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
 	padding: 2em;
 }
 
