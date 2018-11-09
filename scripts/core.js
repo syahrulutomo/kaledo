@@ -31,3 +31,7 @@ new Vue({
   	email: localStorage.getItem('email')
   }
 });
+
+if(localStorage.getItem('photo') !== null){
+	document.querySelector('.profil-img').src = localStorage.getItem('photo');
+}
