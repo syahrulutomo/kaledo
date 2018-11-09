@@ -57,8 +57,8 @@ loginFbButton.onclick = function(){
         userFb['firstName'] = localStorage.getItem['name'].split(' ')[0];
         userFb['lastName'] = localStorage.getItem['name'].split(' ')[1];
 
-        localStorage['firstName'] = userFb['firstName'];
-        localStorage['lastName'] = userFb['lastName'];
+        localStorage.setItem('firstName',userFb['firstName']);
+        localStorage.setItem('lastName',userFb['lastName']);
 
         localStorage.removeItem('name');
 
@@ -114,8 +114,8 @@ function signInGoogle(){
     userGoogle['firstName'] = localStorage.getItem['name'].split(' ')[0];
     userGoogle['lastName'] = localStorage.getItem['name'].split(' ')[1];
 
-    localStorage['firstName'] = userGoogle['firstName'];
-    localStorage['lastName'] = userGoogle['lastName'];
+    localStorage.setItem('firstName', userGoogle['firstName']);
+    localStorage.setItem('lastName', userGoogle['lastName']);
 
     localStorage.removeItem('name');
 
