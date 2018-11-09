@@ -63,16 +63,14 @@ loginFbButton.onclick = function(){
         objUser =  checkUser(userFb['email']);
         console.log(objUser);
 
-        // if(objUser == null){
-        //     postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
-        // }else if(objUser != null){
-        //     localStorage.setItem('firstName',objUser.firstName);
-        //     localStorage.setItem('lastName',objUser.lastName);
-        //     localStorage.setItem('profilPicture',objUser.profilPicture);
-            
-        //     window.location = 'profil.html';
+        if(objUser == null){
+            postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
+        }else if(objUser != null){
+            localStorage.setItem('firstName',objUser.firstName);
+            localStorage.setItem('lastName',objUser.lastName);
+            localStorage.setItem('profilPicture',objUser.profilPicture);
 
-        // }
+        }
 
         // location.reload();
 
@@ -116,19 +114,17 @@ function signInGoogle(){
     localStorage.setItem('lastName',userGoogle['lastName']);
 
     var objUser = new Object();
-    objUser =  checkUser(localStorage.getItem('email')).json();
+    objUser =  checkUser(localStorage.getItem('email'));
     console.log(objUser);
 
-    // if(objUser == null){
-    //     var name = userGoogle['name'];
-    //     postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
-    // }else if(objUser != null){
-    //     localStorage.setItem('firstName',objUser.firstName);
-    //     localStorage.setItem('lastName',objUser.lastName);
-    //     localStorage.setItem('profilPicture',objUser.profilPicture);
-
-    //     window.location = 'profil.html';
-    // }
+    if(objUser == null){
+        var name = userGoogle['name'];
+        postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
+    }else if(objUser != null){
+        localStorage.setItem('firstName',objUser.firstName);
+        localStorage.setItem('lastName',objUser.lastName);
+        localStorage.setItem('profilPicture',objUser.profilPicture);
+    }
 
     // location.reload();
 
@@ -150,7 +146,7 @@ function signInGoogle(){
 
 function checkUser(email){
     
-    return fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
+  fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
     .then(function(response){
         return response.json();
     })
@@ -161,12 +157,14 @@ function checkUser(email){
 
 
 function postData(url,data){
-    fetch(url,{
-      method:'POST',
-      body: data
-    }).then(function(response){
-      return response.json();
-    }).then(function(data){
-      console.log('berhasil input');
+    axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
+      email: this.email,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      profilPicture: this.profilPicture   
+    })
+    .then(response => {})
+    .catch(e => {
+      this.errors.push(e)
     })
 }
