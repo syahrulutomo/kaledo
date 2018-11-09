@@ -44,31 +44,33 @@ loginFbButton.onclick = function(){
       function(response) {
 
         userFb['id'] = response.id;
-        userFb['name']= response.name;
+        var name = response.name;
+        userFb['firstName'] = name.split(' ')[0];
+        userFb['lastName'] = name.split(' ')[1];
         userFb['email'] = response.email;
         userFb['profilPicture'] = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
         document.querySelector('.profil-img').src = 'https://graph.facebook.com/v3.1/'+response.id+'/picture?height=80&type=square';
 
         localStorage.setItem('email',userFb['email']);
-        localStorage.setItem('name',userFb['name']);
         localStorage.setItem('profilPicture',userFb['profilPicture']);
 
-        localStorage.setItem('firstName',localStorage.getItem['name'].split(' ')[0]);
-        localStorage.setItem('lastName',localStorage.getItem['name'].split(' ')[1]);
+        localStorage.setItem('firstName',userFb['firstName']);
+        localStorage.setItem('lastName',userFb['lastName']);
         
-        localStorage.removeItem('name');
 
         var objUser = new Object();
-        objUser =  checkUser(localStorage.getItem('email'));
+        objUser =  checkUser(userFb['email']);
 
         if(objUser == null){
-            var name = userFb['name'];
             postData('https://kaledo-backend.herokuapp.com/api/users/',userFb);
-        }else if(objUser !== null){
-            localStorage.setItem('firstName',objUser['firstName']);
-            localStorage.setItem('lastName',objUser['lastName']);
-            localStorage.setItem('profilPicture',objUser['profilPicture']);
+        }else if(objUser != null){
+            localStorage.setItem('firstName',objUser.firstName);
+            localStorage.setItem('lastName',objUser.lastName);
+            localStorage.setItem('profilPicture',objUser.profilPicture);
+            
+            window.location = 'profil.html';
+
         }
 
         location.reload();
@@ -99,19 +101,18 @@ function signInGoogle(){
 	  console.log(user);
 
     userGoogle['email']  = user.email;
-    userGoogle['name']= user.displayName;
+    var name = user.displayName;
+    userGoogle['firstName'] = name.split(' ')[0];
+    userGoogle['lastName'] = name.split(' ')[1];
     userGoogle['profilPicture'] = user.photoURL; 
 
-    document.querySelector('.profil-img').src = userGoogle['url_photo'];
+    document.querySelector('.profil-img').src = userGoogle['profilPicture'];
 
-    localStorage.setItem('email',userGoogle['email']);
-    localStorage.setItem('name',userGoogle['name']);
-    localStorage.setItem('profilPicture',userGoogle['profilPicture']);
+    localStorage.setItem('email',userFb['email']);
+    localStorage.setItem('profilPicture',userFb['profilPicture']);
 
-    localStorage.setItem('firstName',localStorage.getItem['name'].split(' ')[0]);
-    localStorage.setItem('lastName',localStorage.getItem['name'].split(' ')[1]);
-
-    localStorage.removeItem('name');
+    localStorage.setItem('firstName',userFb['firstName']);
+    localStorage.setItem('lastName',userFb['lastName']);
 
     var objUser = new Object();
     objUser =  checkUser(localStorage.getItem('email'));
@@ -119,15 +120,15 @@ function signInGoogle(){
     if(objUser == null){
         var name = userGoogle['name'];
         postData('https://kaledo-backend.herokuapp.com/api/users/',userGoogle);
-    }else if(objUser !== null){
-        localStorage.setItem('firstName',objUser['firstName']);
-        localStorage.setItem('lastName',objUser['lastName']);
-        localStorage.setItem('profilPicture',objUser['profilPicture']);
+    }else if(objUser != null){
+        localStorage.setItem('firstName',objUser.firstName);
+        localStorage.setItem('lastName',objUser.lastName);
+        localStorage.setItem('profilPicture',objUser.profilPicture);
+
+        window.location = 'profil.html';
     }
 
-
     location.reload();
-
 
 	  // ...
 	}).catch(function(error) {
@@ -143,7 +144,6 @@ function signInGoogle(){
 
 
 }
-
 
 
 function checkUser(email){
