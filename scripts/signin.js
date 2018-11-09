@@ -155,7 +155,7 @@ function checkUser(email){
 function postData(url,data){
     fetch(url,{
       method:'POST',
-      body: data;
+      body: data
     }).then(function(response){
       return response.json();
     }).then(function(data){
