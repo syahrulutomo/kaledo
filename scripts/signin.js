@@ -38,8 +38,8 @@ var userFb = new Object();
 loginFbButton.onclick = function(){
   FB.login(function(response) {
     if (response.authResponse) {
-     // console.log('Welcome!  Fetching your information.... ');
-     // console.log(response);
+     console.log('Welcome!  Fetching your information.... ');
+     console.log(response);
      FB.api('/me', { locale: 'en_US', fields: 'id, name, email' },  
       function(response) {
 
@@ -74,7 +74,7 @@ loginFbButton.onclick = function(){
             localStorage.setItem('profilPicture',objUser['profilPicture']);
         }
 
-        location.reload();
+        // location.reload();
 
       });
 
@@ -99,7 +99,7 @@ function signInGoogle(){
 	  var token = result.credential.accessToken;
 	  // The signed-in user info.
 	  var user = result.user;
-	  // console.log(user);
+	  console.log(user);
 
     userGoogle['email']  = user.email;
     userGoogle['name']= user.displayName;
@@ -132,7 +132,7 @@ function signInGoogle(){
     }
 
 
-    location.reload();
+    // location.reload();
 
 
 	  // ...
