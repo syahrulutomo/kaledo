@@ -59,7 +59,7 @@ loginFbButton.onclick = function(){
         localStorage.setItem('lastName',userFb['lastName']);
         
 
-        var objUser = new Object();
+        var objUser;
         checkUser(userFb['email'],objUser);
         console.log(objUser);
 
@@ -122,7 +122,7 @@ function signInGoogle(){
     localStorage.setItem('firstName',userGoogle['firstName']);
     localStorage.setItem('lastName',userGoogle['lastName']);
 
-    var objUser = new Object();
+    var objUser;
     checkUser(userGoogle['email'],objUser);
     console.log(objUser);
 
