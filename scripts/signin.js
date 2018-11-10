@@ -69,13 +69,12 @@ loginFbButton.onclick = function(){
               lastName: userFb['lastName'],
               profilPicture: userFb['profilPicture']   
             })
-            .then(
-              response => {};
-              window.location = 'profil.html';
-            )
+            .then(response => {})
             .catch(e => {
               console.log(e)
             })
+
+            window.location = 'profil.html';
         }else{
             
           localStorage.setItem('firstName',objUser['firstName']);
@@ -136,13 +135,12 @@ function signInGoogle(){
           lastName: userGoogle['lastName'],
           profilPicture: userGoogle['profilPicture']   
         })
-        .then(
-          response => {};
-          window.location = 'profil.html';
-        )
-          .catch(e => {
+        .then(response => {})
+        .catch(e => {
             console.log(e)
-         })
+        })
+
+        window.location = 'profil.html';
     }else{
 
         localStorage.setItem('firstName',objUser['firstName']);
