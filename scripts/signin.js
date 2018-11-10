@@ -80,7 +80,7 @@ loginFbButton.onclick = function(){
 
         }
 
-        // location.reload();
+        location.reload();
 
       });
 
@@ -141,7 +141,7 @@ function signInGoogle(){
         localStorage.setItem('profilPicture',objUser.profilPicture);
     }
 
-    // location.reload();
+    location.reload();
 
 	  // ...
 	}).catch(function(error) {
