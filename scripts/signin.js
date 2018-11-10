@@ -62,7 +62,7 @@ loginFbButton.onclick = function(){
         var objUser = checkUser(userFb['email']);
         console.log(objUser);
 
-        if(objUser === null){
+        if(objUser === null || objUser === undefined){
             axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
               email: userFb['email'],
               firstName: userFb['firstName'],
@@ -73,7 +73,7 @@ loginFbButton.onclick = function(){
             .catch(e => {
               console.log(e)
             })
-        }else if(objUser !== null){
+        }else{
             localStorage.setItem('firstName',objUser.firstName);
             localStorage.setItem('lastName',objUser.lastName);
             localStorage.setItem('profilPicture',objUser.profilPicture);
@@ -124,7 +124,7 @@ function signInGoogle(){
     var objUser = checkUser(userGoogle['email']);
     console.log(objUser);
 
-    if(objUser === null){
+    if(objUser === null || objUser === undefined){
         axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
           email: userGoogle['email'],
           firstName: userGoogle['firstName'],
@@ -135,7 +135,7 @@ function signInGoogle(){
           .catch(e => {
             console.log(e)
          })
-    }else if(objUser !== null){
+    }else{
         localStorage.setItem('firstName',objUser.firstName);
         localStorage.setItem('lastName',objUser.lastName);
         localStorage.setItem('profilPicture',objUser.profilPicture);
@@ -159,7 +159,7 @@ function signInGoogle(){
 }
 
 
-function checkUser(email){
+function checkUser(email,obj){
     
   fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
   .then(function(response){
