@@ -69,7 +69,10 @@ loginFbButton.onclick = function(){
               lastName: userFb['lastName'],
               profilPicture: userFb['profilPicture']   
             })
-            .then(response => {})
+            .then(
+              response => {};
+              window.location = 'profil.html';
+            )
             .catch(e => {
               console.log(e)
             })
@@ -78,11 +81,11 @@ loginFbButton.onclick = function(){
           localStorage.setItem('firstName',objUser['firstName']);
           localStorage.setItem('lastName',objUser['lastName']);
           localStorage.setItem('profilPicture',objUser['profilPicture']);
+          localStorage.setItem('objUser',JSON.stringify(objUser));
+
+          window.location = 'profil.html';
 
         }
-
-        window.location = 'profil.html';
-        location.reload();
 
       });
 
@@ -133,7 +136,10 @@ function signInGoogle(){
           lastName: userGoogle['lastName'],
           profilPicture: userGoogle['profilPicture']   
         })
-        .then(response => {})
+        .then(
+          response => {};
+          window.location = 'profil.html';
+        )
           .catch(e => {
             console.log(e)
          })
@@ -142,10 +148,11 @@ function signInGoogle(){
         localStorage.setItem('firstName',objUser['firstName']);
         localStorage.setItem('lastName',objUser['lastName']);
         localStorage.setItem('profilPicture',objUser['profilPicture']);
+        localStorage.setItem('objUser',JSON.stringify(objUser));
+
+        window.location = 'profil.html';
     }
 
-    window.location = 'profil.html';
-    location.reload();
 
 	  // ...
 	}).catch(function(error) {
