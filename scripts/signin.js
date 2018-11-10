@@ -59,8 +59,7 @@ loginFbButton.onclick = function(){
         localStorage.setItem('lastName',userFb['lastName']);
         
 
-        var objUser;
-        checkUser(userFb['email'],objUser);
+        var objUser = checkUser(userFb['email']);
         console.log(objUser);
 
         if(objUser === null){
@@ -122,8 +121,7 @@ function signInGoogle(){
     localStorage.setItem('firstName',userGoogle['firstName']);
     localStorage.setItem('lastName',userGoogle['lastName']);
 
-    var objUser;
-    checkUser(userGoogle['email'],objUser);
+    var objUser = checkUser(userGoogle['email']);
     console.log(objUser);
 
     if(objUser === null){
@@ -161,12 +159,15 @@ function signInGoogle(){
 }
 
 
-function checkUser(email,obj){
+function checkUser(email){
     
-  fetch('https://kaledo-backend.herokuapp.com/api/users/'+this.email)
-  .then(res => res.json())
-  .then(data => this.obj = data)
-  .then(() => console.log(obj))
+  fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    return data;
+  })
 }
 
 
