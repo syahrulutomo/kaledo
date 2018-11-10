@@ -98,6 +98,7 @@ header{
 
 /* Since we're mobile-first, by default, the navbar-expanded is hidden. */
 .navbar-expanded {
+	z-index: 2;
 	background-color: #E47A2E;
 	padding: .5em .25em;
 	width: 100%;
@@ -986,8 +987,11 @@ input.checkbox:checked + label:before {
 }
 
 .profil-aboutme{
+	display: flex;
+	flex-wrap: wrap;
     width: 100%;
     margin: 0;
+    padding: 1em;
     background-image: url('../assets/cooking-background-vectors-01.jpg');
     background-position: center;
     background-size: cover;
@@ -1014,10 +1018,60 @@ input.checkbox:checked + label:before {
 
 .profil-name{
 	width: 100%;
+	margin: .5em 0;
+	font-size: 1.3em;
     text-align: center;
-    margin: 0.7em 0;
     color: white;
     font-family: 'Open Sans',sans-serif;
+}
+
+.logout{
+	position: absolute;
+	right: 10px;
+	top: 77px;
+	display: block;
+	box-sizing: border-box;
+	padding: .7em .4em;
+	background-color: #ff7733;
+	color: white;
+	border-radius: 10px;
+	 font-family: 'Open Sans',sans-serif;
+	 font-size: .8em;
+	 line-height: 1.5;
+}
+
+.logout-icon{
+	width: 15px;
+	margin-right: 5px;
+}
+
+.account-form-top{
+	margin-top: 2em;
+}
+
+#delete_account{
+	position: absolute;
+	right: 20px;
+	margin-right: auto;
+	margin-left: auto;	
+	margin-top: -22px;
+	box-sizing: border-box;
+	padding: .5em;
+	font-size: .8em;
+	font-family: 'Open Sans',sans-serif;
+	color: white;
+	background-color: #e6e6e6;
+	border-radius: 50%;
+	border: none;
+}
+
+#delete_account img{
+	width: 20px;
+	height: 20px;
+}
+
+#delete_account_icon{	
+	width: 3em;
 }
 
 .profil-menu-list{

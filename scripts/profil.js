@@ -12,7 +12,8 @@ Vue.component('tab-account',{
 		}},
 		template: `
 		<section id="profil-account">
-		<div class="account-form">
+		<a id='delete_account'><img src="../assets/setting.png"></a>
+		<div class="account-form account-form-top">
 			<p>Email</p>
 			<input v-model="email" id="email" type="text" name="">
 		</div>

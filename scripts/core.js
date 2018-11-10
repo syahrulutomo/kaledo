@@ -1,6 +1,10 @@
+var email = localStorage.getItem('email');
 
+if(email !== null && email !== ''){
+	document.querySelector('.profil-img').src = localStorage.getItem('profilPicture');
+}
 
-if(window.location.href == 'https://kaledocooking.github.io/index.html' ){
+if(window.location === 'https://kaledocooking.github.io/index.html' ){
   new Vue({
 	  el: '#header-index',
 	  data: {
