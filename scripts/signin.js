@@ -64,10 +64,8 @@ loginFbButton.onclick = function(){
         fetch('https://kaledo-backend.herokuapp.com/api/users/'+userFb['email'])
         .then(res => res.json())
         .then(data => objUser = data)
-        .then(() => console.log(objUser))
-       
-
-        if(objUser === null){
+        .then(function(objUser){
+          if(objUser === null){
             axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
               email: userFb['email'],
               firstName: userFb['firstName'],
@@ -80,18 +78,18 @@ loginFbButton.onclick = function(){
             })
 
             window.location = 'profil.html';
-        }else{
-
+          }else{
             
-          localStorage.setItem('firstName',objUser['firstName']);
-          localStorage.setItem('lastName',objUser['lastName']);
-          localStorage.setItem('profilPicture',objUser['profilPicture']);
+            localStorage.setItem('firstName',objUser['firstName']);
+            localStorage.setItem('lastName',objUser['lastName']);
+            localStorage.setItem('profilPicture',objUser['profilPicture']);
 
-          window.location = 'profil.html';
+            window.location = 'profil.html';
 
-        }
+          }
+        });
 
-      });
+      })
 
     } else {
      console.log('User cancelled login or did not fully authorize.');
@@ -132,32 +130,35 @@ function signInGoogle(){
 
     fetch('https://kaledo-backend.herokuapp.com/api/users/'+userGoogle['email'])
       .then(res => res.json())
-      .then(data => objUser = data)
-      .then(() => console.log(objUser))
+      .then(data => objUser = data; return objUser)
+      .then(function(objUser){
+        if(objUser === null){
+          axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
+            email: userGoogle['email'],
+            firstName: userGoogle['firstName'],
+            lastName: userGoogle['lastName'],
+            profilPicture: userGoogle['profilPicture']   
+          })
+          .then(response => {})
+          .catch(e => {
+              console.log(e)
+          })
+
+          window.location = 'profil.html';
+
+        }else{
+
+          localStorage.setItem('firstName',objUser['firstName']);
+          localStorage.setItem('lastName',objUser['lastName']);
+          localStorage.setItem('profilPicture',objUser['profilPicture']);
+          localStorage.setItem('objUser',JSON.stringify(objUser));
+
+          window.location = 'profil.html';
+      }
+      });
     
 
-    if(objUser === null){
-        axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
-          email: userGoogle['email'],
-          firstName: userGoogle['firstName'],
-          lastName: userGoogle['lastName'],
-          profilPicture: userGoogle['profilPicture']   
-        })
-        .then(response => {})
-        .catch(e => {
-            console.log(e)
-        })
-
-        window.location = 'profil.html';
-    }else{
-
-        localStorage.setItem('firstName',objUser['firstName']);
-        localStorage.setItem('lastName',objUser['lastName']);
-        localStorage.setItem('profilPicture',objUser['profilPicture']);
-        localStorage.setItem('objUser',JSON.stringify(objUser));
-
-        window.location = 'profil.html';
-    }
+    
 
 
 	  // ...
