@@ -59,8 +59,13 @@ loginFbButton.onclick = function(){
         localStorage.setItem('lastName',userFb['lastName']);
         
 
-        var objUser = checkUser(userFb['email']);
-        console.log(objUser);
+        var objUser;
+
+        fetch('https://kaledo-backend.herokuapp.com/api/users'+userFb['email'])
+        .then(res => res.json())
+        .then(data => objUser = data)
+        .then(() => console.log(obj))
+       
 
         if(objUser === null || objUser === undefined){
             axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
@@ -81,7 +86,6 @@ loginFbButton.onclick = function(){
           localStorage.setItem('firstName',objUser['firstName']);
           localStorage.setItem('lastName',objUser['lastName']);
           localStorage.setItem('profilPicture',objUser['profilPicture']);
-          localStorage.setItem('objUser',JSON.stringify(objUser));
 
           // window.location = 'profil.html';
 
@@ -126,7 +130,12 @@ function signInGoogle(){
     localStorage.setItem('firstName',userGoogle['firstName']);
     localStorage.setItem('lastName',userGoogle['lastName']);
 
-    var objUser = checkUser(userGoogle['email']);
+     var objUser;
+
+    fetch('https://kaledo-backend.herokuapp.com/api/users'+userFb['email'])
+      .then(res => res.json())
+      .then(data => objUser = data)
+      .then(() => console.log(obj))
     
 
     if(objUser === null || objUser === undefined){
@@ -169,17 +178,7 @@ function signInGoogle(){
 }
 
 
-function checkUser(email){
-    
-  fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
-  .then(function(response){
-    return response.json();
-  })
-  .then(function(data){
-    return data;
-    console.log(data)
-  })
-}
+
 
 
 
