@@ -2,6 +2,21 @@ document.querySelector('.profil-img').src = localStorage.getItem('profilPicture'
 document.querySelector('.profil-pic').src = localStorage.getItem('profilPicture');
 document.querySelector('.profil-name').innerHTML = localStorage.getItem('firstName')+" "+localStorage.getItem('lastName');
 
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+  	var logoutButton = document.querySelector('#logout');
+
+	logoutButton.onclick = logout;
+
+	function logout(){
+		localStorage.clear();
+		logoutButton.href = 'signin.html';
+		location.reload();
+	} 
+});
+
+
+
 Vue.component('tab-account',{
 	data: function(){
 		return {
@@ -12,7 +27,7 @@ Vue.component('tab-account',{
 		}},
 		template: `
 		<section id="profil-account">
-		<a id='delete_account'><img src="../assets/setting.png"></a>
+		<a id='delete_account' href="account-settings.html"><img src="../assets/setting.png"></a>
 		<div class="account-form account-form-top">
 			<p>Email</p>
 			<input v-model="email" id="email" type="text" name="">
@@ -213,9 +228,6 @@ new Vue({
 	}
 	
 })
-
-
-
 
 var file =  document.querySelector("#file");
 var uploadButton = document.querySelector('#upload-button');

@@ -1,31 +1,18 @@
-var email = localStorage.getItem('email');
 
-if(email !== null && email !== ''){
-	document.querySelector('.profil-img').src = localStorage.getItem('profilPicture');
-}
 
-if(window.location === 'https://kaledocooking.github.io/index.html' ){
-  new Vue({
-	  el: '#header-index',
-	  data: {
-	  	email: localStorage.getItem('email')
-	  }
-  });	
-}
-else{
   new Vue({
   	el: '.header',
   	data: {
   		email: localStorage.getItem('email')
   	}
   });	
-}
 
 
 
 if(localStorage.getItem('profilPicture') !== null){
 	document.querySelector('.profil-img').src = localStorage.getItem('profilPicture');
 }
+
 
 /*
  * Open the drawer when the menu icon is clicked.

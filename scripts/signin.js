@@ -74,15 +74,16 @@ loginFbButton.onclick = function(){
               console.log(e)
             })
 
-            window.location = 'profil.html';
+            // window.location = 'profil.html';
         }else{
+
             
           localStorage.setItem('firstName',objUser['firstName']);
           localStorage.setItem('lastName',objUser['lastName']);
           localStorage.setItem('profilPicture',objUser['profilPicture']);
           localStorage.setItem('objUser',JSON.stringify(objUser));
 
-          window.location = 'profil.html';
+          // window.location = 'profil.html';
 
         }
 
@@ -140,7 +141,7 @@ function signInGoogle(){
             console.log(e)
         })
 
-        window.location = 'profil.html';
+        // window.location = 'profil.html';
     }else{
 
         localStorage.setItem('firstName',objUser['firstName']);
@@ -148,7 +149,7 @@ function signInGoogle(){
         localStorage.setItem('profilPicture',objUser['profilPicture']);
         localStorage.setItem('objUser',JSON.stringify(objUser));
 
-        window.location = 'profil.html';
+        // window.location = 'profil.html';
     }
 
 

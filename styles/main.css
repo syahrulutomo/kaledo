@@ -1025,7 +1025,7 @@ input.checkbox:checked + label:before {
     font-family: 'Open Sans',sans-serif;
 }
 
-.logout{
+#logout{
 	position: absolute;
 	right: 10px;
 	top: 77px;
@@ -1035,14 +1035,18 @@ input.checkbox:checked + label:before {
 	background-color: #ff7733;
 	color: white;
 	border-radius: 10px;
-	 font-family: 'Open Sans',sans-serif;
-	 font-size: .8em;
-	 line-height: 1.5;
+	font-family: 'Open Sans',sans-serif;
+	font-size: .8em;
+	line-height: 1.5;
 }
 
-.logout-icon{
+#logout-icon{
 	width: 15px;
 	margin-right: 5px;
+}
+
+#logout:hover{
+	cursor: pointer;
 }
 
 .account-form-top{
