@@ -127,7 +127,7 @@ function signInGoogle(){
     localStorage.setItem('lastName',userGoogle['lastName']);
 
     var objUser = checkUser(userGoogle['email']);
-    console.log(objUser);
+    
 
     if(objUser === null || objUser === undefined){
         axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
@@ -169,7 +169,7 @@ function signInGoogle(){
 }
 
 
-function checkUser(email,obj){
+function checkUser(email){
     
   fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
   .then(function(response){
@@ -177,6 +177,7 @@ function checkUser(email,obj){
   })
   .then(function(data){
     return data;
+    console.log(data)
   })
 }
 
