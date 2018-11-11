@@ -67,7 +67,7 @@ loginFbButton.onclick = function(){
         .then(() => console.log(objUser))
        
 
-        if(objUser === null || objUser === undefined){
+        if(objUser === null){
             axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
               email: userFb['email'],
               firstName: userFb['firstName'],
@@ -79,7 +79,7 @@ loginFbButton.onclick = function(){
               console.log(e)
             })
 
-            // window.location = 'profil.html';
+            window.location = 'profil.html';
         }else{
 
             
@@ -87,13 +87,11 @@ loginFbButton.onclick = function(){
           localStorage.setItem('lastName',objUser['lastName']);
           localStorage.setItem('profilPicture',objUser['profilPicture']);
 
-          // window.location = 'profil.html';
+          window.location = 'profil.html';
 
         }
 
       });
-
-    // console.log(userFb);
 
     } else {
      console.log('User cancelled login or did not fully authorize.');
@@ -138,7 +136,7 @@ function signInGoogle(){
       .then(() => console.log(objUser))
     
 
-    if(objUser === null || objUser === undefined){
+    if(objUser === null){
         axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
           email: userGoogle['email'],
           firstName: userGoogle['firstName'],
@@ -150,7 +148,7 @@ function signInGoogle(){
             console.log(e)
         })
 
-        // window.location = 'profil.html';
+        window.location = 'profil.html';
     }else{
 
         localStorage.setItem('firstName',objUser['firstName']);
@@ -158,7 +156,7 @@ function signInGoogle(){
         localStorage.setItem('profilPicture',objUser['profilPicture']);
         localStorage.setItem('objUser',JSON.stringify(objUser));
 
-        // window.location = 'profil.html';
+        window.location = 'profil.html';
     }
 
 
