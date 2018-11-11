@@ -64,7 +64,7 @@ loginFbButton.onclick = function(){
         fetch('https://kaledo-backend.herokuapp.com/api/users'+userFb['email'])
         .then(res => res.json())
         .then(data => objUser = data)
-        .then(() => console.log(obj))
+        .then(() => console.log(objUser))
        
 
         if(objUser === null || objUser === undefined){
@@ -132,10 +132,10 @@ function signInGoogle(){
 
      var objUser;
 
-    fetch('https://kaledo-backend.herokuapp.com/api/users'+userFb['email'])
+    fetch('https://kaledo-backend.herokuapp.com/api/users'+userGoogle['email'])
       .then(res => res.json())
       .then(data => objUser = data)
-      .then(() => console.log(obj))
+      .then(() => console.log(objUser))
     
 
     if(objUser === null || objUser === undefined){
