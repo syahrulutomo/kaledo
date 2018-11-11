@@ -130,7 +130,7 @@ function signInGoogle(){
 
     fetch('https://kaledo-backend.herokuapp.com/api/users/'+userGoogle['email'])
       .then(res => res.json())
-      .then(data => objUser = data; return objUser)
+      .then(data => objUser = data)
       .then(function(objUser){
         if(objUser === null){
           axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
