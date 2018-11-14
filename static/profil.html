@@ -68,6 +68,8 @@
 		<h3 class="profil-name"></h3><a id="logout"><img id="logout-icon" src="../assets/shutdown.png">Logout</a>
 	</section>
 
+
+
 	<ul class="profil-menu-list">
 		<a 	v-for="tab in tabs" 
 		 	v-bind:key="tab"
@@ -78,6 +80,8 @@
 
 	</ul>
 
+	<img class="loader" src="../assets/Spinner-1s-200px.gif">	
+
 	 <keep-alive>
 	    <component
 	      v-bind:is="currentTabComponent"
@@ -85,6 +89,7 @@
 	    ></component>
   	 </keep-alive>
 	 	
+
  </main>
 
  <!-- Footer -->

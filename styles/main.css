@@ -54,6 +54,7 @@ header{
 
 .profil-img{
 	width: 30px;
+	height: 30px;
 	position: absolute;
     right: 65px;
     top: 17px;
@@ -1010,6 +1011,7 @@ input.checkbox:checked + label:before {
 .profil-pic{
 	display: block;
 	width: 4.5em;
+	height: 4.5em;
 	margin-top: 0.7em;
 	margin-right: auto;
 	margin-left: auto;
@@ -1128,10 +1130,18 @@ input.checkbox:checked + label:before {
 }
 
 .account-form input{
-	width: 17em;
-	height: 1.5em;
+	width: 15em;
 	font-family: 'Lato',sans-serif;
 	font-size: 1em;
+	padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 
@@ -1144,42 +1154,6 @@ label.label-file{
   	text-align: right;
 
 }
-
-/* Hide the file input using
-opacity */
-[type=file] {
-    position: absolute;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    display: none;
-}
-input,
-[type=file] + label {
-  border: 1px solid #CCC;
-  border-radius: 3px;
-  text-align: left;
-  padding: .35em 0.2em;
-  width: 7em;
-  line-height: 1.2;
-  margin: 0;
-}
-
-[type=file] + label {
-  text-align: center;
-  left: 7.35em;
-  top: 0em;
-  /* Decorative */
-  background: #BD3D3A;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-[type=file] + label:hover {
-  background: white;
-  color: #1a1a1a;
-  border: 1px solid #BD3D3A;
-}
-
 
 #upload-button{
   box-sizing: border-box;
@@ -1380,4 +1354,12 @@ input,
 	.personal-howto, #add-personal-howto{
     	width: calc((100% - 2em)/3);
 	}
+}
+
+.loader{
+	position: fixed;
+    width: 7em;
+    top: 5em;
+    left: 7em;
+    display: none;
 }
