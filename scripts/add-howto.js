@@ -34,13 +34,15 @@ new Vue({
 						var articles = document.querySelector('.articles').value.split("\n");
 						console.log(articles);
 
-						for(let i = 0; i < articles.length; i ++){
+						articles.forEach(function(item){
 							axios.post('https://kaledo-backend.herokuapp.com/api/article/howto/'+id,{
-								article: articles[i]
+								article: item
 							}).then(function(response){
 								console.log(response);
 							})
-						}
+						})
+							
+						
 
 						if(document.querySelector('.howto-photo').value !== ''  || document.querySelector('.howto-photo').files[0] !== undefined){
 
