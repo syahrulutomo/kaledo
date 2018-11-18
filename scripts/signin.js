@@ -66,7 +66,7 @@ loginFbButton.onclick = function(){
         .then(data => objUser = data)
         .then(function(objUser){
           console.log(objUser);
-          if(objUser['email'] === null){
+          if(objUser === null){
             axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
               email: userFb['email'],
               firstName: userFb['firstName'],
@@ -134,7 +134,7 @@ function signInGoogle(){
       .then(data => objUser = data)
       .then(function(objUser){
         console.log(objUser);
-        if(objUser['email'] === null){
+        if(objUser === null){
           axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
             email: userGoogle['email'],
             firstName: userGoogle['firstName'],
