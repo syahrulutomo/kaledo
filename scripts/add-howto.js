@@ -114,7 +114,7 @@ new Vue({
 							        })
 									.then(function(){
 										
-										// document.location.reload(true);
+										document.location.reload(true);
 										
 									});
 
@@ -124,7 +124,7 @@ new Vue({
 
 								}else{
 										
-									// document.location.reload(true);
+									document.location.reload(true);
 								}
 								
 					})
