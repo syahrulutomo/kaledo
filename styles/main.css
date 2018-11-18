@@ -5,7 +5,7 @@
 	padding: 0;
 }
 
-div, section, article, header, footer{
+main, div, section, article, header, footer{
 	box-sizing: border-box;
 } 
 
@@ -203,7 +203,7 @@ main{
 }
 
 .round-thumbnail img{
-	max-height: 15vh;
+	max-height: 4.725em;
 	width: 4.725em;
 	border-radius: 50%;
 	margin-left: auto;
@@ -1218,6 +1218,7 @@ label.label-file{
 #add-personal-recipe{
 	background-color: #e6f2ff;
 	border: none;
+	cursor: pointer;
 }
 
 #add-personal-recipe img{
@@ -1297,6 +1298,7 @@ label.label-file{
 #add-personal-howto{
 	background-color: #e6f2ff;
 	border: none;
+	cursor: pointer;
 }
 
 #add-personal-howto img{
@@ -1358,8 +1360,116 @@ label.label-file{
 
 .loader{
 	position: fixed;
+	top: 40%;
+	left: 32.5%;
     width: 7em;
-    top: 5em;
-    left: 7em;
+    height: 7em;
     display: none;
+}
+
+
+@media screen and (min-width: 500px){
+	.loader{
+		left: 37%;
+	}
+}
+
+@media screen and (min-width: 700px){
+	.loader{
+		left: 42%;
+	}
+}
+
+@media screen and (min-width: 1000px){
+	.loader{
+		left: 45%;
+	}
+}
+
+#add-recipe-container{
+	width: 100%;
+	padding: 2em 1.5em;
+}
+
+#add-howto-container{
+	width: 100%;
+	min-height: 72.5vh;
+	padding: 2em 1.5em;
+}
+
+.add-data-form{
+	width: 100%;
+	padding: .5em 0;
+	font-family: 'Open Sans',sans-serif;
+}
+
+.add-data-inputbox{
+	display: block;
+    width: 90%;
+    margin-top: .25em;
+    padding: .2em .4em;
+    font-size: 1rem;
+    line-height: 1.5; 
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+ #submit-recipe, #submit-howto{
+ 	box-sizing: border-box;
+ 	font-size: 1em;
+  	padding: .7em 1.2em;
+  	background-color: MediumSeaGreen;
+  	color: white;
+  	border: none;
+  	cursor: pointer;
+  	margin-top: 1em;
+  	margin-bottom: 1em;
+  	margin-left: auto;
+  	margin-right: auto;
+  	border-radius: 3px;
+  	border: none;
+}
+
+#select-category{
+	width: 40%;
+}
+
+.sub-category{
+	width: 40%;
+}
+
+.recipe-photo{
+	width: 80%;
+}
+
+.howto-photo{
+	width: 80%;
+}
+
+@media screen and (min-width: 400px){
+	.recipe-photo, .howto-photo{
+		width: 40%;
+	}
+}
+
+@media screen and (min-width: 900px){
+	.recipe-photo, .howto-photo{
+		width: 30%;
+	}
+}
+
+.cook-time{
+	width: 40%;
+}
+
+@media screen and (min-width: 700px){
+	#add-recipe-container{
+		width: 80%;
+		margin-right: auto;
+		margin-left: auto;
+	}
 }

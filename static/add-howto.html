@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs -->
+ <meta charset="utf-8">
+ <meta name="author" content="digifiend">
+ <meta name="description" content="Inspiring Worldwide Tasty Recipes">
+ <title>Kaledo | Inspiring Worldwide Tasty Recipes </title>
+
+ <!-- Mobile Specific Metas -->
+ <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+ <!-- Fonts -->
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:600|Righteous|Roboto:500" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato|PT+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	
+ <!-- CSS -->
+ <link rel="stylesheet" href="../styles/main.css">
+
+ <!-- JS  -->
+ <script defer src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+ <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ <script defer src="../scripts/core.js"></script>
+ <script defer src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
+ <script defer src="../scripts/add-howto.js"></script>
+ 
+ <!-- Favicon  -->
+ <link rel="shortcut icon" href="../assets/kaledo.ico" type="image/x-icon">
+
+</head>
+<body>
+
+ <!-- Navigation Menu After Burger Icon Clicked -->
+ <div class="navbar-expanded">
+ 	<ul class="menu-expanded">
+		<li><a href="recipes.html">Recipes</a></li>
+		<li><a href="how-to.html">How To</a></li>
+	</ul>			
+ </div>
+
+ <!-- Page Header -->
+ <header class="header">
+ 	<a class="logo" href="../index.html"><h1>Kaledo</h1></a>
+	<nav class="navbar">
+		<ul class="menu">
+			<li><a href="recipes.html">Recipes</a></li>
+			<li><a href="how-to.html">How To</a></li>
+		</ul>			
+	</nav>
+
+		<a v-if="email !== null && email !== ''" id="profil-link-index" href="profil.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
+		
+		<a v-else-if="email === null || email === ''" id="profil-link-index" href="signin.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
+
+	<a class="burger"><img src="../assets/menu.svg"></a>
+ </header>
+
+ <img class="loader" src="../assets/Spinner-1s-200px.gif">
+
+ <main>
+
+ 	<section  id="add-howto-container">
+	 	<div class="add-data-form">
+	 		<p class="add-data-title">Title</p>
+	 		<input v-model="title" class="add-data-inputbox howto-title">
+	 	</div>
+
+	 	<div class="add-data-form">
+	 		<p class="add-data-title">Articles</p>
+	 		<textarea  class="add-data-inputbox articles" cols="20" rows="6" placeholder="Every new paragraph is separated by a line space"></textarea>
+	 	</div>
+	 	
+	 	<div class="add-data-form">
+	 		<p class="add-data-title">Thumbnail</p>
+	 		<input class="add-data-inputbox howto-photo" type="file">
+	 	</div>
+
+	 	<button v-on:click="saveHowto" id="submit-howto">Save</button>
+ 	</section>
+
+ 	
+ </main>
+
+ <!-- Footer -->
+ <footer>
+	<h1 class="logo-footer">Kaledo</h1>
+	<ul class="list-footer">
+		<li><a class="list-footer-item" href="faq.html">FAQ</a></li>
+		<li><a class="list-footer-item" href="contact-us.html">Contact Us</a></li>
+	</ul>
+	<p class="copyright">&copy; Copyright 2018 Kaledo. All rights reserved</p>
+ </footer>
+
+<!-- End of the Document -->
+
+</body>
+</html>

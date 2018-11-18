@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 	logoutButton.onclick = logout;
 
+	// document.querySelector('#add-personal-howto').addEventListener('click',function(){ window.location = 'add-howto.html' });
+	// document.querySelector('#add-personal-recipe').addEventListener('click',function(){ window.location = 'add-recipe.html' });
+	
+
 	function logout(){
 		localStorage.clear();
 		logoutButton.href = 'signin.html';
@@ -241,7 +245,7 @@ Vue.component('tab-recipes', {
   },
 	template: `
 	<section id="personal-recipe-wrapper">
-		<div id="add-personal-recipe">
+		<div v-on:click="addRecipe" id="add-personal-recipe">
 			<img src="../assets/add-icons.png" alt="add recipe button">
 		</div>
 		<article class="personal-recipe">
@@ -300,8 +304,15 @@ Vue.component('tab-recipes', {
 		</article>
 	</section>
   	
-  `
+  `,
+  	methods:{
+  		addRecipe: function(){
+  			window.location = 'add-recipe.html'
+  		}
+  	}
 })
+
+
 
 Vue.component('tab-howto', { 
   data: function () {
@@ -313,7 +324,7 @@ Vue.component('tab-howto', {
   },
 	template: `
 	<section id="personal-howto-wrapper">
-		<div id="add-personal-howto">
+		<div v-on:click="addHowto" id="add-personal-howto">
 			<img src="../assets/add-icons.png" alt="add howto button">
 		</div>
 		<article class="personal-howto">
@@ -372,7 +383,12 @@ Vue.component('tab-howto', {
 		</article>
 	</section>
   	
-  `
+  `,
+  	methods:{
+  		addHowto: function(){
+  			window.location = 'add-howto.html'
+  		}
+  	}
 })
 
 
