@@ -234,13 +234,7 @@ Vue.component('tab-account',{
 Vue.component('tab-recipes', { 
   data: function () {
   	return {
-      title: "",
-      description: "",
-      subCategory: "",
-      directions: [],
-      ingredients: [],
-      photos: "",
-      time: ""
+     recipes: []
     }
   },
 	template: `
@@ -248,13 +242,13 @@ Vue.component('tab-recipes', {
 		<div v-on:click="addRecipe" id="add-personal-recipe">
 			<img src="../assets/add-icons.png" alt="add recipe button">
 		</div>
-		<article class="personal-recipe">
+		<article v-for="recipe in recipes" class="personal-recipe">
 			<div class="personal-recipe-left">
-				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
+				<img class="personal-recipe-thumbnail" v-bind:src="recipe.photo" src="../assets/grey.jpg" alt="">
 			</div>
 			<div class="personal-recipe-right">
-				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa</h3></a>
-				<p class="personal-recipe-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+				<h3 class="personal-recipe-title">{{ recipe.title }}</h3>
+				<p class="personal-recipe-summary">{{ recipe.description }}</p>
 		    </div> 
 		</article>
 		<article class="personal-recipe">

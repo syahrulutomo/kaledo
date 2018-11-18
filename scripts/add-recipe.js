@@ -74,17 +74,29 @@ new Vue({
 						var ingredient = document.querySelector('.recipe-ingredients').value.split("\n");
 						var direction = document.querySelector('.recipe-directions').value.split("\n");
 
-						ingredient.forEach(function(item){
-							axios.post('https://kaledo-backend.herokuapp.com/api/ingredient/recipe'+id,{
-								ingredient: item
-							})
-						});
+						async function postIngredients(array){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/ingredient/recipe'+id,{
+									article: array[i]
+								})
+							}
 
-						direction.forEach(function(item){
-							axios.post('https://kaledo-backend.herokuapp.com/api/direction/recipe'+id,{
-								direction: item
-							})
-						});
+							console.log('post article done!');
+						}
+
+						async function postDirections(array){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/direction/recipe'+id,{
+									article: array[i]
+								})
+							}
+
+							console.log('post article done!');
+						}
+
+						postIngredients(ingredient);
+						
+						postDirections(direction);
 
 						if(document.querySelector('.recipe-photo').value !== ''  || document.querySelector('.recipe-photo').files[0] !== undefined){
 

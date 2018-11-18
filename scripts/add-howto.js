@@ -34,15 +34,17 @@ new Vue({
 						var articles = document.querySelector('.articles').value.split("\n");
 						console.log(articles);
 
-						articles.forEach(function(item){
-							axios.post('https://kaledo-backend.herokuapp.com/api/article/howto/'+id,{
-								article: item
-							}).then(function(response){
-								console.log(response);
-							})
-						})
+						async function postArticle(array){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/article/howto/'+id,{
+									article: array[i]
+								})
+							}
+
+							console.log('post article done!');
+						}
 							
-						
+						postArticle(articles);
 
 						if(document.querySelector('.howto-photo').value !== ''  || document.querySelector('.howto-photo').files[0] !== undefined){
 
