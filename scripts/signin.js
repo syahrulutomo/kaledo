@@ -59,7 +59,7 @@ loginFbButton.onclick = function(){
         localStorage.setItem('lastName',userFb['lastName']);
         
 
-        var objUser;
+        var objUser = new Object();
 
         fetch('https://kaledo-backend.herokuapp.com/api/users/'+userFb['email'])
         .then(res => res.json())
@@ -127,7 +127,7 @@ function signInGoogle(){
     localStorage.setItem('firstName',userGoogle['firstName']);
     localStorage.setItem('lastName',userGoogle['lastName']);
 
-     var objUser;
+     var objUser = new Object();
 
     fetch('https://kaledo-backend.herokuapp.com/api/users/'+userGoogle['email'])
       .then(res => res.json())
