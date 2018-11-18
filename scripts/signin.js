@@ -73,19 +73,24 @@ loginFbButton.onclick = function(){
               lastName: userFb['lastName'],
               profilPicture: userFb['profilPicture']   
             })
-            .then(response => {})
+            .then(function(response){
+              console.log(response);
+              if(response.status === 201){
+                window.location = 'profil.html';
+              }
+            })
             .catch(e => {
               console.log(e)
             })
 
-            // window.location = 'profil.html';
+            
           }else{
             
             localStorage.setItem('firstName',objUser['firstName']);
             localStorage.setItem('lastName',objUser['lastName']);
             localStorage.setItem('profilPicture',objUser['profilPicture']);
 
-            // window.location = 'profil.html';
+            window.location = 'profil.html';
 
           }
         });
@@ -141,12 +146,15 @@ function signInGoogle(){
             lastName: userGoogle['lastName'],
             profilPicture: userGoogle['profilPicture']   
           })
-          .then(response => {})
+          .then(function(response){
+              console.log(response);
+              if(response.status === 201){
+                window.location = 'profil.html';
+              }
+          })
           .catch(e => {
               console.log(e)
           })
-
-          window.location = 'profil.html';
 
         }else{
 
