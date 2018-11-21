@@ -232,70 +232,46 @@ Vue.component('tab-account',{
 })
 
 Vue.component('tab-recipes', { 
+  
   data: function () {
-  	return {
+  	return {	
      recipes: []
     }
   },
-	template: `
+  
+  created: function(){
+
+  		if(fetch){
+					document.querySelector('.loader').style.display = "inline";
+		}
+
+  		var self = this;
+  		var email = localStorage.getItem('email');
+
+  		fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
+  		.then(function(response){
+  			return response.json();
+  		})
+  		.then(function(data){
+  			self.recipes = data['recipeList'];
+  		});
+  },
+
+  template: `
 	<section id="personal-recipe-wrapper">
 		<div v-on:click="addRecipe" id="add-personal-recipe">
 			<img src="../assets/add-icons.png" alt="add recipe button">
 		</div>
-		<article v-for="recipe in recipes" class="personal-recipe">
+		<article  v-for="recipe in recipes" class="personal-recipe">
 			<div class="personal-recipe-left">
-				<img class="personal-recipe-thumbnail" v-bind:src="recipe.photo" src="../assets/grey.jpg" alt="">
+				<img class="personal-recipe-thumbnail" v-if=" recipe.photos === null" src="../assets/grey.jpg" v-bind:alt="recipe.title">
+				<img class="personal-recipe-thumbnail" v-else-if=" recipe.photos !== null" v-bind:src="recipe.photos" v-bind:alt="recipe.title">
 			</div>
 			<div class="personal-recipe-right">
 				<h3 class="personal-recipe-title">{{ recipe.title }}</h3>
 				<p class="personal-recipe-summary">{{ recipe.description }}</p>
 		    </div> 
-		</article>
-		<article class="personal-recipe">
-			<div class="personal-recipe-left">
-				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-recipe-right">
-				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-recipe-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-		    </div> 
-		</article>
-		<article class="personal-recipe">
-			<div class="personal-recipe-left">
-				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-recipe-right">
-				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-recipe-summary">adasafasf</p>
-		    </div> 
-		</article>
-		<article class="personal-recipe">
-			<div class="personal-recipe-left">
-				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>		
-			<div class="personal-recipe-right">
-				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-recipe-summary">adasafasf</p>
-		    </div> 
-		</article>
-		<article class="personal-recipe">
-			<div class="personal-recipe-left">
-				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>			
-			<div class="personal-recipe-right">
-				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-recipe-summary">adasafasf</p>
-		    </div> 
-		</article>
-		<article class="personal-recipe">
-			<div class="personal-recipe-left">
-				<a class="personal-recipe-thumbnail-link" href=""><img class="personal-recipe-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>			
-			<div class="personal-recipe-right">
-				<a class="personal-recipe-link" href=""><h3 class="personal-recipe-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-recipe-summary">adasafasf</p>
-		    </div> 
-		</article>
+		</article> 	
 	</section>
   	
   `,
@@ -309,70 +285,40 @@ Vue.component('tab-recipes', {
 
 
 Vue.component('tab-howto', { 
+
   data: function () {
   	return {
-      title: "",
-      thumbnail: "",
-      articles: []
+      howtos: []
     }
   },
+
+  created: function(){
+
+  		var self = this;
+  		var email = localStorage.getItem('email');
+
+  		fetch('https://kaledo-backend.herokuapp.com/api/users/'+email)
+  		.then(function(response){
+  			return response.json();
+  		})
+  		.then(function(data){
+  			self.howtos = data['howtoList'];
+  		});
+  },
+
 	template: `
 	<section id="personal-howto-wrapper">
 		<div v-on:click="addHowto" id="add-personal-howto">
 			<img src="../assets/add-icons.png" alt="add howto button">
 		</div>
-		<article class="personal-howto">
+		<article v-for="howto in howtos" class="personal-howto">
 			<div class="personal-howto-left">
-				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
+				<img class="personal-howto-thumbnail" v-if="howto.thumbnail === null" src="../assets/grey.jpg" v-bind:alt="howto.title">
+				<img class="personal-howto-thumbnail" v-if="howto.thumbnail !== null" v-bind:src="howto.thumbnail" v-bind:alt="howto.title">
 			</div>
 			<div class="personal-howto-right">
-				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa</h3></a>
-				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-		    </div> 
-		</article>
-		<article class="personal-howto">
-			<div class="personal-howto-left">
-				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-howto-right">
-				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-		    </div> 
-		</article>
-		<article class="personal-howto">
-			<div class="personal-howto-left">
-				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-howto-right">
-				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa</h3></a>
-				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-		    </div> 
-		</article>
-		<article class="personal-howto">
-			<div class="personal-howto-left">
-				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-howto-right">
-				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-		    </div> 
-		</article>
-		<article class="personal-howto">
-			<div class="personal-howto-left">
-				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-howto-right">
-				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa</h3></a>
-				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-		    </div> 
-		</article>
-		<article class="personal-howto">
-			<div class="personal-howto-left">
-				<a class="personal-howto-thumbnail-link" href=""><img class="personal-howto-thumbnail" src="../assets/grey.jpg" alt=""></a>
-			</div>
-			<div class="personal-howto-right">
-				<a class="personal-howto-link" href=""><h3 class="personal-howto-title">Gastropub distillery Marfa farm-to-table</h3></a>
-				<p class="personal-howto-summary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+				<h3 class="personal-howto-title">{{ howto.title }}</h3>
+				<p class="personal-howto-summary">{{ howto.articleList[0]['article'] }}</p>
 		    </div> 
 		</article>
 	</section>

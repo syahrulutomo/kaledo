@@ -249,7 +249,7 @@ main{
 .recent-thumb{
 	max-height: 30vh;
 	width: 100%;
-	border-radius: 5%;
+	border-radius: .5em;
 }
 
 .recent-data{
@@ -417,7 +417,7 @@ footer{
 	}
 
 	.recent-thumb{
-		border-radius: 7%;
+		border-radius: .5em;
 		max-height: 40vh;
 	}
 
@@ -459,7 +459,7 @@ footer{
 .recipe-thumb{
 	width: 100%;
 	max-height: 32vh;
-	border-radius: 5%;
+	border-radius: .5em;
 }
 
 .recipe-desc{
@@ -1233,6 +1233,7 @@ label.label-file{
 
 .personal-recipe-thumbnail{
 	width: 100%;
+	height: 55vh;
 }
 
 .personal-recipe-right{
@@ -1253,8 +1254,11 @@ label.label-file{
 .personal-recipe-summary{
 	font-family: 'PT Sans',sans-serif;
 	font-size: 1em;
-	margin-bottom: .5em;
 	text-align: justify;
+	line-height: 1.3em;
+	max-height: 3.9em;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -1313,6 +1317,7 @@ label.label-file{
 
 .personal-howto-thumbnail{
 	width: 100%;
+	height: 55vh;
 }
 
 .personal-howto-right{
@@ -1333,8 +1338,11 @@ label.label-file{
 .personal-howto-summary{
 	font-family: 'PT Sans',sans-serif;
 	font-size: 1em;
-	margin-bottom: .5em;
 	text-align: justify;
+	line-height: 1.3em;
+	max-height: 3.9em;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and (min-width: 550px){
