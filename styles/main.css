@@ -977,7 +977,7 @@ input.checkbox:checked + label:before {
 }
 
 .footer-login{
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	width: 100%;
@@ -1121,8 +1121,9 @@ input.checkbox:checked + label:before {
 	padding: 2em 0;
 }
 
-#profil-picture{
-	width: 100px;
+#profil-picture, #edit-recipe-photo{
+	width: 8em;
+	height: 8em;
 }
 
 .account-form{
@@ -1213,12 +1214,12 @@ label.label-file{
 	border: solid 1px #e6e6e6;
 	padding: .5em;
 	margin-bottom: 1.5em;
+	cursor: pointer;
 }
 
 #add-personal-recipe{
 	background-color: #e6f2ff;
 	border: none;
-	cursor: pointer;
 }
 
 #add-personal-recipe img{
@@ -1297,6 +1298,7 @@ label.label-file{
 	border: solid 1px #e6e6e6;
 	padding: .5em;
 	margin-bottom: 1.5em;
+	cursor: pointer;
 }
 
 #add-personal-howto{
@@ -1368,7 +1370,7 @@ label.label-file{
 
 .loader{
 	position: fixed;
-	top: 40%;
+	top: 30%;
 	left: 32.5%;
     width: 7em;
     height: 7em;
@@ -1394,12 +1396,12 @@ label.label-file{
 	}
 }
 
-#add-recipe-container{
+#add-recipe-container, #edit-recipe-container{
 	width: 100%;
 	padding: 2em 1.5em;
 }
 
-#add-howto-container{
+#add-howto-container, #edit-howto-container{
 	width: 100%;
 	min-height: 72.5vh;
 	padding: 2em 1.5em;
@@ -1448,6 +1450,10 @@ label.label-file{
 
 .sub-category{
 	width: 40%;
+}
+
+#subCategory-box{
+	margin-top: 1.5em;
 }
 
 .recipe-photo{

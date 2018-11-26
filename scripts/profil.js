@@ -239,11 +239,10 @@ Vue.component('tab-recipes', {
     }
   },
   
-  created: function(){
+  mounted: function(){
 
-  		if(fetch){
-					document.querySelector('.loader').style.display = "inline";
-		}
+  		
+	
 
   		var self = this;
   		var email = localStorage.getItem('email');
@@ -262,12 +261,12 @@ Vue.component('tab-recipes', {
 		<div v-on:click="addRecipe" id="add-personal-recipe">
 			<img src="../assets/add-icons.png" alt="add recipe button">
 		</div>
-		<article  v-for="recipe in recipes" class="personal-recipe">
-			<div class="personal-recipe-left">
+		<article v-for="recipe in recipes" class="personal-recipe">
+			<div v-on:click="editRecipe($event)" class="personal-recipe-left" v-bind:data-id="recipe.id">
 				<img class="personal-recipe-thumbnail" v-if=" recipe.photos === null" src="../assets/grey.jpg" v-bind:alt="recipe.title">
 				<img class="personal-recipe-thumbnail" v-else-if=" recipe.photos !== null" v-bind:src="recipe.photos" v-bind:alt="recipe.title">
 			</div>
-			<div class="personal-recipe-right">
+			<div v-on:click="editRecipe($event)" class="personal-recipe-right" v-bind:data-id="recipe.id">
 				<h3 class="personal-recipe-title">{{ recipe.title }}</h3>
 				<p class="personal-recipe-summary">{{ recipe.description }}</p>
 		    </div> 
@@ -278,6 +277,13 @@ Vue.component('tab-recipes', {
   	methods:{
   		addRecipe: function(){
   			window.location = 'add-recipe.html'
+  		},editRecipe: function(){
+
+  			targetId = event.currentTarget.getAttribute('data-id');
+  			localStorage.setItem('idRecipe',targetId);
+            console.log(targetId);
+  			window.location = 'edit-recipe.html'
+  		
   		}
   	}
 })
@@ -311,12 +317,12 @@ Vue.component('tab-howto', {
 		<div v-on:click="addHowto" id="add-personal-howto">
 			<img src="../assets/add-icons.png" alt="add howto button">
 		</div>
-		<article v-for="howto in howtos" class="personal-howto">
-			<div class="personal-howto-left">
+		<article v-on:click="editHowto" v-for="howto in howtos" class="personal-howto">
+			<div class="personal-howto-left" v-bind:data-id="howto.id">
 				<img class="personal-howto-thumbnail" v-if="howto.thumbnail === null" src="../assets/grey.jpg" v-bind:alt="howto.title">
 				<img class="personal-howto-thumbnail" v-if="howto.thumbnail !== null" v-bind:src="howto.thumbnail" v-bind:alt="howto.title">
 			</div>
-			<div class="personal-howto-right">
+			<div class="personal-howto-right" v-bind:data-id="howto.id">
 				<h3 class="personal-howto-title">{{ howto.title }}</h3>
 				<p class="personal-howto-summary">{{ howto.articleList[0]['article'] }}</p>
 		    </div> 
@@ -327,6 +333,13 @@ Vue.component('tab-howto', {
   	methods:{
   		addHowto: function(){
   			window.location = 'add-howto.html'
+  		},
+  		editHowto: function(){
+  			
+  			var id_howto = document.querySelector('.personal-howto-left').getAttribute('data-id');
+  			console.log(id_howto);
+  			// window.location = 'edit-howto.html';
+
   		}
   	}
 })

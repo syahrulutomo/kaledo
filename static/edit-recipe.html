@@ -26,7 +26,7 @@
  <script defer src="../scripts/core.js"></script>
  <script defer src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 
- <script defer src="../scripts/add-recipe.js"></script>
+ <script defer src="../scripts/edit-recipe.js"></script>
  
  <!-- Favicon  -->
  <link rel="shortcut icon" href="../assets/kaledo.ico" type="image/x-icon">
@@ -63,7 +63,7 @@
 
  <main>
 
- 	<section  id="add-recipe-container">
+ 	<section  id="edit-recipe-container">
 	 	<div class="add-data-form">
 	 		<p class="add-data-title">Title</p>
 	 		<input v-model="title" class="add-data-inputbox recipe-title">
@@ -76,12 +76,12 @@
 
 	 	<div class="add-data-form">
 	 		<p class="add-data-title">Ingredients</p>
-	 		<textarea  class="add-data-inputbox recipe-ingredients" cols="20" rows="6" placeholder="put each ingredient on its own line"></textarea>
+	 		<textarea v-model='ingredients' class="add-data-inputbox recipe-ingredients" cols="20" rows="6" placeholder="put each ingredient on its own line"></textarea>
 	 	</div>
 	 	
 	 	<div class="add-data-form">
 	 		<p class="add-data-title">Directions</p>
-	 		<textarea  class="add-data-inputbox recipe-directions" cols="20" rows="6" placeholder="put each step on its own line"></textarea>
+	 		<textarea v-model='directions' class="add-data-inputbox recipe-directions" cols="20" rows="6" placeholder="put each step on its own line"></textarea>
 	 	</div>
 
 	 	<div class="add-data-form">
@@ -169,6 +169,8 @@
 
 	 	<div class="add-data-form">
 	 		<p class="add-data-title">Photo</p>
+	 		<img v-if="this.photos !== null" v-bind:src="this.photos" id="edit-recipe-photo">
+	 		<img v-if="this.photos === null" src="../assets/grey.jpg" id="edit-recipe-photo">
 	 		<input class="add-data-inputbox recipe-photo" type="file">
 	 	</div>
 

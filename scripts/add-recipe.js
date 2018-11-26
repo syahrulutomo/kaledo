@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			option.setAttribute('data-id',item['id']);
 
 			selectCategory.appendChild(option);
-		});		
+		});
+
 	});
 
 })
@@ -28,17 +29,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 new Vue({
 	el: '#add-recipe-container',
+
+	mounted: function(){
+		var self = this;
+
+		fetch('https://kaledo-backend.herokuapp.com/api/category')
+			.then(function(response){
+				return response.json();
+			})
+			.then(function(data){
+				self.appertizers = data['content'][0]['recipeList'];
+				self.mainCourses = data['content'][1]['recipeList'];
+				self.desserts = data['content'][2]['recipeList'];
+				self.drinks = data['content'][3]['recipeList'];	
+			})
+		
+	},
+
 	data:{
 		title: '',
 		description: '',
 		ingredients: '',
 		directions: '',
 		category: '',
-		subCategory: '',
+		subCategorySelect: '',
+		subCategoryInput: '',
 		photo: '',
-		time: ''
+		time: '',
+		appertizers: '',
+		mainCourses: '',
+		desserts: '',
+		drinks: ''
 
 	},
+
 	methods:{
 		saveRecipe: function(){
 
@@ -97,13 +121,36 @@ new Vue({
 						url: downloadURL
 					});
 					
-					var objRecipe1 = {
-									title: document.querySelector('.recipe-title').value,
-									description: document.querySelector('.recipe-description').value,
-									subCategory: document.querySelector('.sub-category').value,
-									time: document.querySelector('.cook-time').value,
-									photos: downloadURL
-							    };
+					var objRecipe1 = new Object();
+
+					if(document.querySelector('.sub-category').value !== 'Other')
+					{
+						objRecipe1	=	{	title: document.querySelector('.recipe-title').value,
+											description: document.querySelector('.recipe-description').value,
+											subCategory: document.querySelector('.sub-category').value,
+											time: document.querySelector('.cook-time').value,
+											photos: downloadURL
+							    		}
+
+					}else if(document.querySelector('.sub-category').value === 'Other'){
+
+						var subCategoryInput = document.querySelector('#subCategory-box').value.toLowerCase().split(' ');
+
+						for(var i = 0; i < subCategoryInput.length; i++ ){
+							subCategoryInput[i] =  subCategoryInput[i].charAt(0).toUpperCase() + subCategoryInput[i].substring(1);	 
+						}
+
+						subCategoryInput  = subCategoryInput.join(' '); 
+
+						objRecipe1	=	{	title: document.querySelector('.recipe-title').value,
+											description: document.querySelector('.recipe-description').value,
+											subCategory: subCategoryInput,
+											time: document.querySelector('.cook-time').value,
+											photos: downloadURL
+							    		}
+
+					}
+						
 
 					fetch('https://kaledo-backend.herokuapp.com/api/recipe/category'+idCategory+'/user'+email, {
 						method: 'POST',
@@ -145,7 +192,7 @@ new Vue({
 								if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 									localStorage.removeItem('directions');
 									localStorage.removeItem('ingredients');
-									window.location = 'add-recipe.html';
+									window.location = 'profil.html';
 								}		
 											
 							}
@@ -163,7 +210,7 @@ new Vue({
 								if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 									localStorage.removeItem('directions');
 									localStorage.removeItem('ingredients');
-									window.location = 'add-recipe.html';
+									window.location = 'profil.html';
 								}
 
 							}
@@ -188,12 +235,33 @@ new Vue({
 
 			} else {
 
-				var objRecipe = {
-								title: document.querySelector('.recipe-title').value,
-								description: document.querySelector('.recipe-description').value,
-								subCategory: document.querySelector('.sub-category').value,
-								time: document.querySelector('.cook-time').value
-							};		
+				var objRecipe = new Object();
+
+					if(document.querySelector('.sub-category').value !== 'Other')
+					{
+						objRecipe	=	{	title: document.querySelector('.recipe-title').value,
+											description: document.querySelector('.recipe-description').value,
+											subCategory: document.querySelector('.sub-category').value,
+											time: document.querySelector('.cook-time').value,
+										}
+
+					}else if(document.querySelector('.sub-category').value === 'Other'){
+
+						var subCategoryInput = document.querySelector('#subCategory-box').value.toLowerCase().split(' ');
+
+						for(var i = 0; i < subCategoryInput.length; i++ ){
+							subCategoryInput[i] =  subCategoryInput[i].charAt(0).toUpperCase() + subCategoryInput[i].substring(1);	 
+						}
+
+						subCategoryInput  = subCategoryInput.join(' ');
+
+						objRecipe	=	{	title: document.querySelector('.recipe-title').value,
+											description: document.querySelector('.recipe-description').value,
+											subCategory: subCategoryInput,
+											time: document.querySelector('.cook-time').value,
+							    		}
+
+					}		
 
 					fetch('https://kaledo-backend.herokuapp.com/api/recipe/category'+idCategory+'/user'+email, {
 						method: 'POST',
@@ -234,7 +302,7 @@ new Vue({
 									if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 										localStorage.removeItem('directions');
 									localStorage.removeItem('ingredients');
-										window.location = 'add-recipe.html';
+										window.location = 'profil.html';
 									}
 							}
 
@@ -251,7 +319,7 @@ new Vue({
 									if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 										localStorage.removeItem('directions');
 										localStorage.removeItem('ingredients');
-										window.location = 'add-recipe.html';
+										window.location = 'profil.html';
 									}
 							}
 
@@ -265,6 +333,7 @@ new Vue({
 			}
 			
 		} // end of saveRecipe
+		
 	} //end of methods
 }) //end of vue instance
 
