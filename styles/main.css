@@ -848,6 +848,7 @@ input.checkbox:checked + label:before {
 
 .login-container{
 	padding: 1em;
+	margin-bottom: 1.5em;
 }
 
 .login-form-container{
@@ -977,7 +978,7 @@ input.checkbox:checked + label:before {
 }
 
 .footer-login{
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	left: 0;
 	width: 100%;
