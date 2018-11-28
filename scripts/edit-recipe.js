@@ -136,6 +136,10 @@ new Vue({
 
 		saveRecipe: function(){
 
+			if(fetch){
+				document.querySelector('.loader').style.display = "inline";
+			}
+
 			let self = this;
 
 			var idRecipe = localStorage.getItem('idRecipe');

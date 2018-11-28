@@ -277,9 +277,10 @@ Vue.component('tab-recipes', {
   		addRecipe: function(){
   			window.location = 'add-recipe.html'
   		},editRecipe: function(){
-
   			targetId = event.currentTarget.getAttribute('data-id');
+  			targetThumnail = event.currentTarget.photos;
   			localStorage.setItem('idRecipe',targetId);
+  			localStorage.setItem('recipeThumbnail',recipe.photos);
   			window.location = 'edit-recipe.html'
   		
   		}
