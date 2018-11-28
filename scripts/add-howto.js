@@ -85,19 +85,16 @@ new Vue({
 								fetch('https://kaledo-backend.herokuapp.com/api/howto/title'+title+'/user'+email)
 								.then(function(responseID){
 								
-									console.log(responseID);
 									return responseID.json();
 								
 								}).then(function(data){
 									
-									console.log(data);
 									return data.id;
 
 								}).then(function(id){
 
 									var articles = document.querySelector('.articles').value.split("\n");
-									console.log(articles);
-
+									
 									async function postArticle(array){
 										for (var i = 0 ; i < array.length; i++){
 											await axios.post('https://kaledo-backend.herokuapp.com/api/article/howto/'+id,{
@@ -106,7 +103,6 @@ new Vue({
 										}
 
 										localStorage.setItem('articles','done');
-										console.log('post article done!');
 									
 										if(localStorage.getItem('articles') == 'done'){
 									
@@ -149,19 +145,16 @@ new Vue({
 					fetch('https://kaledo-backend.herokuapp.com/api/howto/title'+title+'/user'+email)
 					.then(function(responseID){
 								
-						console.log(responseID);
 						return responseID.json();
 								
 					}).then(function(data){
 									
-						console.log(data);
 						return data.id;
 
 					}).then(function(id){
 
 						var articles = document.querySelector('.articles').value.split("\n");
-						console.log(articles);
-
+				
 						async function postArticle(array){
 							for (var i = 0 ; i < array.length; i++){
 								await axios.post('https://kaledo-backend.herokuapp.com/api/article/howto/'+id,{
@@ -170,7 +163,6 @@ new Vue({
 							}
 
 							localStorage.setItem('articles','done');
-							console.log('post article done!');
 						
 							if(localStorage.getItem('articles') == 'done'){
 						

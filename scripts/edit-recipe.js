@@ -61,7 +61,6 @@ new Vue({
 				self.desserts = data['content'][2]['recipeList'];
 				self.drinks = data['content'][3]['recipeList'];	
 
-				console.log(self.appertizer);
 			}).then(function(){
 
 				fetch("https://kaledo-backend.herokuapp.com/api/recipe/"+localStorage.getItem('idRecipe'))
@@ -71,8 +70,6 @@ new Vue({
 				
 				}).then(function(data){ 
 					
-					console.log(data);
-
 					self.title = data.title;
 					self.description = data.description;
 
@@ -101,7 +98,6 @@ new Vue({
 						return response.json();
 					})
 					.then(function(data){
-						console.log(data);
 
 						var idRecipe =  localStorage.getItem('idRecipe');
 						var content = data['content'];
@@ -120,7 +116,6 @@ new Vue({
 
 						})
 
-						console.log(category);
 						self.category = category;
 					
 					})
@@ -140,6 +135,8 @@ new Vue({
 	,methods: {
 
 		saveRecipe: function(){
+
+			let self = this;
 
 			var idRecipe = localStorage.getItem('idRecipe');
 			var email = localStorage.getItem('email');
@@ -224,7 +221,7 @@ new Vue({
 					}
 						
 
-					fetch('https://kaledo-backend.herokuapp.com/api/recipe/'+idRecipe, {
+					fetch('https://kaledo-backend.herokuapp.com/api/recipe'+idRecipe+'/category'+idCategory+'/user'+email, {
 						method: 'PUT',
 						headers: {
 									"Content-Type": "application/json; charset=utf-8",
@@ -232,63 +229,76 @@ new Vue({
 						body: JSON.stringify(objRecipe1)
 											
 					}).then(function(){
-						console.log(self.idDirections);
-						console.log(self.idIngredients);
 
-							async function putIngredients(array,idIngredients,idRecipe){
-								
-									for (var i = 0 ; i < array.length; i++){
-										await axios.delete('https://kaledo-backend.herokuapp.com/api/ingredient/'+idIngredients[i])
-									}
-
-									for (var i = 0 ; i < array.length; i++){
-											await axios.post('https://kaledo-backend.herokuapp.com/api/ingredient/'+idRecipe,{
-												ingredient: array[i]
-											})
-										}
-														
-									localStorage.setItem('ingredients','done');
-									console.log('put ingredients done!');	
-
-									if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
-										localStorage.removeItem('directions');
-										localStorage.removeItem('ingredients');
-										window.location = 'profil.html';
-									}																		
+						async function postIngredients(array,idRecipe){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/ingredient/recipe'+idRecipe,{
+									ingredient: array[i]
+								})
 							}
 
-							var ingredient = document.querySelector('.recipe-ingredients').value.split("\n");
-							putIngredients(ingredient,self.idIngredients,idRecipe);
+							localStorage.setItem('ingredients','done');
+
+							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
+								localStorage.removeItem('directions');
+								localStorage.removeItem('ingredients');
+								window.location = 'profil.html';
+							}
+						}
+
+						function deleteIngredients(idIngredients){
+					
+							axios.delete('https://kaledo-backend.herokuapp.com/api/ingredient/'+idIngredients)
+																																
+						}
+
+						var ingredient = document.querySelector('.recipe-ingredients').value.split("\n");
+						var idRecipe = localStorage.getItem('idRecipe');
 						
-							async function putDirections(array,idDirections,idRecipe){
+						var idIngredients = self.idIngredients;
 
-								var idDirections =  self.idDirections;
-								var idRecipe = localStorage.getItem('idRecipe');
+						idIngredients.forEach(function(item){
 
-									for (var i = 0 ; i < array.length; i++){
-										await axios.delete('https://kaledo-backend.herokuapp.com/api/direction/'+idDirections[i])
-									}
+							deleteIngredients(item);
 
-									for (var i = 0 ; i < array.length; i++){
-										await axios.post('https://kaledo-backend.herokuapp.com/api/direction/'+idRecipe,{
-											direction: array[i]
-										})
-									}
+						});
 
-									localStorage.setItem('directions','done');
-									console.log('put directions done!');
-
-									if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
-										localStorage.removeItem('directions');
-										localStorage.removeItem('ingredients');
-										window.location = 'profil.html';
-									}
+						postIngredients(ingredient,idRecipe);
+						
+						async function postDirections(array,idRecipe){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/direction/recipe'+idRecipe,{
+									direction: array[i]
+								})
 							}
 
-							var direction = document.querySelector('.recipe-directions').value.split("\n");
-							putDirections(direction,idDirections,idRecipe);
+							localStorage.setItem('directions','done');
+						
+							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
+								localStorage.removeItem('directions');
+								localStorage.removeItem('ingredients');
+								window.location = 'profil.html';
+							}
+						}
+						
+						function deleteDirections(idDirections){
 
+							axios.delete('https://kaledo-backend.herokuapp.com/api/direction/'+idDirections)
+									
+						}
 
+						var direction = document.querySelector('.recipe-directions').value.split("\n");
+						var idRecipe = localStorage.getItem('idRecipe');
+						
+						var idDirections = self.idDirections;
+
+						idDirections.forEach(function(item){
+
+							deleteDirections(item);
+
+						});
+
+						postDirections(direction, idRecipe);
 					});
 
 						
@@ -302,6 +312,115 @@ new Vue({
 
 
 			} else {
+
+					var objRecipe1 = new Object();
+
+					if(document.querySelector('.sub-category').value !== 'Other')
+					{
+						objRecipe1	=	{	title: document.querySelector('.recipe-title').value,
+											description: document.querySelector('.recipe-description').value,
+											subCategory: document.querySelector('.sub-category').value,
+											time: document.querySelector('.cook-time').value,
+							    		}
+
+					}else if(document.querySelector('.sub-category').value === 'Other'){
+
+						var subCategoryInput = document.querySelector('#subCategory-box').value.toLowerCase().split(' ');
+
+						for(var i = 0; i < subCategoryInput.length; i++ ){
+							subCategoryInput[i] =  subCategoryInput[i].charAt(0).toUpperCase() + subCategoryInput[i].substring(1);	 
+						}
+
+						subCategoryInput  = subCategoryInput.join(' '); 
+
+						objRecipe1	=	{	title: document.querySelector('.recipe-title').value,
+											description: document.querySelector('.recipe-description').value,
+											subCategory: subCategoryInput,
+											time: document.querySelector('.cook-time').value
+							    		}
+
+					}
+						
+
+					fetch('https://kaledo-backend.herokuapp.com/api/recipe'+idRecipe+'/category'+idCategory+'/user'+email, {
+						method: 'PUT',
+						headers: {
+									"Content-Type": "application/json; charset=utf-8",
+								 },	
+						body: JSON.stringify(objRecipe1)
+											
+					}).then(function(){
+
+						async function postIngredients(array,idRecipe){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/ingredient/recipe'+idRecipe,{
+									ingredient: array[i]
+								})
+							}
+
+							localStorage.setItem('ingredients','done');
+					
+							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
+								localStorage.removeItem('directions');
+								localStorage.removeItem('ingredients');
+								window.location = 'profil.html';
+							}
+						}
+
+						function deleteIngredients(idIngredients){
+					
+							axios.delete('https://kaledo-backend.herokuapp.com/api/ingredient/'+idIngredients)
+																																
+						}
+
+						var ingredient = document.querySelector('.recipe-ingredients').value.split("\n");
+						var idRecipe = localStorage.getItem('idRecipe');
+						
+						var idIngredients = self.idIngredients;
+
+						idIngredients.forEach(function(item){
+
+							deleteIngredients(item);
+
+						});
+
+						postIngredients(ingredient,idRecipe);
+						
+						async function postDirections(array,idRecipe){
+							for (var i = 0 ; i < array.length; i++){
+								await axios.post('https://kaledo-backend.herokuapp.com/api/direction/recipe'+idRecipe,{
+									direction: array[i]
+								})
+							}
+
+							localStorage.setItem('directions','done');
+						
+							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
+								localStorage.removeItem('directions');
+								localStorage.removeItem('ingredients');
+								window.location = 'profil.html';
+							}
+						}
+						
+						function deleteDirections(idDirections){
+
+							axios.delete('https://kaledo-backend.herokuapp.com/api/direction/'+idDirections)
+									
+						}
+
+						var direction = document.querySelector('.recipe-directions').value.split("\n");
+						var idRecipe = localStorage.getItem('idRecipe');
+						
+						var idDirections = self.idDirections;
+
+						idDirections.forEach(function(item){
+
+							deleteDirections(item);
+
+						});
+
+						postDirections(direction, idRecipe);
+					});
 
 
 

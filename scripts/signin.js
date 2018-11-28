@@ -39,7 +39,6 @@ loginFbButton.onclick = function(){
   FB.login(function(response) {
     if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
-     console.log(response);
      FB.api('/me', { locale: 'en_US', fields: 'id, name, email' },  
       function(response) {
 
@@ -65,7 +64,6 @@ loginFbButton.onclick = function(){
         .then(res => res.json())
         .then(data => objUser = data)
         .then(function(objUser){
-          console.log(objUser);
           if(objUser === null){
             axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
               email: userFb['email'],
@@ -74,13 +72,11 @@ loginFbButton.onclick = function(){
               profilPicture: userFb['profilPicture']   
             })
             .then(function(response){
-              console.log(response);
               if(response.status === 201){
                 window.location = 'profil.html';
               }
             })
             .catch(e => {
-              console.log(e)
             })
 
             
@@ -116,7 +112,6 @@ function signInGoogle(){
 	  var token = result.credential.accessToken;
 	  // The signed-in user info.
 	  var user = result.user;
-	  console.log(user);
 
     userGoogle['email']  = user.email;
     var name = user.displayName;
@@ -138,7 +133,6 @@ function signInGoogle(){
       .then(res => res.json())
       .then(data => objUser = data)
       .then(function(objUser){
-        console.log(objUser);
         if(objUser === null){
           axios.post(`https://kaledo-backend.herokuapp.com/api/users`,{
             email: userGoogle['email'],
@@ -147,13 +141,11 @@ function signInGoogle(){
             profilPicture: userGoogle['profilPicture']   
           })
           .then(function(response){
-              console.log(response);
               if(response.status === 201){
                 window.location = 'profil.html';
               }
           })
           .catch(e => {
-              console.log(e)
           })
 
         }else{

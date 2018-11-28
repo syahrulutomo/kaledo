@@ -166,12 +166,10 @@ new Vue({
 						fetch('https://kaledo-backend.herokuapp.com/api/recipe/title'+title+'/user'+email)
 						.then(function(responseID){
 						
-							console.log(responseID);
 							return responseID.json();
 						
 						}).then(function(data){
 							
-							console.log(data);
 							return data.id;
 
 						}).then(function(id){
@@ -187,7 +185,6 @@ new Vue({
 								}
 												
 								localStorage.setItem('ingredients','done');
-								console.log('post ingredients done!');	
 
 								if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 									localStorage.removeItem('directions');
@@ -205,7 +202,6 @@ new Vue({
 								}
 
 								localStorage.setItem('directions','done');
-								console.log('post directions done!');
 
 								if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 									localStorage.removeItem('directions');
@@ -277,12 +273,10 @@ new Vue({
 						fetch('https://kaledo-backend.herokuapp.com/api/recipe/title'+title+'/user'+email)
 						.then(function(responseGetRecipe){
 						
-							console.log(responseGetRecipe);
 							return responseGetRecipe.json();
 						
 						}).then(function(data){
 							
-							console.log(data);
 							return data.id;
 
 						}).then(function(id){
@@ -297,11 +291,10 @@ new Vue({
 								}
 												
 								localStorage.setItem('ingredients','done');
-								console.log('post ingredients done!');			
 											
 									if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 										localStorage.removeItem('directions');
-									localStorage.removeItem('ingredients');
+										localStorage.removeItem('ingredients');
 										window.location = 'profil.html';
 									}
 							}
@@ -314,8 +307,7 @@ new Vue({
 								}
 
 								localStorage.setItem('directions','done');
-								console.log('post directions done!');
-
+						
 									if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 										localStorage.removeItem('directions');
 										localStorage.removeItem('ingredients');

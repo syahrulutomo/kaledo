@@ -213,7 +213,6 @@ Vue.component('tab-account',{
 				})
 				.then(function(data){
 
-				console.log(data);
 				localStorage.setItem('firstName',data['firstName']);
 				localStorage.setItem('lastName',data['lastName']);
 				localStorage.setItem('profilPicture',data['profilPicture']);
@@ -281,7 +280,6 @@ Vue.component('tab-recipes', {
 
   			targetId = event.currentTarget.getAttribute('data-id');
   			localStorage.setItem('idRecipe',targetId);
-            console.log(targetId);
   			window.location = 'edit-recipe.html'
   		
   		}
@@ -337,7 +335,6 @@ Vue.component('tab-howto', {
   		editHowto: function(){
   			
   			var id_howto = document.querySelector('.personal-howto-left').getAttribute('data-id');
-  			console.log(id_howto);
   			// window.location = 'edit-howto.html';
 
   		}
