@@ -261,7 +261,7 @@ Vue.component('tab-recipes', {
 			<img src="../assets/add-icons.png" alt="add recipe button">
 		</div>
 		<article v-for="recipe in recipes" class="personal-recipe">
-			<div v-on:click="editRecipe($event)" class="personal-recipe-left" v-bind:data-id="recipe.id">
+			<div v-on:click="editRecipe($event)" class="personal-recipe-left" v-bind:data-id="recipe.id" v-bind:data-thumbnail="recipe.photos">
 				<img class="personal-recipe-thumbnail" v-if=" recipe.photos === null" src="../assets/grey.jpg" v-bind:alt="recipe.title">
 				<img class="personal-recipe-thumbnail" v-else-if=" recipe.photos !== null" v-bind:src="recipe.photos" v-bind:alt="recipe.title">
 			</div>
@@ -278,9 +278,9 @@ Vue.component('tab-recipes', {
   			window.location = 'add-recipe.html'
   		},editRecipe: function(){
   			targetId = event.currentTarget.getAttribute('data-id');
-  			targetThumnail = event.currentTarget.photos;
+  			targetThumbnail = event.currentTarget.getAttribute('data-thumbnail');
   			localStorage.setItem('idRecipe',targetId);
-  			localStorage.setItem('recipeThumbnail',recipe.photos);
+  			localStorage.setItem('recipeThumbnail',targetThumbnail);
   			window.location = 'edit-recipe.html'
   		
   		}
