@@ -31,8 +31,8 @@
  <!-- Navigation Menu After Burger Icon Clicked -->
  <div class="navbar-expanded">
  	<ul class="menu-expanded">
-		<li><a href="recipes.html">Recipes</a></li>
-		<li><a href="how-to.html">How To</a></li>
+		<a href="recipes.html"><li>Recipes</li></a>
+		<a href="how-to.html"><li>How To</li></a>
 	</ul>			
 </div>
 
@@ -41,8 +41,8 @@
  	<a class="logo" href="../index.html"><h1>Kaledo</h1></a>
 	<nav class="navbar">
 		<ul class="menu">
-			<li><a href="recipes.html">Recipes</a></li>
-			<li><a href="how-to.html">How To</a></li>
+			<a href="recipes.html"><li>Recipes</li></a>
+			<a href="how-to.html"><li>How To</li></a>
 		</ul>			
 	</nav>
 		<a v-if="email !== null && email !== ''" id="profil-link-index" href="profil.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
@@ -57,68 +57,21 @@
 
  	<!-- Search Box -->
 	<div class="search-form">
-		<input class="search-box" type="text" name="search-box" placeholder="Search Recipes, How-To, and Ingredients">
+		<input class="search-box" v-model="search" type="text" name="search-box" placeholder="Search Recipes, How-To, and Ingredients">
 		<a class="search-btn" href=""><img src="../assets/search.png"></a>
 	</div>
 	
 	<section class="how-to-container">
-		<article class="how-to-data">
+		<article v-for="(howto, index) in filteredHowtos" class="how-to-data" v-bind:data-id="howto.id" v-on:click="viewHowto($event)">
 			<div class="how-to-left">
-				<img class="how-to-thumb" src="../assets/grey.jpg" alt="tips #1">		
+				<img v-if="howto.thumbnail !== null" class="how-to-thumb" v-bind:src="howto.thumbnail">	
+				<img v-else class="how-to-thumb" src="../assets/grey.jpg">	
 			</div>
 			<div class="how-to-right">
-				<h3 class="how-to-title">Lorem ipsum dolor sit amet.</h3>
-				<p class="how-to-desc">Lorem ipsum dolor sit amet.</p>
+				<h3 class="how-to-title">{{ howto.title }}</h3>
+				<p class="how-to-desc">{{ howto.articleList[0]['article'] }}</p>
 				<p class="author-container">By <span>
-					<a class="author" href="author">Author</a></span>
-				</p>	
-			</div>
-		</article>
-		<article class="how-to-data">
-			<div class="how-to-left">
-				<img class="how-to-thumb" src="../assets/grey.jpg" alt="tips #1">		
-			</div>
-			<div class="how-to-right">
-				<h3 class="how-to-title">Lorem ipsum dolor sit amet.</h3>
-				<p class="how-to-desc">Lorem ipsum dolor sit amet.</p>
-				<p class="author-container">By <span>
-					<a class="author" href="author">Author</a></span>
-				</p>	
-			</div>
-		</article>
-		<article class="how-to-data">
-			<div class="how-to-left">
-				<img class="how-to-thumb" src="../assets/grey.jpg" alt="tips #1">		
-			</div>
-			<div class="how-to-right">
-				<h3 class="how-to-title">Lorem ipsum dolor sit amet.</h3>
-				<p class="how-to-desc">Lorem ipsum dolor sit amet.</p>
-				<p class="author-container">By <span>
-					<a class="author" href="author">Author</a></span>
-				</p>	
-			</div>
-		</article>
-		<article class="how-to-data">
-			<div class="how-to-left">
-				<img class="how-to-thumb" src="../assets/grey.jpg" alt="tips #1">		
-			</div>
-			<div class="how-to-right">
-				<h3 class="how-to-title">Lorem ipsum dolor sit amet.</h3>
-				<p class="how-to-desc">Lorem ipsum dolor sit amet.</p>
-				<p class="author-container">By <span>
-					<a class="author" href="author">Author</a></span>
-				</p>	
-			</div>
-		</article>
-		<article class="how-to-data">
-			<div class="how-to-left">
-				<img class="how-to-thumb" src="../assets/grey.jpg" alt="tips #1">		
-			</div>
-			<div class="how-to-right">
-				<h3 class="how-to-title">Lorem ipsum dolor sit amet.</h3>
-				<p class="how-to-desc">Lorem ipsum dolor sit amet.</p>
-				<p class="author-container">By <span>
-					<a class="author" href="author">Author</a></span>
+					<a class="recent-author">{{users[index]['firstName'] + users[index]['lastName']}}</a></span>
 				</p>	
 			</div>
 		</article>
@@ -126,7 +79,7 @@
  </main>
 
  <!-- Footer -->
- <footer>
+ <footer class="footer-search">
 	<h1 class="logo-footer">Kaledo</h1>
 	<ul class="list-footer">
 		<li><a class="list-footer-item" href="faq.html">FAQ</a></li>

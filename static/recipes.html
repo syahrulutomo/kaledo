@@ -32,8 +32,8 @@
  <!-- Navigation Menu After Burger Icon Clicked -->
  <div class="navbar-expanded">
  	<ul class="menu-expanded">
-		<li><a href="recipes.html">Recipes</a></li>
-		<li><a href="how-to.html">How To</a></li>
+		<a href="recipes.html"><li>Recipes</li></a>
+		<a href="how-to.html"><li>How To</li></a>
 	</ul>			
 </div>
 
@@ -42,8 +42,8 @@
  	<a class="logo" href="../index.html"><h1>Kaledo</h1></a>
 	<nav class="navbar">
 		<ul class="menu">
-			<li><a href="recipes.html">Recipes</a></li>
-			<li><a href="how-to.html">How To</a></li>
+			<a href="recipes.html"><li>Recipes</li></a>
+			<a href="how-to.html"><li>How To</li></a>
 		</ul>			
 	</nav>
 		
@@ -57,12 +57,6 @@
  <!-- MAIN SECTION -->
  <main>
 
- 	<!-- Search Box -->
-	<div class="search-form">
-		<input class="search-box" type="text" name="search-box" placeholder="Search Recipes, How-To, and Ingredients">
-		<a class="search-btn" href=""><img src="../assets/search.png"></a>
-	</div>
-
 	<section class="recipes-filter-wrapper">	
 		<div class="filter-toggle-container">
 			<a class="filter-toggle">Add Filter</a>
@@ -70,112 +64,49 @@
 		<div class="filter">
 			<h3>Filter</h3>
 			<ul class="filter-list">
-				<li class="filter-item">
-					<p>Appetizers</p>
-					<a class="dropdown-icon" ><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
-					<ul class="sub-filter-list appetizer-list">
-						<li class="sub-filter-item">Bacon Appetizer
-							<input class="checkbox" id="bacon-selected" type="checkbox" name="filter-check" />
-							<label for="bacon-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Pastry Appetizers
-							<input class="checkbox" id="pastry-selected" type="checkbox" name="filter-check" />
-							<label for="pastry-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Pasta Appetizers
-							<input class="checkbox" id="pasta-selected" type="checkbox" name="filter-check" />
-							<label for="pasta-selected"><span class="check">✓</span></label>
+				<li v-for="(category,index) in categories" class="filter-item">
+					<p>{{ category }}</p>
+					<a class="dropdown-icon" v-bind:id="'dropdown-'+index"><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
+					<ul class="sub-filter-list">
+						<li v-if="subCategory !== null " v-for="subCategory in categories[category]"  class="sub-filter-item" v-bind:class="category">
+							{{ subCategory }}
+							<input class="checkbox" v-bind:id="subCategory" type="checkbox" name="filter-check" v-model="subCategories" v-bind:value="subCategory" >
+							<label v-bind:for="subCategory"><span class="check">✓</span></label>
 						</li>
 					</ul>
-				</li>
-				<li class="filter-item">
-					<p>Main Course</p> 
-						<a class="dropdown-icon" ><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
-					<ul class="sub-filter-list main-course-list">
-						<li class="sub-filter-item">Pizza
-							<input class="checkbox" id="pizza-selected" type="checkbox" name="filter-check" />
-							<label for="pizza-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Curry
-							<input class="checkbox" id="curry-selected" type="checkbox" name="filter-check" />
-							<label for="curry-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Beef
-							<input class="checkbox" id="beef-selected" type="checkbox" name="filter-check" />
-							<label for="beef-selected"><span class="check">✓</span></label>
-						</li>
-					</ul>
-				</li>
-				<li class="filter-item">
-					<p>Dessert</p>
-					<a class="dropdown-icon" ><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
-					<ul class="sub-filter-list dessert-list">
-						<li class="sub-filter-item">Cookies
-							<input class="checkbox" id="cookies-selected" type="checkbox" name="filter-check" />
-							<label for="cookies-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Cupcakes
-							<input class="checkbox" id="cupcakes-selected" type="checkbox" name="filter-check" />
-							<label for="cupcakes-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Pie
-							<input class="checkbox" id="pie-selected" type="checkbox" name="filter-check" />
-							<label for="pie-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Fruits Dessert
-							<input class="checkbox" id="fruits-selected" type="checkbox" name="filter-check" />
-							<label for="fruits-selected"><span class="check">✓</span></label>
-						</li>
-					</ul>
-				</li>
-				<li class="filter-item">
-					<p>Drinks</p>
-					<a class="dropdown-icon" ><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
-					<ul class="sub-filter-list drinks-list">
-						<li class="sub-filter-item">Smoothies
-							<input class="checkbox" id="smoothies-selected" type="checkbox" name="filter-check" />
-							<label for="smoothies-selected"><span class="check">✓</span></label>
-						</li>
-						<li class="sub-filter-item">Cocktail
-							<input class="checkbox" id="cocktail-selected" type="checkbox" name="filter-check" />
-							<label for="cocktail-selected"><span class="check">✓</span></label>
-						</li>
-					</ul>
-				</li>
+				</li>	
 			</ul>
 		</div>
 	</section>
+
 	
+	<!-- <div class="search-form">
+			<input class="search-box" type="text" v-model="search" name="search-box" placeholder="Search Recipes Title">
+			<a class="search-btn" href=""><img src="../assets/search.png"></a>
+	</div> -->
+
 	<section class="recipes-container">
-		<div class="recipe-data">
-			<img class="recipe-thumb" src="../assets/fastfood.jpg" alt="fastfood">	
-			<p class="recipe-desc">Lorem ipsum dolor sit amet consectetur.</p>
+		<div v-for="(recipe, index) in recipes" v-if="subCategories.length <= 0" class="recipe-data" 
+		v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
+			<img class="recipe-thumb" v-if="recipe.photos !== null" v-bind:src="recipe.photos">
+	 		<img class="recipe-thumb" v-if="recipe.photos === null" src="../assets/grey.jpg">	
+			<p class="recipe-title">{{ recipe.title }}</p>
+			<p class="recipe-desc">{{ recipe.description }}</p>
+			<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
 		</div>
-		<div class="recipe-data">
-			<img class="recipe-thumb" src="../assets/fastfood.jpg" alt="fastfood">	
-			<p class="recipe-desc">Lorem ipsum dolor sit amet consectetur.</p>
-		</div>
-		<div class="recipe-data">
-			<img class="recipe-thumb" src="../assets/fastfood.jpg" alt="fastfood">	
-			<p class="recipe-desc">Lorem ipsum dolor sit amet consectetur.</p>
-		</div>
-		<div class="recipe-data">
-			<img class="recipe-thumb" src="../assets/fastfood.jpg" alt="fastfood">	
-			<p class="recipe-desc">Lorem ipsum dolor sit amet consectetur.</p>
-		</div>
-		<div class="recipe-data">
-			<img class="recipe-thumb" src="../assets/fastfood.jpg" alt="fastfood">	
-			<p class="recipe-desc">Lorem ipsum dolor sit amet consectetur.</p>
-		</div>
-		<div class="recipe-data">
-			<img class="recipe-thumb" src="../assets/fastfood.jpg" alt="fastfood">	
-			<p class="recipe-desc">Lorem ipsum dolor sit amet consectetur.</p>
+		<div v-for="(recipe, index) in filteredRecipes" v-if="subCategories.length > 0" class="recipe-data" v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
+			<img class="recipe-thumb" v-if="recipe.photos !== null" v-bind:src="recipe.photos">
+	 		<img class="recipe-thumb" v-if="recipe.photos === null" src="../assets/grey.jpg">	
+			<p class="recipe-title">{{ recipe.title }}</p>
+			<p class="recipe-desc">{{ recipe.description }}</p>
+			<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
 		</div>
 	</section>
  </main>
 
+
   <!-- Footer -->
- <footer>
+ <footer class="footer-search">
 	<h1 class="logo-footer">Kaledo</h1>
 	<ul class="list-footer">
 		<li><a class="list-footer-item" href="faq.html">FAQ</a></li>

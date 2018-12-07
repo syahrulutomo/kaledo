@@ -170,7 +170,8 @@ Vue.component('tab-account',{
 									.then(function(){
 										var url = localStorage.getItem('downloadURL');
 										localStorage.setItem('profilPicture',url);
-										
+										localStorage.removeItem('downloadURL');
+
 										document.location.reload(true);
 										
 									});
@@ -240,9 +241,10 @@ Vue.component('tab-recipes', {
   
   mounted: function(){
 
-  		
-	
-
+  		if(fetch){
+			document.querySelector('.loader').style.display = "inline";
+		}
+  	
   		var self = this;
   		var email = localStorage.getItem('email');
 
@@ -253,6 +255,14 @@ Vue.component('tab-recipes', {
   		.then(function(data){
   			self.recipes = data['recipeList'];
   		});
+  },
+
+  updated: function(){
+
+  		if(fetch){
+			document.querySelector('.loader').style.display = "none";
+		}
+
   },
 
   template: `
@@ -275,13 +285,18 @@ Vue.component('tab-recipes', {
   `,
   	methods:{
   		addRecipe: function(){
+
   			window.location = 'add-recipe.html'
-  		},editRecipe: function(){
+  		
+  		},
+
+  		editRecipe: function(){
+
   			targetId = event.currentTarget.getAttribute('data-id');
   			targetThumbnail = event.currentTarget.getAttribute('data-thumbnail');
   			localStorage.setItem('idRecipe',targetId);
   			localStorage.setItem('recipeThumbnail',targetThumbnail);
-  			window.location = 'edit-recipe.html'
+  			window.location = 'edit-recipe.html';
   		
   		}
   	}
@@ -316,7 +331,7 @@ Vue.component('tab-howto', {
 		<div v-on:click="addHowto" id="add-personal-howto">
 			<img src="../assets/add-icons.png" alt="add howto button">
 		</div>
-		<article v-on:click="editHowto" v-for="howto in howtos" class="personal-howto">
+		<article v-on:click="editHowto($event)" v-for="howto in howtos" v-bind:data-id="howto.id" v-bind:data-thumbnail="howto.thumbnail" class="personal-howto">
 			<div class="personal-howto-left" v-bind:data-id="howto.id">
 				<img class="personal-howto-thumbnail" v-if="howto.thumbnail === null" src="../assets/grey.jpg" v-bind:alt="howto.title">
 				<img class="personal-howto-thumbnail" v-if="howto.thumbnail !== null" v-bind:src="howto.thumbnail" v-bind:alt="howto.title">
@@ -335,8 +350,11 @@ Vue.component('tab-howto', {
   		},
   		editHowto: function(){
   			
-  			var id_howto = document.querySelector('.personal-howto-left').getAttribute('data-id');
-  			// window.location = 'edit-howto.html';
+  			targetId = event.currentTarget.getAttribute('data-id');
+  			targetThumbnail = event.currentTarget.getAttribute('data-thumbnail');
+  			localStorage.setItem('idHowto',targetId);
+  			localStorage.setItem('howtoThumbnail',targetThumbnail);
+  			window.location = 'edit-howto.html'
 
   		}
   	}

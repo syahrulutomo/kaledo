@@ -80,7 +80,7 @@ new Vue({
 						dataIngredient = dataIngredient + item['ingredient']+"\n";
 						self.idIngredients.push(item['id']);
 					})
-
+					dataIngredient = dataIngredient.substring(0, dataIngredient.length-1);
 					self.ingredients = dataIngredient;
 
 					var directions = data.directionList;
@@ -90,7 +90,7 @@ new Vue({
 						dataDirection = dataDirection + item['direction']+"\n";
 						self.idDirections.push(item['id']);
 					})
-
+					dataDirection = dataDirection.substring(0, dataDirection.length-1);
 					self.directions = dataDirection;
 					
 					fetch('https://kaledo-backend.herokuapp.com/api/category')
@@ -221,7 +221,6 @@ new Vue({
 											time: document.querySelector('.cook-time').value,
 											photos: downloadURL
 							    		}
-
 					}
 						
 
@@ -246,6 +245,8 @@ new Vue({
 							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 								localStorage.removeItem('directions');
 								localStorage.removeItem('ingredients');
+								localStorage.removeItem('recipeThumbnail');
+								localStorage.removeItem('idRecipe');
 								window.location = 'profil.html';
 							}
 						}
@@ -281,6 +282,8 @@ new Vue({
 							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 								localStorage.removeItem('directions');
 								localStorage.removeItem('ingredients');
+								localStorage.removeItem('recipeThumbnail');
+								localStorage.removeItem('idRecipe');
 								window.location = 'profil.html';
 							}
 						}
@@ -325,6 +328,7 @@ new Vue({
 											description: document.querySelector('.recipe-description').value,
 											subCategory: document.querySelector('.sub-category').value,
 											time: document.querySelector('.cook-time').value,
+											photos: localStorage.getItem('recipeThumbnail')
 							    		}
 
 					}else if(document.querySelector('.sub-category').value === 'Other'){
@@ -340,7 +344,8 @@ new Vue({
 						objRecipe1	=	{	title: document.querySelector('.recipe-title').value,
 											description: document.querySelector('.recipe-description').value,
 											subCategory: subCategoryInput,
-											time: document.querySelector('.cook-time').value
+											time: document.querySelector('.cook-time').value,
+											photos: localStorage.getItem('recipeThumbnail')
 							    		}
 
 					}
@@ -367,6 +372,8 @@ new Vue({
 							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 								localStorage.removeItem('directions');
 								localStorage.removeItem('ingredients');
+								localStorage.removeItem('recipeThumbnail');
+								localStorage.removeItem('idRecipe');
 								window.location = 'profil.html';
 							}
 						}
@@ -402,6 +409,8 @@ new Vue({
 							if(localStorage.getItem('directions') == 'done' && localStorage.getItem('ingredients') == 'done'){
 								localStorage.removeItem('directions');
 								localStorage.removeItem('ingredients');
+								localStorage.removeItem('recipeThumbnail');
+								localStorage.removeItem('idRecipe');
 								window.location = 'profil.html';
 							}
 						}

@@ -107,7 +107,7 @@ new Vue({
 										if(localStorage.getItem('articles') == 'done'){
 									
 												localStorage.removeItem('articles');
-												window.location = 'add-howto.html';
+												window.location = 'profil.html';
 										}	
 
 									}
@@ -167,7 +167,7 @@ new Vue({
 							if(localStorage.getItem('articles') == 'done'){
 						
 									localStorage.removeItem('articles');
-									window.location = 'add-howto.html';
+									window.location = 'profil.html';
 							}	
 						
 						}

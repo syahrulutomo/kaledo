@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <html lang="en">
 <head>
 
@@ -21,11 +20,9 @@
 
  <!-- JS  -->
  <script defer src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-  <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
  <script defer src="../scripts/core.js"></script>
- <script defer src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
- <script defer src="../scripts/signin.js"></script>
- 
+ <script defer src="../scripts/search.js"></script>
+
  <!-- Favicon  -->
  <link rel="shortcut icon" href="../assets/kaledo.ico" type="image/x-icon">
 
@@ -36,9 +33,9 @@
  <div class="navbar-expanded">
  	<ul class="menu-expanded">
 		<a href="recipes.html"><li>Recipes</li></a>
-			<a href="how-to.html"><li>How To</li></a>
+		<a href="how-to.html"><li>How To</li></a>
 	</ul>			
- </div>
+</div>
 
  <!-- Page Header -->
  <header class="header">
@@ -49,7 +46,7 @@
 			<a href="how-to.html"><li>How To</li></a>
 		</ul>			
 	</nav>
-	
+		
 		<a v-if="email !== null && email !== ''" id="profil-link-index" href="profil.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
 		
 		<a v-else-if="email === null || email === ''" id="profil-link-index" href="signin.html"><img class="profil-img" src="../assets/circle-icons-profile.png"></a>
@@ -57,26 +54,23 @@
 	<a class="burger"><img src="../assets/menu.svg"></a>
  </header>
 
- <main class="login-container">
-	<h3 class="login-title-heading">Join Kaledo</h3>
-	<p class="login-title">You can share your original recipes and cooking tips. It's free!</p>	
-	<p class="login-title-signin">Sign in with social for new and existing users</p>	
-	 	
-	<section class="login-form-container"> 
-		<div class="login-wrapper">
-	 		<div class="fb-login-button"><img src="../assets/fb-font-icon.png"><span class="login-button-title-facebook">Facebook</span></div>
-	 		<!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> --> 		
-	 	</div>
+ <!-- MAIN SECTION -->
+ <main>
 
-	 	<div class="login-wrapper">
-	 		<div class="login-google-button"><img src="../assets/logo-google-plus-white.png"><span class="login-button-title-google">Google</span></div>
-	 	</div>
-	</section>	
-
+ 	<section class="recipes-container">
+ 		<h4 class="search-result-opener">Your search result:</h4>
+		<div v-for="(recipe, index) in recipes" class="recipe-data">
+			<img class="recipe-thumb" v-if="recipe.photos !== null" v-bind:src="recipe.photos">
+	 		<img class="recipe-thumb" v-if="recipe.photos === null" src="../assets/grey.jpg">	
+			<p class="recipe-title">{{ recipe.title }}</p>
+			<p class="recipe-desc">{{ recipe.description }}</p>
+			<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
+		</div>
+	</section>
  </main>
 
- <!-- Footer -->
- <footer class="footer-login">
+  <!-- Footer -->
+ <footer class="footer-search">
 	<h1 class="logo-footer">Kaledo</h1>
 	<ul class="list-footer">
 		<li><a class="list-footer-item" href="faq.html">FAQ</a></li>
