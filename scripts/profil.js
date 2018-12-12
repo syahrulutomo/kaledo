@@ -135,15 +135,6 @@ Vue.component('tab-account',{
 							  	// Handle successful uploads on complete
 							 	// For instance, get the download URL: https://firebasestorage.googleapis.com/...
 							  	uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-
-								  	var id = JSON.stringify(localStorage.getItem('email'));
-								  	id = id.replace('.','dot');
-
-								  	firebase.database().ref('users'+id+'/account/').set({
-								  		firstName: localStorage.getItem('firstName'),
-								  		lastName: localStorage.getItem('lastName'),
-								  		url: downloadURL
-								  	});
 									
 									// putRequest(downloadURL);
 									
