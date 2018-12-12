@@ -57,13 +57,6 @@ new Vue({
 
 						uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
 
-							emailString = email.replace('.','dot');
-
-							firebase.database().ref('users'+emailString+'/howto/').set({
-								title: document.querySelector('.howto-title').value,
-								url: downloadURL
-							});										
-										
 							objHowto = {
 								title: document.querySelector('.howto-title').value,
 								thumbnail: downloadURL

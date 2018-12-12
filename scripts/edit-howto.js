@@ -89,13 +89,6 @@ new Vue({
 					// Handle successful uploads on complete
 					uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
 
-					emailString = email.replace('.','dot');
-
-					firebase.database().ref('users'+emailString+'/howto/').set({
-						title: self.title,
-						url: downloadURL
-					});
-					
 					var obj = new Object();
 
 					obj	=	{	

@@ -186,14 +186,6 @@ new Vue({
 					// Handle successful uploads on complete
 					uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
 
-					emailString = email.replace('.','dot');
-
-					firebase.database().ref('users'+emailString+'/recipe/').set({
-						title: document.querySelector('.recipe-title').value,
-						description: document.querySelector('.recipe-description').value,
-						url: downloadURL
-					});
-					
 					var objRecipe1 = new Object();
 
 					if(document.querySelector('.sub-category').value !== 'Other')
