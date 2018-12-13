@@ -21,7 +21,7 @@ new Vue({
 			var categoryName = new Array();
 			var subCategory = new Array();
 			
-			for (var i = 0; i < data['content'].length ; i++) {		
+			for (var i = data['content'].length - 1; i >= 0  ; i--) {		
 					
 				if( categoryName.indexOf(data['content'][i][0]['categoryName']) === -1 ){
 					categoryName.push(data['content'][i][0]['categoryName']);
