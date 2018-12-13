@@ -25,7 +25,7 @@ new Vue({
 		})
 		.then(function(data){
 			
-			for(var i = data['content'].length - 1; i >  data['content'].length -11 ; i--){
+			for(var i = data['content'].length - 1; i >  data['content'].length - 11 ; i--){
 				self.recipes.push(data['content'][i]);
 			}	
 
@@ -66,7 +66,7 @@ new Vue({
 			var categories = new Array();
 			var users = new Array();
 
-			for (var i = 0; i < data['content'].length - 1; i++) {
+			for (var i = 0; i < data['content'].length ; i++) {
 				
 				if( categoryName.indexOf(data['content'][i][0]['categoryName']) === -1 ){
 					categoryName.push(data['content'][i][0]['categoryName']);
