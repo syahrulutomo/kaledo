@@ -247,8 +247,8 @@ main{
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
-	margin-bottom: .8em;
-	padding: 1em;
+	/*margin-bottom: .8em;*/
+	padding: .5em;
 }
 
 .recent-heading{
@@ -318,11 +318,26 @@ main{
     text-overflow: ellipsis;
 }
 
+.author-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.user-thumb{
+	border-radius: 50%;
+    height: 23px;
+    margin-right: 7px;
+    margin-top: 0;
+    width: 23px;
+}
+
 .recent-author{
 	font-size: .85em;
 	font-family: 'Noto Sans SC', sans-serif;
 	color: #ff751a;
 	margin-top: .5em;
+	display: inline;
+	line-height: 1.5;
 }
 
 .data-extension{

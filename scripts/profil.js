@@ -266,7 +266,7 @@ Vue.component('tab-recipes', {
 				<img class="personal-recipe-thumbnail" v-if=" recipe.photos === null" src="../assets/grey.jpg" v-bind:alt="recipe.title">
 				<img class="personal-recipe-thumbnail" v-else-if=" recipe.photos !== null" v-bind:src="recipe.photos" v-bind:alt="recipe.title">
 			</div>
-			<div v-on:click="editRecipe($event)" class="personal-recipe-right" v-bind:data-id="recipe.id">
+			<div v-on:click="editRecipe($event)" class="personal-recipe-right" v-bind:data-id="recipe.id" v-bind:data-thumbnail="recipe.photos">
 				<h3 class="personal-recipe-title">{{ recipe.title }}</h3>
 				<p class="personal-recipe-summary">{{ recipe.description }}</p>
 		    </div> 
@@ -327,7 +327,7 @@ Vue.component('tab-howto', {
 				<img class="personal-howto-thumbnail" v-if="howto.thumbnail === null" src="../assets/grey.jpg" v-bind:alt="howto.title">
 				<img class="personal-howto-thumbnail" v-if="howto.thumbnail !== null" v-bind:src="howto.thumbnail" v-bind:alt="howto.title">
 			</div>
-			<div class="personal-howto-right" v-bind:data-id="howto.id">
+			<div class="personal-howto-right" v-bind:data-id="howto.id" v-bind:data-thumbnail="howto.thumbnail">
 				<h3 class="personal-howto-title">{{ howto.title }}</h3>
 				<p class="personal-howto-summary">{{ howto.articleList[0]['article'] }}</p>
 		    </div> 

@@ -88,7 +88,11 @@
 	 			<img class="recent-thumb" v-if="recipe.photos === null" src="assets/grey.jpg">
 				<p class="recent-title">{{ recipe.title }}</p>
 				<p class="recent-desc">{{ recipe.description }}</p>
-				<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
+				<div class="author-wrapper">
+					<img class="user-thumb" v-if="users[index].profilPicture !== null" v-bind:src="users[index].profilPicture">
+		 			<img class="user-thumb" v-if="users[index].profilPicture === null" src="../assets/grey.jpg">
+					<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
+				</div>
 			</div>
 		</div>
 
