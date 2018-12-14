@@ -69,7 +69,7 @@
 	<!-- Slider Section Containing Round Thumbnail	 -->
 	<section class="slider-container">
 		<div class="slider">	
-			<div v-for="recipe in recipes" class="round-thumbnail" v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
+			<div v-for="recipe in recipes.slice().reverse()" class="round-thumbnail" v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
 				<img v-if="recipe.photos !== null" v-bind:src="recipe.photos">
 	 			<img v-if="recipe.photos === null" src="assets/grey.jpg">
 				<p class="round-title">{{ recipe.title }}</p>
