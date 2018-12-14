@@ -337,7 +337,8 @@ main{
 	color: #ff751a;
 	margin-top: .5em;
 	display: inline;
-	line-height: 1.5;
+	vertical-align: middle;
+    line-height: 1em;
 }
 
 .data-extension{
@@ -1860,4 +1861,8 @@ label.label-file{
 	.view-howto-thumb{
 		height: 70vh;
 	}	
+}
+
+.recent-data , .round-thumbnail, .recipe-data{
+	cursor: pointer;
 }

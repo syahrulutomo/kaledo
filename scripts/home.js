@@ -56,7 +56,7 @@ new Vue({
 	created: function(){
 		var self = this;
 
-		fetch('https://kaledo-backend.herokuapp.com/api/category/recipe/user')
+		fetch('https://kaledo-backend.herokuapp.com/api/category/')
 		.then(function(response){
 			return response.json();
 		})
@@ -66,12 +66,12 @@ new Vue({
 			var categories = new Array();
 			var users = new Array();
 
-			for (var i = data['content'].length - 1; i >= 0 ; i--) {
+			for (var i = 0; i < data['content'].length ; i++) {
 				
-				if( categoryName.indexOf(data['content'][i][0]['categoryName']) === -1 ){
-					categoryName.push(data['content'][i][0]['categoryName']);
-					self.categories.push(data['content'][i][0]);
-					self.users.push(data['content'][i][1]);
+				if( categoryName.indexOf(data['content'][i]['categoryName']) === -1 ){
+					categoryName.push(data['content'][i]['categoryName']);
+					self.categories.push(data['content'][i]);
+					// self.users.push(data['content'][i]);
 				}
 				
 			}

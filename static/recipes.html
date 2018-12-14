@@ -66,7 +66,7 @@
 			<ul class="filter-list">
 				<li v-for="(category,index) in categories" class="filter-item">
 					<p>{{ category }}</p>
-					<a class="dropdown-icon" v-bind:id="'dropdown-'+index"><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
+					<a class="dropdown-icon" v-bind:id="'dropdown-'+index" v-on:click="openAppertizer($event)"><img src="../assets/icon-arrow_dropdown.svg" alt="icon"></a>
 					<ul class="sub-filter-list">
 						<li v-if="subCategory !== null " v-for="subCategory in categories[category]"  class="sub-filter-item" v-bind:class="category">
 							{{ subCategory }}
@@ -92,11 +92,10 @@
 	 		<img class="recipe-thumb" v-if="recipe.photos === null" src="../assets/grey.jpg">	
 			<p class="recent-title">{{ recipe.title }}</p>
 			<p class="recent-desc">{{ recipe.description }}</p>
-			
 			<div class="author-wrapper">
-				<img class="user-thumb" v-if="users[index].profilPicture !== null" v-bind:src="users[index].profilPicture">
-	 			<img class="user-thumb" v-if="users[index].profilPicture === null" src="../assets/grey.jpg">
-				<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
+				<img class="user-thumb" v-if="recipe.profilPicture !== null" v-bind:src="recipe.profilPicture">
+	 			<img class="user-thumb" v-if="recipe.profilPicture === null" src="../assets/grey.jpg">
+				<p class="recent-author">By {{ recipe.firstName }} {{ recipe.lastName }}</p>
 			</div>
 		</div>
 		<div v-for="(recipe, index) in filteredRecipes" v-if="subCategories.length > 0" class="recipe-data" v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
@@ -105,9 +104,9 @@
 			<p class="recent-title">{{ recipe.title }}</p>
 			<p class="recent-desc">{{ recipe.description }}</p>
 			<div class="author-wrapper">
-				<img class="user-thumb" v-if="users[index].profilPicture !== null" v-bind:src="users[index].profilPicture">
-	 			<img class="user-thumb" v-if="users[index].profilPicture === null" src="../assets/grey.jpg">
-				<p class="recent-author">By {{ users[index].firstName }} {{ users[index].lastName }}</p>
+				<img class="user-thumb" v-if="recipe.profilPicture !== null" v-bind:src="recipe.profilPicture">
+	 			<img class="user-thumb" v-if="recipe.profilPicture === null" src="../assets/grey.jpg">
+				<p class="recent-author">By {{ recipe.firstName }} {{ recipe.lastName }}</p>
 			</div>
 		</div>
 	</section>
