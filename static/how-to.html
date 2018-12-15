@@ -69,9 +69,11 @@
 			<div class="how-to-right">
 				<h3 class="how-to-title">{{ howto.title }}</h3>
 				<p class="how-to-desc">{{ howto.articleList[0]['article'] }}</p>
-				<p class="author-container">By <span>
-					<a class="recent-author">{{users[index]['firstName'] + users[index]['lastName']}}</a></span>
-				</p>	
+				<div class="author-wrapper">
+					<img class="user-thumb" v-if="user[index]['profilPicture'] !== null" v-bind:src="user[index]['profilPicture']">
+		 			<img class="user-thumb" v-if="user[index]['profilPicture'] === null" src="../assets/grey.jpg">
+					<p class="recent-author">By {{users[index]['firstName'] + users[index]['lastName']}}</p>
+				</div>	
 			</div>
 		</article>
 	</section>
