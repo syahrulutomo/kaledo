@@ -153,11 +153,11 @@ new Vue({
 
 			} else {
 
-					var obj = new Object();
+					var obj1 = new Object();
 
-					obj	=	{	
+					obj1	=	{	
 								title: self.title,
-								thumbnail: thumbnail
+								thumbnail: localStorage.getItem('howtoThumbnail')
 					    	}
 					
 					fetch('https://kaledo-backend.herokuapp.com/api/howto'+idHowto+'/user'+email, {
@@ -165,13 +165,13 @@ new Vue({
 						headers: {
 									"Content-Type": "application/json; charset=utf-8",
 								 },	
-						body: JSON.stringify(obj)
+						body: JSON.stringify(obj1)
 											
 					}).then(function(){
 
 						async function postArticle(array,idHowto){
 							for (var i = 0 ; i < array.length; i++){
-								await axios.post('https://kaledo-backend.herokuapp.com/api/article/howto'+idHowto,{
+								await axios.post('https://kaledo-backend.herokuapp.com/api/article/howto/'+idHowto,{
 									article: array[i]
 								})
 							}
@@ -186,7 +186,7 @@ new Vue({
 
 						function deleteArticle(idArticle){
 					
-							axios.delete('https://kaledo-backend.sherokuapp.com/api/article/'+idArticle)
+							axios.delete('https://kaledo-backend.herokuapp.com/api/article/'+idArticle)
 																																
 						}
 
@@ -201,7 +201,7 @@ new Vue({
 
 						});
 
-						postArticle(article,idHowto);					
+						postArticle(article,idHowto);				
 						
 					});
 

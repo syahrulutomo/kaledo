@@ -1863,6 +1863,6 @@ label.label-file{
 	}	
 }
 
-.recent-data , .round-thumbnail, .recipe-data{
+.recent-data , .round-thumbnail, .recipe-data, .how-to-data{
 	cursor: pointer;
 }
