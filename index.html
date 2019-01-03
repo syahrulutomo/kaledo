@@ -34,8 +34,8 @@
  <!-- Navigation Menu After Burger Icon Clicked -->
  <div class="navbar-expanded">
  	<ul class="menu-expanded">
-		<a href="static/recipes.html"><li>Recipes</li></a>
-		<a href="static/how-to.html"><li>How To</li></a>
+		<li><a href="static/recipes.html">Recipes</a></li>
+		<li><a href="static/how-to.html">How To</a></li>
 	</ul>			
 </div>
 
@@ -44,17 +44,17 @@
  	<a class="logo" href="index.html"><h1>Kaledo</h1></a>
 	<nav class="navbar">
 		<ul class="menu">
-			<a href="static/recipes.html"><li>Recipes</li></a>
-			<a href="static/how-to.html"><li>How To</li></a>
+			<li><a href="static/recipes.html">Recipes</a></li>
+			<li><a href="static/how-to.html">How To</a></li>
 			
 		</ul>			
 	</nav>
 		
-		<a v-if="email !== null && email !== ''" id="profil-link-index" href="static/profil.html"><img class="profil-img" src="assets/circle-icons-profile.png"></a>
+		<a v-if="email !== null && email !== ''" id="profil-link-index" href="static/profil.html"><img class="profil-img" src="assets/circle-icons-profile.png" alt="profil picture"></a>
 		
-		<a v-else-if="email === null || email === ''" id="profil-link-index" href="static/signin.html"><img class="profil-img" src="assets/circle-icons-profile.png"></a>
+		<a v-else-if="email === null || email === ''" id="profil-link-index" href="static/signin.html"><img class="profil-img" src="assets/circle-icons-profile.png" alt="profil picture"></a>
 
-	<a class="burger"><img src="assets/menu.svg"></a>
+	<a class="burger"><img src="assets/menu.svg" alt="menu icon"></a>
  </header>
 
  <!-- Main Section	 -->
@@ -63,15 +63,15 @@
  	<!-- Search Box -->
 	<div class="search-form">
 		<input class="search-box" type="text" name="search-box" placeholder="Search Recipes Title">
-		<a class="search-btn"><img src="assets/search.png"></a>
+		<a class="search-btn"><img src="assets/search.png" alt="search button"></a>
 	</div>
 		
 	<!-- Slider Section Containing Round Thumbnail	 -->
 	<section class="slider-container">
 		<div class="slider">	
 			<div v-for="recipe in recipes.slice().reverse()" class="round-thumbnail" v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
-				<img v-if="recipe.photos !== null" v-bind:src="recipe.photos">
-	 			<img v-if="recipe.photos === null" src="assets/grey.jpg">
+				<img v-if="recipe.photos !== null" v-bind:src="recipe.photos" v-bind:alt="recipe.title">
+	 			<img v-if="recipe.photos === null" src="assets/grey.jpg" v-bind:alt="recipe.title">
 				<p class="round-title">{{ recipe.title }}</p>
 			</div>		
 		</div>			
@@ -84,8 +84,8 @@
 		<div v-for="category in categories " class="recent-appetizer" >
 			<div class="recent-heading"><h3>{{ category.categoryName  }}</h3></div>
 			<div  v-for="(recipe,index) in category.recipeList.slice().reverse()" class="recent-data" v-bind:data-id="recipe.id" v-on:click="viewRecipe($event)">
-				<img class="recent-thumb" v-if="recipe.photos !== null" v-bind:src="recipe.photos">
-	 			<img class="recent-thumb" v-if="recipe.photos === null" src="assets/grey.jpg">
+				<img class="recent-thumb" v-if="recipe.photos !== null" v-bind:src="recipe.photos" v-bind:alt="recipe.title">
+	 			<img class="recent-thumb" v-if="recipe.photos === null" src="assets/grey.jpg" v-bind:alt="recipe.title">
 				<p class="recent-title">{{ recipe.title }}</p>
 				<p class="recent-desc">{{ recipe.description }}</p>
 				<!-- <div class="author-wrapper">
